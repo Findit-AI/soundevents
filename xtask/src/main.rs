@@ -369,7 +369,7 @@ fn emit_module(
      /// maps to a slice of all entries that share that name or alias —\n\
      /// most keys map to a single entry, but a few ambiguous aliases\n\
      /// (e.g. `\"Inside\"`) may map to multiple entries.\n\
-     pub static DATASET: ::phf::Map<&'static UncasedStr, &'static [&'static super::{type_name}]> = {phf_built};\n",
+     pub(super) static DATASET: ::phf::Map<&'static UncasedStr, &'static [&'static super::{type_name}]> = {phf_built};\n",
   );
 
   let output = format!(

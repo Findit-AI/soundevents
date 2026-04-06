@@ -12,6 +12,14 @@ pub mod ontology;
 #[cfg_attr(docsrs, doc(cfg(feature = "rated")))]
 pub mod rated;
 
+#[cfg(feature = "ontology")]
+#[cfg_attr(docsrs, doc(cfg(feature = "ontology")))]
+pub use ontology::SoundEvent;
+
+#[cfg(feature = "rated")]
+#[cfg_attr(docsrs, doc(cfg(feature = "rated")))]
+pub use rated::RatedSoundEvent;
+
 /// Errors that can occur when parsing a [`Restriction`] from a string.
 #[derive(Debug, thiserror::Error, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 #[error("unknown restriction: {0}")]

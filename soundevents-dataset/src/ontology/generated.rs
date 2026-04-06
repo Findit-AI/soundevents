@@ -11734,7 +11734,7 @@ use ::uncased::UncasedStr;
 /// maps to a slice of all entries that share that name or alias —
 /// most keys map to a single entry, but a few ambiguous aliases
 /// (e.g. `"Inside"`) may map to multiple entries.
-pub static DATASET: ::phf::Map<&'static UncasedStr, &'static [&'static super::SoundEvent]> =
+pub(super) static DATASET: ::phf::Map<&'static UncasedStr, &'static [&'static super::SoundEvent]> =
   ::phf::Map {
     key: 16287231350648472473,
     disps: &[
