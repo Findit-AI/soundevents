@@ -3,7 +3,7 @@
 </div>
 <div align="center">
 
-Typed, zero-allocation Rust access to [Google's AudioSet ontology](https://github.com/audioset/ontology) — 600+ sound event classes with names, descriptions, hierarchy, and aliases, baked in at compile time as `&'static` data.
+Typed, zero-allocation Rust access to [Google's AudioSet](https://research.google.com/audioset/) sound-event taxonomy. Two views are available — the full 632-entry [ontology](https://github.com/audioset/ontology) and the 527-class rated label set used by released AudioSet models — both baked in at compile time as `&'static` data, with case-insensitive perfect-hash lookup.
 
 [<img alt="github" src="https://img.shields.io/badge/github-findit--ai/soundevents-8da0cb?style=for-the-badge&logo=Github" height="22">][Github-url]
 <img alt="LoC" src="https://img.shields.io/endpoint?url=https%3A%2F%2Fgist.githubusercontent.com%2Fal8n%2F327b2a8aef9003246e45c6e47fe63937%2Fraw%2Fsoundevents" height="22">
@@ -21,73 +21,117 @@ Typed, zero-allocation Rust access to [Google's AudioSet ontology](https://githu
 
 ```toml
 [dependencies]
-soundevents-dataset = "0.0"
+soundevents-dataset = "0.1"
 ```
 
-## Usage
+By default this pulls in the [`rated`](#rated--audioset-rated-label-set-527-entries) module — the 527-class label set used by released AudioSet/YAMNet/VGGish models. To use the [`ontology`](#ontology--full-audioset-taxonomy-632-entries) view instead (or in addition), pick the features explicitly:
 
-Look up an entry by any name, alias, or AudioSet id. `from_name` returns a slice — most names are unique (one element), but a handful of ambiguous aliases like `"Inside"` map to several entries:
+```toml
+# Just the full AudioSet ontology, no rated set.
+soundevents-dataset = { version = "0.1", default-features = false, features = ["std", "ontology"] }
+
+# Both views.
+soundevents-dataset = { version = "0.1", features = ["ontology"] }
+```
+
+## Two views, two modules
+
+| Module | Source | Entries | Use when… |
+| --- | --- | --- | --- |
+| [`rated`](#rated--audioset-rated-label-set-527-entries) | `class_labels_indices.csv` | **527** | You're working with model outputs / multi-hot label tensors. Each entry carries its `index` so the position in a 527-vector resolves to a name in `O(1)`. |
+| [`ontology`](#ontology--full-audioset-taxonomy-632-entries) | `ontology.json` | **632** | You need the full taxonomy, including abstract container nodes (`"Human voice"`, `"Music"`, …) and the 105 entries that aren't in the released rated set. |
+
+The two are independent: each lives in its own module, has its own `&'static` consts, its own perfect-hash map, and its own type (`SoundEvent` vs `RatedSoundEvent`). Enable only what you need to keep the binary small.
+
+### `rated` — AudioSet rated label set (527 entries)
 
 ```rust,ignore
-use soundevents_dataset::SoundEntry;
+use soundevents_dataset::rated::RatedSoundEvent;
 
-// Unique alias — one match.
-let speech = SoundEntry::from_key("Speech");
+// Look up by name, alias, or AudioSet id (case-insensitive).
+let speech = RatedSoundEvent::from_key("Speech");
 assert_eq!(speech.len(), 1);
 assert_eq!(speech[0].name(), "Speech");
+assert_eq!(speech[0].index(), 0); // class index in the released model output
 
-// Lookup by AudioSet id works through the same map.
-let by_id = SoundEntry::from_key("/m/09x0r");
-assert_eq!(by_id, speech);
+// Decode a model's argmax: `scores: [f32; 527]`.
+let predicted = scores.iter().enumerate()
+    .max_by(|a, b| a.1.partial_cmp(b.1).unwrap())
+    .unwrap().0;
+let label = RatedSoundEvent::from_index(predicted).unwrap();
+println!("predicted: {}", label.name());
 
-// Ambiguous alias — multiple matches.
-let inside = SoundEntry::from_key("Inside");
+// AudioSet id lookup uses the same case-insensitive map.
+assert_eq!(
+    RatedSoundEvent::from_key("/m/09x0r"),
+    RatedSoundEvent::from_key("/M/09X0R"),
+);
+
+// Iterate every rated class in CSV order.
+for entry in RatedSoundEvent::events() {
+    println!("{:>3}  {}  {}", entry.index(), entry.id(), entry.name());
+}
+```
+
+`RatedSoundEvent` exposes the same metadata accessors as `SoundEvent` (`id`, `name`, `description`, `aliases`, `citation_uri`, `children`, `restrictions`) plus a rated-only [`index()`](https://docs.rs/soundevents-dataset) — the integer 0..527 used as the position in released AudioSet models' output vectors. Walking `children()` stays inside the rated namespace: any ontology child that is *not* in the rated set is dropped, so the hierarchy remains self-consistent.
+
+### `ontology` — full AudioSet taxonomy (632 entries)
+
+```rust,ignore
+use soundevents_dataset::ontology::{SoundEvent};
+use soundevents_dataset::Restriction;
+
+// Walk the hierarchy from an abstract container down to leaves.
+let voice = SoundEvent::from_key("Human voice")[0];
+assert!(voice.restrictions().contains(&Restriction::Abstract));
+for child in voice.children() {
+    println!("- {}", child.name());
+}
+
+// `from_key` returns a slice — most aliases are unique (one match), a few
+// ambiguous ones like "Inside" map to several entries.
+let inside = SoundEvent::from_key("Inside");
 assert!(inside.len() > 1);
 
-// Unknown name — empty slice.
-assert!(SoundEntry::from_key("not a sound").is_empty());
-```
-
-Names are matched in many case styles automatically (snake_case, kebab-case, SHOUTY_SNAKE_CASE, camelCase, Title Case, …), so `"man speaking"`, `"manSpeaking"`, and `"MAN_SPEAKING"` all resolve to the same entry.
-
-Each entry exposes its full metadata, including its place in the AudioSet hierarchy:
-
-```rust,ignore
-use soundevents_dataset::{Restriction, SoundEntry};
-
-let entry = SoundEntry::from_name("Human voice")[0];
-
-println!("{}: {}", entry.id(), entry.description());
-for child in entry.children() {
-    println!("  - {}", child.name());
-}
-
-if entry.restrictions().contains(&Restriction::Abstract) {
-    println!("(abstract category — has no direct examples)");
-}
-```
-
-You can also look up by the entry's stable 64-bit code (a SipHash of the canonical name), which is `const`-callable:
-
-```rust,ignore
-use soundevents_dataset::SoundEntry;
-
-let code = SoundEntry::from_name("Speech")[0].encode();
-let round_tripped = SoundEntry::from_code(code).unwrap();
+// Stable 64-bit code (SipHash of the canonical name) for compact storage.
+let code = SoundEvent::from_key("Speech")[0].encode();
+let round_tripped = SoundEvent::from_code(code).unwrap();
 assert_eq!(round_tripped.name(), "Speech");
 ```
 
+### Case-insensitive, separator-distinct lookup
+
+`from_key` is keyed by [`UncasedStr`](https://docs.rs/uncased), so any case form of an alias resolves to the same entry without us having to enumerate every possibility:
+
+```rust,ignore
+use soundevents_dataset::rated::RatedSoundEvent;
+
+let queries = [
+    "man speaking", "MAN SPEAKING", "Man Speaking", "mAn SpEaKiNg",
+    "man_speaking", "manSpeaking", "Man-Speaking",
+];
+for q in queries {
+    assert_eq!(RatedSoundEvent::from_key(q)[0].id(), "/m/05zppz");
+}
+```
+
+Separator styles are still indexed independently (`"man speaking"` ≠ `"man_speaking"` ≠ `"man-speaking"` ≠ `"manSpeaking"`), so you only pay for the four shapes the codegen actually emits — every case variant of each shape collapses into one phf bucket.
+
 ## Features
 
-- `std` *(default)* — enables `std`-dependent error reporting via `thiserror`. Disable for `no_std`.
-- `alloc` — opt-in `alloc` support for `no_std` targets that have an allocator.
-- `serde` — derives `Serialize` for `SoundEntry` and `Restriction`.
+| Feature | Default | What you get |
+| --- | :-: | --- |
+| `std` | ✓ | Standard library + `std`-dependent error reporting via `thiserror`. Disable for `no_std`. |
+| `rated` | ✓ | The `rated` module (527 entries, ~1900 phf keys). |
+| `ontology` | | The `ontology` module (632 entries, ~2400 phf keys). |
+| `alloc` | | Opt-in `alloc` support for `no_std` targets with an allocator. |
+| `serde` | | Derives `Serialize` for `SoundEvent`, `RatedSoundEvent`, and `Restriction`. |
 
-The crate is `#![no_std]`-compatible (`default-features = false`) and the entire dataset lives in `&'static` memory — no allocations, no startup cost.
+The crate is `#![no_std]`-compatible (`default-features = false`). The entire dataset lives in `&'static` memory: no allocations, no startup cost, and the perfect-hash map is generated by [`phf_codegen`](https://docs.rs/phf_codegen) at codegen time so the dataset crate's compile graph contains no proc-macros from `phf`.
 
 ## Regenerating the dataset
 
-`src/generated.rs` is checked in and produced from `ontology.json` by an `xtask` binary. After updating the ontology or the codegen logic, regenerate with:
+`src/ontology/generated.rs` and `src/rated/generated.rs` are checked in and produced from `assets/ontology.json` and `assets/class_labels_indices.csv` by an `xtask` binary. After updating either source file or the codegen logic, regenerate both with one command:
 
 ```sh
 cargo xtask codegen
