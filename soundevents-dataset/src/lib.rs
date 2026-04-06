@@ -4,22 +4,15 @@
 #![cfg_attr(docsrs, allow(unused_attributes))]
 #![deny(missing_docs)]
 
-mod generated;
+#[cfg(feature = "ontology")]
+#[cfg_attr(docsrs, doc(cfg(feature = "ontology")))]
+pub mod ontology;
 
-/// Errors that can occur when looking up a sound entry by code
-#[derive(Debug, thiserror::Error, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
-#[error("unknown entry code: {0}")]
-pub struct UnknownSoundEventCode(u64);
+#[cfg(feature = "rated")]
+#[cfg_attr(docsrs, doc(cfg(feature = "rated")))]
+pub mod rated;
 
-impl UnknownSoundEventCode {
-  /// Get the code associated with the `UnknownSoundEventCode` error
-  #[cfg_attr(not(tarpaulin), inline(always))]
-  pub const fn code(&self) -> u64 {
-    self.0
-  }
-}
-
-/// Errors that can occur when parsing a sound entry by name
+/// Errors that can occur when parsing a [`Restriction`] from a string.
 #[derive(Debug, thiserror::Error, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 #[error("unknown restriction: {0}")]
 pub struct UnknownRestriction<'a>(&'a str);
@@ -87,78 +80,107 @@ impl Restriction {
   }
 }
 
-/// A sound entry for the audioset
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
-#[cfg_attr(feature = "serde", derive(serde::Serialize))]
-pub struct SoundEvent {
-  #[cfg_attr(feature = "serde", serde(skip))]
-  code: u64,
-  id: &'static str,
-  name: &'static str,
-  #[cfg_attr(feature = "serde", serde(skip_serializing_if = "<[_]>::is_empty"))]
-  aliases: &'static [&'static str],
-  description: &'static str,
-  #[cfg_attr(feature = "serde", serde(skip_serializing_if = "Option::is_none"))]
-  citation_uri: Option<&'static str>,
-  #[cfg_attr(feature = "serde", serde(skip_serializing_if = "<[_]>::is_empty"))]
-  children: &'static [&'static SoundEvent],
-  #[cfg_attr(feature = "serde", serde(skip_serializing_if = "<[_]>::is_empty"))]
-  restrictions: &'static [Restriction],
+/// Defines a sound-event struct (with all its accessors), its companion
+/// `Unknown*Code` error type, and `Display`. Used twice — once in the
+/// `ontology` module and once in the `rated` module — to produce two
+/// independent types with identical shape.
+macro_rules! define_sound_event {
+  (
+    $(#[$struct_meta:meta])*
+    name: $name:ident,
+    $(#[$err_meta:meta])*
+    error: $err_name:ident,
+    error_message: $err_msg:literal $(,)?
+  ) => {
+    $(#[$struct_meta])*
+    #[derive(Debug, Clone, PartialEq, Eq, Hash)]
+    #[cfg_attr(feature = "serde", derive(serde::Serialize))]
+    pub struct $name {
+      #[cfg_attr(feature = "serde", serde(skip))]
+      pub(crate) code: u64,
+      pub(crate) id: &'static str,
+      pub(crate) name: &'static str,
+      #[cfg_attr(feature = "serde", serde(skip_serializing_if = "<[_]>::is_empty"))]
+      pub(crate) aliases: &'static [&'static str],
+      pub(crate) description: &'static str,
+      #[cfg_attr(feature = "serde", serde(skip_serializing_if = "Option::is_none"))]
+      pub(crate) citation_uri: ::core::option::Option<&'static str>,
+      #[cfg_attr(feature = "serde", serde(skip_serializing_if = "<[_]>::is_empty"))]
+      pub(crate) children: &'static [&'static $name],
+      #[cfg_attr(feature = "serde", serde(skip_serializing_if = "<[_]>::is_empty"))]
+      pub(crate) restrictions: &'static [$crate::Restriction],
+    }
+
+    impl ::core::fmt::Display for $name {
+      #[cfg_attr(not(tarpaulin), inline(always))]
+      fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.write_str(self.name)
+      }
+    }
+
+    impl $name {
+      /// Get the unique code for the sound entry, which is a hash of its name.
+      #[cfg_attr(not(tarpaulin), inline(always))]
+      pub const fn encode(&self) -> u64 {
+        self.code
+      }
+
+      /// Get the sound entry's id
+      #[cfg_attr(not(tarpaulin), inline(always))]
+      pub const fn id(&self) -> &'static str {
+        self.id
+      }
+
+      /// Get the sound entry's name
+      #[cfg_attr(not(tarpaulin), inline(always))]
+      pub const fn name(&self) -> &'static str {
+        self.name
+      }
+
+      /// Get the sound entry's description
+      #[cfg_attr(not(tarpaulin), inline(always))]
+      pub const fn description(&self) -> &'static str {
+        self.description
+      }
+
+      /// Get the sound entry's aliases
+      #[cfg_attr(not(tarpaulin), inline(always))]
+      pub const fn aliases(&self) -> &'static [&'static str] {
+        self.aliases
+      }
+
+      /// Get the sound entry's citation url, if any
+      #[cfg_attr(not(tarpaulin), inline(always))]
+      pub const fn citation_uri(&self) -> ::core::option::Option<&'static str> {
+        self.citation_uri
+      }
+
+      /// Get the sound entry's children sound entries
+      #[cfg_attr(not(tarpaulin), inline(always))]
+      pub const fn children(&self) -> &'static [&'static Self] {
+        self.children
+      }
+
+      /// Get the sound entry's restrictions
+      #[cfg_attr(not(tarpaulin), inline(always))]
+      pub const fn restrictions(&self) -> &'static [$crate::Restriction] {
+        self.restrictions
+      }
+    }
+
+    $(#[$err_meta])*
+    #[derive(Debug, ::thiserror::Error, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
+    #[error($err_msg)]
+    pub struct $err_name(pub(crate) u64);
+
+    impl $err_name {
+      /// Get the code associated with this error.
+      #[cfg_attr(not(tarpaulin), inline(always))]
+      pub const fn code(&self) -> u64 {
+        self.0
+      }
+    }
+  };
 }
 
-impl core::fmt::Display for SoundEvent {
-  #[cfg_attr(not(tarpaulin), inline(always))]
-  fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
-    write!(f, "{}", self.name)
-  }
-}
-
-impl SoundEvent {
-  /// Get the unique code for the sound entry, which is a hash of its name.
-  #[cfg_attr(not(tarpaulin), inline(always))]
-  pub const fn encode(&self) -> u64 {
-    self.code
-  }
-
-  /// Get the sound entry's id
-  #[cfg_attr(not(tarpaulin), inline(always))]
-  pub const fn id(&self) -> &'static str {
-    self.id
-  }
-
-  /// Get the sound entry's name
-  #[cfg_attr(not(tarpaulin), inline(always))]
-  pub const fn name(&self) -> &'static str {
-    self.name
-  }
-
-  /// Get the sound entry's description
-  #[cfg_attr(not(tarpaulin), inline(always))]
-  pub const fn description(&self) -> &'static str {
-    self.description
-  }
-
-  /// Get the sound entry's aliases
-  #[cfg_attr(not(tarpaulin), inline(always))]
-  pub const fn aliases(&self) -> &'static [&'static str] {
-    self.aliases
-  }
-
-  /// Get the sound entry's citation url, if any
-  #[cfg_attr(not(tarpaulin), inline(always))]
-  pub const fn citation_uri(&self) -> Option<&'static str> {
-    self.citation_uri
-  }
-
-  /// Get the sound entry's children sound entries
-  #[cfg_attr(not(tarpaulin), inline(always))]
-  pub const fn children(&self) -> &'static [&'static SoundEvent] {
-    self.children
-  }
-
-  /// Get the sound entry's restrictions
-  #[cfg_attr(not(tarpaulin), inline(always))]
-  pub const fn restrictions(&self) -> &'static [Restriction] {
-    self.restrictions
-  }
-}
+pub(crate) use define_sound_event;

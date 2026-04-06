@@ -1,6 +1,6 @@
 [package]
 name = "soundevents-dataset"
-version = "0.0.0"
+version = "0.1.0"
 edition = "2021"
 repository = "https://github.com/findit-ai/soundevents"
 homepage = "https://github.com/findit-ai/soundevents"
@@ -10,9 +10,18 @@ license = "MIT OR Apache-2.0"
 rust-version = "1.59"
 
 [features]
-default = ["std"]
+default = ["std", "rated"]
 alloc = []
 std = ["thiserror/default", "phf/std"]
+
+# Include the full AudioSet ontology (632 entries) — exposes the
+# `ontology` module with `SoundEvent`, `DATASET`, etc.
+ontology = []
+
+# Include the released AudioSet rated label set (527 entries from
+# `class_labels_indices.csv`) — exposes the `rated` module with
+# `RatedSoundEvent`, `RATED_DATASET`, etc.
+rated = []
 
 serde = ["dep:serde"]
 

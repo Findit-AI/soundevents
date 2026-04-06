@@ -3,4 +3,21 @@ name = "soundevents"
 version = "0.1.0"
 edition = "2024"
 
+[features]
+default = []
+
 [dependencies]
+ort = { version = "2.0.0-rc.12", features = ["ndarray"] }
+ndarray = "0.17"
+smol_str = "0.3"
+thiserror = { workspace = true, features = ["default"] }
+
+soundevents-dataset.workspace = true
+
+[lints.rust]
+rust_2018_idioms = "warn"
+single_use_lifetimes = "warn"
+unexpected_cfgs = { level = "warn", check-cfg = [
+  'cfg(all_tests)',
+  'cfg(tarpaulin)',
+] }
