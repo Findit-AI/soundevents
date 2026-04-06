@@ -2,5 +2,20 @@
 members = [
   "soundevents",
   "soundevents-dataset",
+  "xtask",
+]
+default-members = [
+  "soundevents",
+  "soundevents-dataset",
 ]
 resolver = "3"
+
+[profile.bench]
+opt-level = 3
+debug = false
+codegen-units = 1
+lto = 'thin'
+incremental = false
+debug-assertions = false
+overflow-checks = false
+rpath = false
