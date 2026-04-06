@@ -45,7 +45,7 @@ fn workspace_root() -> PathBuf {
 
 fn codegen() {
   let root = workspace_root();
-  let ontology_path = root.join("soundevents-dataset/ontology.json");
+  let ontology_path = root.join("soundevents-dataset/assets/ontology.json");
   let output_path = root.join("soundevents-dataset/src/generated.rs");
 
   let data = std::fs::read_to_string(&ontology_path)
