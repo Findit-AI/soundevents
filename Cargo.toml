@@ -10,6 +10,12 @@ default-members = [
 ]
 resolver = "3"
 
+[workspace.dependencies]
+thiserror = { version = "2", default-features = false }
+serde = "1"
+
+soundevent-dataset = { path = "soundevents-dataset", default-features = false }
+
 [profile.bench]
 opt-level = 3
 debug = false

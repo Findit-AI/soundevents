@@ -17,14 +17,10 @@ std = ["thiserror/default"]
 serde = ["dep:serde"]
 
 [dependencies]
+thiserror = { workspace = true, default-features = false }
 phf = { version = "0.13", features = ["macros"] }
-thiserror = { version = "2", default-features = false }
 
-serde = { version = "1", features = ["derive"], optional = true }
-
-[dev-dependencies]
-criterion = "0.8"
-tempfile = "3"
+serde = { workspace = true, features = ["derive"], optional = true }
 
 [package.metadata.docs.rs]
 all-features = true
