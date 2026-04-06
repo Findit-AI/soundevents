@@ -1,10 +1,19 @@
+#![doc = include_str!("../../README.md")]
+#![cfg_attr(docsrs, feature(doc_cfg))]
+#![cfg_attr(docsrs, allow(unused_attributes))]
+#![deny(missing_docs)]
+
 use ort::{
   session::{Session, builder::GraphOptimizationLevel},
   value::TensorRef,
 };
 use smol_str::SmolStr;
 use soundevents_dataset::RatedSoundEvent;
-use std::path::{Path, PathBuf};
+use std::{
+  cmp::{Ordering, Reverse},
+  collections::BinaryHeap,
+  path::{Path, PathBuf},
+};
 
 /// The expected input sample rate for CED models.
 pub const SAMPLE_RATE_HZ: usize = 16_000;
@@ -183,38 +192,50 @@ pub enum ClassifierError {
   #[error(
     "unexpected model output shape {shape:?}; expected batch-one scores for {expected} classes"
   )]
-  UnexpectedOutputShape { expected: usize, shape: Vec<i64> },
+  UnexpectedOutputShape {
+    /// The expected number of classes.
+    expected: usize,
+    /// The actual output shape returned by the model.
+    shape: Vec<i64>,
+  },
   /// The model returned a class count that does not match the rated label set.
   #[error("model returned {actual} classes, expected {expected}")]
-  UnexpectedClassCount { expected: usize, actual: usize },
+  UnexpectedClassCount {
+    /// The expected number of classes.
+    expected: usize,
+    /// The actual number of classes returned by the model.
+    actual: usize,
+  },
+  /// A model class index could not be resolved to a rated entry.
+  #[error("no rated sound event exists for model class index {index}")]
+  MissingRatedEventIndex {
+    /// The model output class index that could not be resolved.
+    index: usize,
+  },
   /// Invalid chunking parameters were provided.
   #[error(
     "chunking options require non-zero window and hop sizes (window={window_samples}, hop={hop_samples})"
   )]
   InvalidChunkingOptions {
+    /// The chunk window size in samples.
     window_samples: usize,
+    /// The chunk hop size in samples.
     hop_samples: usize,
   },
 }
 
 /// A single classification result with both model-space and ontology-space metadata.
 #[derive(Debug, Clone)]
-pub struct TagConfidence {
+pub struct EventPrediction {
   event: &'static RatedSoundEvent,
   confidence: f32,
 }
 
-impl TagConfidence {
+impl EventPrediction {
   /// Model output class index.
   #[cfg_attr(not(tarpaulin), inline(always))]
-  pub const fn class_index(&self) -> usize {
-    self.event.index()
-  }
-
-  /// Alias for [`TagConfidence::class_index`].
-  #[cfg_attr(not(tarpaulin), inline(always))]
   pub const fn index(&self) -> usize {
-    self.class_index()
+    self.event().index()
   }
 
   /// The resolved rated AudioSet event.
@@ -225,20 +246,14 @@ impl TagConfidence {
 
   /// Canonical AudioSet display name for this class.
   #[cfg_attr(not(tarpaulin), inline(always))]
-  pub const fn display_name(&self) -> &'static str {
-    self.event.name()
-  }
-
-  /// Alias for [`TagConfidence::display_name`].
-  #[cfg_attr(not(tarpaulin), inline(always))]
-  pub const fn label(&self) -> &'static str {
-    self.display_name()
+  pub const fn name(&self) -> &'static str {
+    self.event().name()
   }
 
   /// Stable AudioSet identifier such as `"/m/09x0r"`.
   #[cfg_attr(not(tarpaulin), inline(always))]
-  pub const fn audioset_id(&self) -> &'static str {
-    self.event.id()
+  pub const fn id(&self) -> &'static str {
+    self.event().id()
   }
 
   /// Confidence after applying a sigmoid to the model output.
@@ -247,11 +262,41 @@ impl TagConfidence {
     self.confidence
   }
 
-  fn from_confidence(class_index: usize, confidence: f32) -> Self {
+  #[cfg_attr(not(tarpaulin), inline(always))]
+  fn from_confidence(class_index: usize, confidence: f32) -> Result<Self, ClassifierError> {
     let event = RatedSoundEvent::from_index(class_index)
-      .unwrap_or_else(|| panic!("missing RatedSoundEvent for model class index {class_index}"));
+      .ok_or(ClassifierError::MissingRatedEventIndex { index: class_index })?;
 
-    Self { event, confidence }
+    Ok(Self { event, confidence })
+  }
+}
+
+#[derive(Debug, Clone, Copy)]
+struct RankedScore {
+  class_index: usize,
+  score: f32,
+}
+
+impl PartialEq for RankedScore {
+  fn eq(&self, other: &Self) -> bool {
+    self.class_index == other.class_index && self.score.total_cmp(&other.score) == Ordering::Equal
+  }
+}
+
+impl Eq for RankedScore {}
+
+impl PartialOrd for RankedScore {
+  fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
+    Some(self.cmp(other))
+  }
+}
+
+impl Ord for RankedScore {
+  fn cmp(&self, other: &Self) -> Ordering {
+    self
+      .score
+      .total_cmp(&other.score)
+      .then_with(|| other.class_index.cmp(&self.class_index))
   }
 }
 
@@ -260,21 +305,25 @@ pub struct Classifier {
   session: Session,
   input_name: SmolStr,
   output_name: SmolStr,
+  confidence_scratch: Vec<f32>,
 }
 
 impl Classifier {
   /// Load a CED ONNX model from disk.
+  #[cfg_attr(not(tarpaulin), inline(always))]
   pub fn new(opts: Options) -> Result<Self, ClassifierError> {
     let model_path = opts.model_path().ok_or(ClassifierError::MissingModelPath)?;
     Self::from_file_with_optimization(model_path, opts.optimization_level())
   }
 
   /// Load a CED ONNX model from disk with default optimization settings.
+  #[cfg_attr(not(tarpaulin), inline(always))]
   pub fn from_file(model_path: impl AsRef<Path>) -> Result<Self, ClassifierError> {
     Self::from_file_with_optimization(model_path, GraphOptimizationLevel::Disable)
   }
 
   /// Load a CED ONNX model directly from in-memory bytes.
+  #[cfg_attr(not(tarpaulin), inline(always))]
   pub fn from_memory(
     model_bytes: &[u8],
     optimization_level: GraphOptimizationLevel,
@@ -289,8 +338,10 @@ impl Classifier {
 
   /// Load the bundled CED-tiny model from the crate package.
   #[cfg(feature = "bundled-tiny")]
-  pub fn bundled_tiny() -> Result<Self, ClassifierError> {
-    Self::from_memory(BUNDLED_TINY_MODEL, GraphOptimizationLevel::Disable)
+  #[cfg_attr(docsrs, doc(cfg(feature = "bundled-tiny")))]
+  #[cfg_attr(not(tarpaulin), inline(always))]
+  pub fn tiny(opts: Options) -> Result<Self, ClassifierError> {
+    Self::from_memory(BUNDLED_TINY_MODEL, opts.optimization_level())
   }
 
   /// Run the model on a mono 16 kHz clip and return the raw output scores.
@@ -298,6 +349,14 @@ impl Classifier {
   /// The clip is passed through at its original duration without truncation
   /// or repeat-padding.
   pub fn predict_raw_scores(&mut self, samples_16k: &[f32]) -> Result<Vec<f32>, ClassifierError> {
+    self.with_raw_scores(samples_16k, |raw_scores| Ok(raw_scores.to_vec()))
+  }
+
+  fn with_raw_scores<T>(
+    &mut self,
+    samples_16k: &[f32],
+    f: impl FnOnce(&[f32]) -> Result<T, ClassifierError>,
+  ) -> Result<T, ClassifierError> {
     ensure_non_empty(samples_16k)?;
 
     let input_ref = TensorRef::from_array_view(([1usize, samples_16k.len()], samples_16k))?;
@@ -308,24 +367,24 @@ impl Classifier {
 
     validate_output(shape, raw_scores)?;
 
-    Ok(raw_scores.to_vec())
+    f(raw_scores)
   }
 
   /// Classify a mono 16 kHz clip and return every class in model order.
   pub fn classify_all(
     &mut self,
     samples_16k: &[f32],
-  ) -> Result<Vec<TagConfidence>, ClassifierError> {
-    Ok(
-      self
-        .predict_raw_scores(samples_16k)?
-        .into_iter()
+  ) -> Result<Vec<EventPrediction>, ClassifierError> {
+    self.with_raw_scores(samples_16k, |raw_scores| {
+      raw_scores
+        .iter()
+        .copied()
         .enumerate()
         .map(|(class_index, raw_score)| {
-          TagConfidence::from_confidence(class_index, sigmoid(raw_score))
+          EventPrediction::from_confidence(class_index, sigmoid(raw_score))
         })
-        .collect(),
-    )
+        .collect()
+    })
   }
 
   /// Classify a mono 16 kHz clip and return the top `k` classes.
@@ -333,17 +392,16 @@ impl Classifier {
     &mut self,
     samples_16k: &[f32],
     top_k: usize,
-  ) -> Result<Vec<TagConfidence>, ClassifierError> {
+  ) -> Result<Vec<EventPrediction>, ClassifierError> {
     ensure_non_empty(samples_16k)?;
 
     if top_k == 0 {
       return Ok(Vec::new());
     }
 
-    Ok(top_k_from_raw_scores(
-      self.predict_raw_scores(samples_16k)?,
-      top_k,
-    ))
+    self.with_raw_scores(samples_16k, |raw_scores| {
+      top_k_from_scores(raw_scores.iter().copied().enumerate(), top_k, sigmoid)
+    })
   }
 
   /// Classify a long clip by chunking it into windows and aggregating chunk confidences.
@@ -351,14 +409,15 @@ impl Classifier {
     &mut self,
     samples_16k: &[f32],
     options: ChunkingOptions,
-  ) -> Result<Vec<TagConfidence>, ClassifierError> {
-    Ok(
-      aggregate_chunk_confidences(self, samples_16k, options)?
-        .into_iter()
+  ) -> Result<Vec<EventPrediction>, ClassifierError> {
+    self.with_aggregated_confidences(samples_16k, options, |confidences| {
+      confidences
+        .iter()
+        .copied()
         .enumerate()
-        .map(|(class_index, confidence)| TagConfidence::from_confidence(class_index, confidence))
-        .collect(),
-    )
+        .map(|(class_index, confidence)| EventPrediction::from_confidence(class_index, confidence))
+        .collect()
+    })
   }
 
   /// Chunk a long clip, aggregate chunk confidences, and return the top `k` classes.
@@ -367,17 +426,20 @@ impl Classifier {
     samples_16k: &[f32],
     top_k: usize,
     options: ChunkingOptions,
-  ) -> Result<Vec<TagConfidence>, ClassifierError> {
+  ) -> Result<Vec<EventPrediction>, ClassifierError> {
     ensure_non_empty(samples_16k)?;
 
     if top_k == 0 {
       return Ok(Vec::new());
     }
 
-    Ok(top_k_from_confidences(
-      aggregate_chunk_confidences(self, samples_16k, options)?,
-      top_k,
-    ))
+    self.with_aggregated_confidences(samples_16k, options, |confidences| {
+      top_k_from_scores(
+        confidences.iter().copied().enumerate(),
+        top_k,
+        |confidence| confidence,
+      )
+    })
   }
 
   fn from_file_with_optimization(
@@ -412,82 +474,113 @@ impl Classifier {
       session,
       input_name,
       output_name,
+      confidence_scratch: Vec::with_capacity(NUM_CLASSES),
     })
+  }
+
+  fn with_aggregated_confidences<T>(
+    &mut self,
+    samples_16k: &[f32],
+    options: ChunkingOptions,
+    f: impl FnOnce(&[f32]) -> Result<T, ClassifierError>,
+  ) -> Result<T, ClassifierError> {
+    let mut confidences = std::mem::take(&mut self.confidence_scratch);
+    let result = fill_aggregated_confidences(self, &mut confidences, samples_16k, options)
+      .and_then(|()| f(&confidences));
+    confidences.clear();
+    self.confidence_scratch = confidences;
+    result
   }
 }
 
-fn aggregate_chunk_confidences(
+fn fill_aggregated_confidences(
   classifier: &mut Classifier,
+  aggregated: &mut Vec<f32>,
   samples_16k: &[f32],
   options: ChunkingOptions,
-) -> Result<Vec<f32>, ClassifierError> {
+) -> Result<(), ClassifierError> {
   ensure_non_empty(samples_16k)?;
   validate_chunking(options)?;
 
   let mut chunks = chunk_slices(samples_16k, options.window_samples(), options.hop_samples());
-  let first_chunk = chunks
-    .next()
-    .expect("non-empty input should yield one chunk");
-  let mut aggregated = classifier
-    .predict_raw_scores(first_chunk)?
-    .into_iter()
-    .map(sigmoid)
-    .collect::<Vec<_>>();
+  let Some(first_chunk) = chunks.next() else {
+    return Err(ClassifierError::EmptyInput);
+  };
+  classifier.with_raw_scores(first_chunk, |raw_scores| {
+    aggregated.clear();
+    aggregated.extend(raw_scores.iter().copied().map(sigmoid));
+    Ok(())
+  })?;
   let mut chunk_count = 1usize;
 
   for chunk in chunks {
-    let chunk_confidences = classifier
-      .predict_raw_scores(chunk)?
-      .into_iter()
-      .map(sigmoid)
-      .collect::<Vec<_>>();
+    classifier.with_raw_scores(chunk, |raw_scores| {
+      match options.aggregation() {
+        ChunkAggregation::Mean => {
+          for (aggregate, raw_score) in aggregated.iter_mut().zip(raw_scores.iter().copied()) {
+            *aggregate += sigmoid(raw_score);
+          }
+        }
+        ChunkAggregation::Max => {
+          for (aggregate, raw_score) in aggregated.iter_mut().zip(raw_scores.iter().copied()) {
+            *aggregate = aggregate.max(sigmoid(raw_score));
+          }
+        }
+      }
 
-    match options.aggregation() {
-      ChunkAggregation::Mean => {
-        for (aggregate, confidence) in aggregated.iter_mut().zip(chunk_confidences) {
-          *aggregate += confidence;
-        }
-      }
-      ChunkAggregation::Max => {
-        for (aggregate, confidence) in aggregated.iter_mut().zip(chunk_confidences) {
-          *aggregate = aggregate.max(confidence);
-        }
-      }
-    }
+      Ok(())
+    })?;
 
     chunk_count += 1;
   }
 
   if matches!(options.aggregation(), ChunkAggregation::Mean) && chunk_count > 1 {
     let denominator = chunk_count as f32;
-    for aggregate in &mut aggregated {
+    for aggregate in aggregated.iter_mut() {
       *aggregate /= denominator;
     }
   }
 
-  Ok(aggregated)
+  Ok(())
 }
 
-fn top_k_from_raw_scores(raw_scores: Vec<f32>, top_k: usize) -> Vec<TagConfidence> {
-  let mut ranked = raw_scores.into_iter().enumerate().collect::<Vec<_>>();
-  ranked.sort_unstable_by(|(_, left), (_, right)| right.total_cmp(left));
-  ranked.truncate(top_k.min(ranked.len()));
+#[cfg_attr(not(tarpaulin), inline(always))]
+fn top_k_from_scores(
+  scores: impl IntoIterator<Item = (usize, f32)>,
+  top_k: usize,
+  map_score: impl Fn(f32) -> f32,
+) -> Result<Vec<EventPrediction>, ClassifierError> {
+  if top_k == 0 {
+    return Ok(Vec::new());
+  }
 
-  ranked
-    .into_iter()
-    .map(|(class_index, raw_score)| TagConfidence::from_confidence(class_index, sigmoid(raw_score)))
-    .collect()
-}
+  let mut heap = BinaryHeap::with_capacity(top_k);
 
-fn top_k_from_confidences(confidences: Vec<f32>, top_k: usize) -> Vec<TagConfidence> {
-  let mut ranked = confidences.into_iter().enumerate().collect::<Vec<_>>();
-  ranked.sort_unstable_by(|(_, left), (_, right)| right.total_cmp(left));
-  ranked.truncate(top_k.min(ranked.len()));
+  for (class_index, score) in scores {
+    let ranked = RankedScore { class_index, score };
+    let candidate = Reverse(ranked);
 
-  ranked
-    .into_iter()
-    .map(|(class_index, confidence)| TagConfidence::from_confidence(class_index, confidence))
-    .collect()
+    if heap.len() < top_k {
+      heap.push(candidate);
+      continue;
+    }
+
+    if heap.peek().is_some_and(|smallest| candidate.0 > smallest.0) {
+      heap.pop();
+      heap.push(candidate);
+    }
+  }
+
+  let mut predictions = Vec::with_capacity(heap.len());
+  while let Some(entry) = heap.pop() {
+    let ranked = entry.0;
+    predictions.push(EventPrediction::from_confidence(
+      ranked.class_index,
+      map_score(ranked.score),
+    )?);
+  }
+  predictions.reverse();
+  Ok(predictions)
 }
 
 #[cfg_attr(not(tarpaulin), inline(always))]
@@ -564,9 +657,10 @@ mod tests {
   #[test]
   fn rated_indices_round_trip() {
     for event in RatedSoundEvent::events() {
-      let round_trip = RatedSoundEvent::from_index(event.index())
-        .unwrap_or_else(|| panic!("failed to resolve rated index {}", event.index()));
-      assert_eq!(round_trip.id(), event.id());
+      assert_eq!(
+        RatedSoundEvent::from_index(event.index()).map(RatedSoundEvent::id),
+        Some(event.id())
+      );
     }
   }
 
@@ -587,5 +681,21 @@ mod tests {
     assert_eq!(options.window_samples(), DEFAULT_CHUNK_SAMPLES);
     assert_eq!(options.hop_samples(), DEFAULT_CHUNK_SAMPLES);
     assert_eq!(options.aggregation(), ChunkAggregation::Mean);
+  }
+
+  #[test]
+  fn top_k_selection_returns_descending_predictions() {
+    let predictions = top_k_from_scores(
+      vec![0.0, 3.0, -1.0, 1.5].into_iter().enumerate(),
+      2,
+      sigmoid,
+    )
+    .unwrap();
+    let indices = predictions
+      .into_iter()
+      .map(|prediction| prediction.index())
+      .collect::<Vec<_>>();
+
+    assert_eq!(indices, vec![1, 3]);
   }
 }
