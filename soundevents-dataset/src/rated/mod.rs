@@ -13,7 +13,16 @@ crate::define_sound_event! {
   /// Errors that can occur when looking up a [`RatedSoundEvent`] by its code.
   error: UnknownRatedSoundEventCode,
   error_message: "unknown rated sound event code: {0}",
+  extra_fields: {
+    pub(crate) index: usize,
+  },
+  extra_impl: {
+    /// Get the model output index for this rated entry.
+    #[cfg_attr(not(tarpaulin), inline(always))]
+    pub const fn index(&self) -> usize {
+      self.index
+    }
+  },
 }
 
 mod generated;
-pub use generated::*;

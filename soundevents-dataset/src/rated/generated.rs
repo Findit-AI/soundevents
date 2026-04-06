@@ -17,6 +17,7 @@ const _M_09X0R: &super::RatedSoundEvent = &super::RatedSoundEvent {
         _M_0BRHX,
     ],
     restrictions: &[],
+    index: 0usize,
 };
 const _M_05ZPPZ: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 1969732411813073925u64,
@@ -51,6 +52,7 @@ const _M_05ZPPZ: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::None,
   children: &[],
   restrictions: &[],
+  index: 1usize,
 };
 const _M_02ZSN: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 10035858647256678274u64,
@@ -85,6 +87,7 @@ const _M_02ZSN: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::None,
   children: &[],
   restrictions: &[],
+  index: 2usize,
 };
 const _M_0YTGT: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 11891278708802799291u64,
@@ -119,6 +122,7 @@ const _M_0YTGT: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::None,
     children: &[],
     restrictions: &[],
+    index: 3usize,
 };
 const _M_01H8N0: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 9307271660305756486u64,
@@ -129,6 +133,7 @@ const _M_01H8N0: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Conversation"),
   children: &[],
   restrictions: &[],
+  index: 4usize,
 };
 const _M_02QLDY: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 5287349920009924087u64,
@@ -148,6 +153,7 @@ const _M_02QLDY: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Narration"),
   children: &[],
   restrictions: &[],
+  index: 5usize,
 };
 const _M_0261R1: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 14397602008418669939u64,
@@ -158,6 +164,7 @@ const _M_0261R1: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Babbling"),
     children: &[],
     restrictions: &[],
+    index: 6usize,
 };
 const _M_0BRHX: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 14568550179554598239u64,
@@ -180,6 +187,7 @@ const _M_0BRHX: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Speech_synthesis"),
   children: &[],
   restrictions: &[],
+  index: 7usize,
 };
 const _M_07P6FTY: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 3075401239936308380u64,
@@ -192,6 +200,7 @@ const _M_07P6FTY: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[_M_07Q4NTR, _M_07RWJ3X, _M_07SR1LC, _M_04GY_2, _T_DD00135],
     restrictions: &[],
+    index: 8usize,
 };
 const _M_07Q4NTR: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 5747828559324905488u64,
@@ -202,6 +211,7 @@ const _M_07Q4NTR: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=bellow"),
   children: &[],
   restrictions: &[],
+  index: 9usize,
 };
 const _M_07RWJ3X: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 9782019654624167332u64,
@@ -212,6 +222,7 @@ const _M_07RWJ3X: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=whoop"),
   children: &[],
   restrictions: &[],
+  index: 10usize,
 };
 const _M_07SR1LC: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 2456934500186237363u64,
@@ -224,6 +235,7 @@ const _M_07SR1LC: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 11usize,
 };
 const _M_04GY_2: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 17157795789675534415u64,
@@ -248,6 +260,7 @@ const _M_04GY_2: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 12usize,
 };
 const _T_DD00135: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 4770183702625268676u64,
@@ -270,6 +283,7 @@ const _T_DD00135: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::None,
   children: &[],
   restrictions: &[],
+  index: 13usize,
 };
 const _M_03QC9ZR: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 16617914712151926206u64,
@@ -280,6 +294,7 @@ const _M_03QC9ZR: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Screaming"),
     children: &[],
     restrictions: &[],
+    index: 14usize,
 };
 const _M_02RTXLG: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 14263602288928716416u64,
@@ -292,6 +307,7 @@ const _M_02RTXLG: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 15usize,
 };
 const _M_01J3SZ: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 6989449449019480047u64,
@@ -302,6 +318,7 @@ const _M_01J3SZ: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Laughter"),
     children: &[_T_DD00001, _M_07R660_, _M_07S04W4, _M_07SQ110, _M_07RGT08],
     restrictions: &[],
+    index: 16usize,
 };
 const _T_DD00001: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 9731708304561835899u64,
@@ -324,6 +341,7 @@ const _T_DD00001: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::None,
   children: &[],
   restrictions: &[],
+  index: 17usize,
 };
 const _M_07R660_: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 10371483771764508534u64,
@@ -334,6 +352,7 @@ const _M_07R660_: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=giggle"),
   children: &[],
   restrictions: &[],
+  index: 18usize,
 };
 const _M_07S04W4: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 11046914302561437718u64,
@@ -346,6 +365,7 @@ const _M_07S04W4: &super::RatedSoundEvent = &super::RatedSoundEvent {
   ),
   children: &[],
   restrictions: &[],
+  index: 19usize,
 };
 const _M_07SQ110: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 17490650061805592645u64,
@@ -370,6 +390,7 @@ const _M_07SQ110: &super::RatedSoundEvent = &super::RatedSoundEvent {
   ),
   children: &[],
   restrictions: &[],
+  index: 20usize,
 };
 const _M_07RGT08: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 6938901573098391320u64,
@@ -390,6 +411,7 @@ const _M_07RGT08: &super::RatedSoundEvent = &super::RatedSoundEvent {
   ),
   children: &[],
   restrictions: &[],
+  index: 21usize,
 };
 const _M_0463CQ4: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 6037752853413895695u64,
@@ -408,6 +430,7 @@ const _M_0463CQ4: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Crying"),
     children: &[_T_DD00002, _M_07QZ6J3],
     restrictions: &[],
+    index: 22usize,
 };
 const _T_DD00002: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 10676626143498967620u64,
@@ -442,6 +465,7 @@ const _T_DD00002: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::None,
   children: &[],
   restrictions: &[],
+  index: 23usize,
 };
 const _M_07QZ6J3: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 4828943345353827950u64,
@@ -454,6 +478,7 @@ const _M_07QZ6J3: &super::RatedSoundEvent = &super::RatedSoundEvent {
   ),
   children: &[],
   restrictions: &[],
+  index: 24usize,
 };
 const _M_07QW_06: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 6367138996714258295u64,
@@ -465,6 +490,7 @@ const _M_07QW_06: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=wail"),
   children: &[],
   restrictions: &[],
+  index: 25usize,
 };
 const _M_07PLZ5L: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 7621401681763490679u64,
@@ -475,6 +501,7 @@ const _M_07PLZ5L: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=sigh"),
   children: &[],
   restrictions: &[],
+  index: 26usize,
 };
 const _M_015LZ1: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 10394706980030287054u64,
@@ -494,6 +521,7 @@ const _M_015LZ1: &super::RatedSoundEvent = &super::RatedSoundEvent {
         _M_06BXC,
     ],
     restrictions: &[],
+    index: 27usize,
 };
 const _M_0L14JD: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 11465963534651501175u64,
@@ -504,6 +532,7 @@ const _M_0L14JD: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Choir"),
   children: &[],
   restrictions: &[],
+  index: 28usize,
 };
 const _M_01SWY6: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 17159131739868095059u64,
@@ -514,6 +543,7 @@ const _M_01SWY6: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Yodeling"),
     children: &[],
     restrictions: &[],
+    index: 29usize,
 };
 const _M_02BK07: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 11454300625644050663u64,
@@ -524,6 +554,7 @@ const _M_02BK07: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Chant"),
     children: &[_M_01C194],
     restrictions: &[],
+    index: 30usize,
 };
 const _M_01C194: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 4522855185966984450u64,
@@ -534,6 +565,7 @@ const _M_01C194: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Mantra"),
   children: &[],
   restrictions: &[],
+  index: 31usize,
 };
 const _T_DD00003: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 12457756066846217722u64,
@@ -556,6 +588,7 @@ const _T_DD00003: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::None,
   children: &[],
   restrictions: &[],
+  index: 32usize,
 };
 const _T_DD00004: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 9626186073885853244u64,
@@ -578,6 +611,7 @@ const _T_DD00004: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::None,
   children: &[],
   restrictions: &[],
+  index: 33usize,
 };
 const _T_DD00005: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 6591303572131702862u64,
@@ -600,6 +634,7 @@ const _T_DD00005: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::None,
   children: &[],
   restrictions: &[],
+  index: 34usize,
 };
 const _T_DD00006: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 15488487187532666829u64,
@@ -622,6 +657,7 @@ const _T_DD00006: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::None,
     children: &[],
     restrictions: &[],
+    index: 35usize,
 };
 const _M_06BXC: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 17482941561237138031u64,
@@ -632,6 +668,7 @@ const _M_06BXC: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Rapping"),
     children: &[],
     restrictions: &[],
+    index: 36usize,
 };
 const _M_02FXYJ: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 17207779308182955802u64,
@@ -643,6 +680,7 @@ const _M_02FXYJ: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Humming"),
   children: &[],
   restrictions: &[],
+  index: 37usize,
 };
 const _M_07S2XCH: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 7652385579674356094u64,
@@ -653,6 +691,7 @@ const _M_07S2XCH: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=groan"),
   children: &[],
   restrictions: &[],
+  index: 38usize,
 };
 const _M_07R4K75: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 2412577243996551982u64,
@@ -665,6 +704,7 @@ const _M_07R4K75: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 39usize,
 };
 const _M_01W250: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 44005293922617224u64,
@@ -675,6 +715,7 @@ const _M_01W250: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Whistling"),
     children: &[],
     restrictions: &[],
+    index: 40usize,
 };
 const _M_0LYF6: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 12653158614978321998u64,
@@ -685,6 +726,7 @@ const _M_0LYF6: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Breathing"),
   children: &[_M_07MZM6, _M_01D3SD, _M_07S0DTB, _M_07PYY8B, _M_07Q0YL5],
   restrictions: &[],
+  index: 41usize,
 };
 const _M_07MZM6: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 18023815213825198382u64,
@@ -695,6 +737,7 @@ const _M_07MZM6: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Wheeze"),
     children: &[],
     restrictions: &[],
+    index: 42usize,
 };
 const _M_01D3SD: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 18420729521599741549u64,
@@ -706,6 +749,7 @@ const _M_01D3SD: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Snoring"),
   children: &[],
   restrictions: &[],
+  index: 43usize,
 };
 const _M_07S0DTB: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 6703453130958665133u64,
@@ -717,6 +761,7 @@ const _M_07S0DTB: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=gasp"),
   children: &[],
   restrictions: &[],
+  index: 44usize,
 };
 const _M_07PYY8B: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 12875423292551327175u64,
@@ -727,6 +772,7 @@ const _M_07PYY8B: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=pant"),
   children: &[],
   restrictions: &[],
+  index: 45usize,
 };
 const _M_07Q0YL5: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 13075697163649964343u64,
@@ -737,6 +783,7 @@ const _M_07Q0YL5: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=snort"),
   children: &[],
   restrictions: &[],
+  index: 46usize,
 };
 const _M_01B_21: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 15240752192257128495u64,
@@ -747,6 +794,7 @@ const _M_01B_21: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Cough"),
     children: &[_M_0DL9SF8],
     restrictions: &[],
+    index: 47usize,
 };
 const _M_0DL9SF8: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 1946594531026156686u64,
@@ -769,6 +817,7 @@ const _M_0DL9SF8: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::None,
     children: &[],
     restrictions: &[],
+    index: 48usize,
 };
 const _M_01HSR_: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 16224249753289348273u64,
@@ -779,6 +828,7 @@ const _M_01HSR_: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Sneeze"),
     children: &[],
     restrictions: &[],
+    index: 49usize,
 };
 const _M_07PPN3J: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 16191591074665555904u64,
@@ -789,6 +839,7 @@ const _M_07PPN3J: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=sniff"),
   children: &[],
   restrictions: &[],
+  index: 50usize,
 };
 const _M_06H7J: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 7869766103496607753u64,
@@ -799,6 +850,7 @@ const _M_06H7J: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Running"),
   children: &[],
   restrictions: &[],
+  index: 51usize,
 };
 const _M_07QV_X_: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 17567712389086113626u64,
@@ -811,6 +863,7 @@ const _M_07QV_X_: &super::RatedSoundEvent = &super::RatedSoundEvent {
   ),
   children: &[],
   restrictions: &[],
+  index: 52usize,
 };
 const _M_07PBTC8: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 2779494788628501888u64,
@@ -829,6 +882,7 @@ const _M_07PBTC8: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=walk"),
   children: &[],
   restrictions: &[],
+  index: 53usize,
 };
 const _M_03CCZK: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 65569972032176351u64,
@@ -847,6 +901,7 @@ const _M_03CCZK: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Mastication"),
   children: &[],
   restrictions: &[],
+  index: 54usize,
 };
 const _M_07PDHP0: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 4505020177394237267u64,
@@ -857,6 +912,7 @@ const _M_07PDHP0: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=biting"),
   children: &[],
   restrictions: &[],
+  index: 55usize,
 };
 const _M_0939N_: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 1188668699819668858u64,
@@ -867,6 +923,7 @@ const _M_0939N_: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Gargling"),
   children: &[],
   restrictions: &[],
+  index: 56usize,
 };
 const _M_01G90H: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 4299658127152796743u64,
@@ -891,6 +948,7 @@ const _M_01G90H: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 57usize,
 };
 const _M_03Q5_W: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 5837274311499854000u64,
@@ -909,6 +967,7 @@ const _M_03Q5_W: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Burping"),
   children: &[],
   restrictions: &[],
+  index: 58usize,
 };
 const _M_02P3NC: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 16260091330568061008u64,
@@ -920,6 +979,7 @@ const _M_02P3NC: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Hiccup"),
   children: &[],
   restrictions: &[],
+  index: 59usize,
 };
 const _M_02_NN: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 15712391678569516218u64,
@@ -930,6 +990,7 @@ const _M_02_NN: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Fart"),
   children: &[],
   restrictions: &[],
+  index: 60usize,
 };
 const _M_0K65P: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 2242465231429754100u64,
@@ -940,6 +1001,7 @@ const _M_0K65P: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::None,
   children: &[_M_025_JNM, _M_0L15BQ],
   restrictions: &[],
+  index: 61usize,
 };
 const _M_025_JNM: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 14623256887948484944u64,
@@ -964,6 +1026,7 @@ const _M_025_JNM: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 62usize,
 };
 const _M_0L15BQ: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 11288057662543301120u64,
@@ -974,6 +1037,7 @@ const _M_0L15BQ: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Clapping"),
     children: &[],
     restrictions: &[],
+    index: 63usize,
 };
 const _M_01JG02: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 11115958151131590666u64,
@@ -1000,6 +1064,7 @@ const _M_01JG02: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Heart_sounds"),
   children: &[_M_01JG1Z],
   restrictions: &[],
+  index: 64usize,
 };
 const _M_01JG1Z: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 6373515508391177779u64,
@@ -1024,6 +1089,7 @@ const _M_01JG1Z: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[crate::Restriction::Blacklist],
+    index: 65usize,
 };
 const _M_053HZ1: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 6999788402018295818u64,
@@ -1034,6 +1100,7 @@ const _M_053HZ1: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Cheering"),
     children: &[],
     restrictions: &[],
+    index: 66usize,
 };
 const _M_028GHT: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 14244529844423280167u64,
@@ -1044,6 +1111,7 @@ const _M_028GHT: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Applause"),
   children: &[],
   restrictions: &[],
+  index: 67usize,
 };
 const _M_07RKBFH: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 3562455642494473252u64,
@@ -1057,6 +1125,7 @@ const _M_07RKBFH: &super::RatedSoundEvent = &super::RatedSoundEvent {
   ),
   children: &[],
   restrictions: &[],
+  index: 68usize,
 };
 const _M_03QTWD: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 17392886084098121668u64,
@@ -1067,6 +1136,7 @@ const _M_03QTWD: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Crowd"),
   children: &[],
   restrictions: &[],
+  index: 69usize,
 };
 const _M_07QFR4H: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 14336899640664041907u64,
@@ -1104,6 +1174,7 @@ const _M_07QFR4H: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=hubbub"),
   children: &[],
   restrictions: &[],
+  index: 70usize,
 };
 const _T_DD00013: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 4318884796281120092u64,
@@ -1126,6 +1197,7 @@ const _T_DD00013: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::None,
     children: &[],
     restrictions: &[],
+    index: 71usize,
 };
 const _M_0JBK: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 12055866776164869986u64,
@@ -1136,6 +1208,7 @@ const _M_0JBK: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::None,
   children: &[_M_068HY, _M_0CH8V, _M_01280G],
   restrictions: &[],
+  index: 72usize,
 };
 const _M_068HY: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 11782185112005397415u64,
@@ -1162,6 +1235,7 @@ const _M_068HY: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Pet"),
     children: &[_M_0BT9LR, _M_01YRX],
     restrictions: &[],
+    index: 73usize,
 };
 const _M_0BT9LR: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 2593875373545787199u64,
@@ -1172,6 +1246,7 @@ const _M_0BT9LR: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Dog"),
     children: &[_M_05TNY_, _M_07R_K2N, _M_07QF0ZM, _M_07RC7D9, _M_0GHCN6, _T_DD00136],
     restrictions: &[],
+    index: 74usize,
 };
 const _M_05TNY_: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 5578213309698250627u64,
@@ -1184,6 +1259,7 @@ const _M_05TNY_: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 75usize,
 };
 const _M_07R_K2N: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 5437945166960374457u64,
@@ -1194,6 +1270,7 @@ const _M_07R_K2N: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=yip"),
   children: &[],
   restrictions: &[],
+  index: 76usize,
 };
 const _M_07QF0ZM: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 12540892827539377636u64,
@@ -1204,6 +1281,7 @@ const _M_07QF0ZM: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=howl"),
   children: &[],
   restrictions: &[],
+  index: 77usize,
 };
 const _M_07RC7D9: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 12051105264801831553u64,
@@ -1218,6 +1296,7 @@ const _M_07RC7D9: &super::RatedSoundEvent = &super::RatedSoundEvent {
   ),
   children: &[],
   restrictions: &[],
+  index: 78usize,
 };
 const _M_0GHCN6: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 6489908034726437983u64,
@@ -1228,6 +1307,7 @@ const _M_0GHCN6: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Growling"),
     children: &[],
     restrictions: &[],
+    index: 79usize,
 };
 const _T_DD00136: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 11801387627472398116u64,
@@ -1250,6 +1330,7 @@ const _T_DD00136: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::None,
   children: &[],
   restrictions: &[],
+  index: 80usize,
 };
 const _M_01YRX: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 14343470202425065390u64,
@@ -1260,6 +1341,7 @@ const _M_01YRX: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Cat"),
   children: &[_M_02YDS9, _M_07QRKRW, _M_07RJWBB, _M_07R81J2, _M_0GHCN6],
   restrictions: &[],
+  index: 81usize,
 };
 const _M_02YDS9: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 8779644321984423843u64,
@@ -1270,6 +1352,7 @@ const _M_02YDS9: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Purr"),
   children: &[],
   restrictions: &[],
+  index: 82usize,
 };
 const _M_07QRKRW: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 1429102626058186593u64,
@@ -1280,6 +1363,7 @@ const _M_07QRKRW: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=meow"),
   children: &[],
   restrictions: &[],
+  index: 83usize,
 };
 const _M_07RJWBB: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 3213775804041130635u64,
@@ -1291,6 +1375,7 @@ const _M_07RJWBB: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=hiss"),
   children: &[],
   restrictions: &[],
+  index: 84usize,
 };
 const _M_07R81J2: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 12410472266654524946u64,
@@ -1303,6 +1388,7 @@ const _M_07R81J2: &super::RatedSoundEvent = &super::RatedSoundEvent {
   ),
   children: &[],
   restrictions: &[],
+  index: 85usize,
 };
 const _M_0CH8V: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 1595765300811071018u64,
@@ -1342,6 +1428,7 @@ const _M_0CH8V: &super::RatedSoundEvent = &super::RatedSoundEvent {
     _M_03K3R, _M_01XQ0K1, _M_068ZJ, _M_03FWL, _M_07BGP, _M_025RV6N,
   ],
   restrictions: &[],
+  index: 86usize,
 };
 const _M_03K3R: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 11177120434295405201u64,
@@ -1353,6 +1440,7 @@ const _M_03K3R: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Horse"),
   children: &[_M_07RV9RH, _M_07Q5RW0],
   restrictions: &[],
+  index: 87usize,
 };
 const _M_07RV9RH: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 3824137459668464092u64,
@@ -1375,6 +1463,7 @@ const _M_07RV9RH: &super::RatedSoundEvent = &super::RatedSoundEvent {
   ),
   children: &[],
   restrictions: &[],
+  index: 88usize,
 };
 const _M_07Q5RW0: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 2702196470126905248u64,
@@ -1393,6 +1482,7 @@ const _M_07Q5RW0: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=neigh"),
   children: &[],
   restrictions: &[],
+  index: 89usize,
 };
 const _M_01XQ0K1: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 15746312368904269813u64,
@@ -1411,6 +1501,7 @@ const _M_01XQ0K1: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Cattle"),
   children: &[_M_07RPKH9, _M_0239KH],
   restrictions: &[],
+  index: 90usize,
 };
 const _M_07RPKH9: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 12620923796606786352u64,
@@ -1421,6 +1512,7 @@ const _M_07RPKH9: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=moo"),
   children: &[],
   restrictions: &[],
+  index: 91usize,
 };
 const _M_0239KH: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 6100028708897136202u64,
@@ -1433,6 +1525,7 @@ const _M_0239KH: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 92usize,
 };
 const _M_068ZJ: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 11473006480497134269u64,
@@ -1444,6 +1537,7 @@ const _M_068ZJ: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Pig"),
   children: &[_T_DD00018],
   restrictions: &[],
+  index: 93usize,
 };
 const _T_DD00018: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 9257829600569351005u64,
@@ -1454,6 +1548,7 @@ const _T_DD00018: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::None,
   children: &[],
   restrictions: &[],
+  index: 94usize,
 };
 const _M_03FWL: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 9248073701176461111u64,
@@ -1464,6 +1559,7 @@ const _M_03FWL: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Goat"),
   children: &[_M_07Q0H5T],
   restrictions: &[],
+  index: 95usize,
 };
 const _M_07Q0H5T: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 11017889638301338575u64,
@@ -1474,6 +1570,7 @@ const _M_07Q0H5T: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=bleat"),
   children: &[],
   restrictions: &[],
+  index: 96usize,
 };
 const _M_07BGP: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 15757097884239181554u64,
@@ -1485,6 +1582,7 @@ const _M_07BGP: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Sheep"),
   children: &[_M_07Q0H5T],
   restrictions: &[],
+  index: 97usize,
 };
 const _M_025RV6N: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 17716469042788569539u64,
@@ -1495,6 +1593,7 @@ const _M_025RV6N: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Fowl"),
   children: &[_M_09B5T, _M_01RD7K, _M_09DDX, _M_0DBVP],
   restrictions: &[],
+  index: 98usize,
 };
 const _M_09B5T: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 10463185481450400851u64,
@@ -1514,6 +1613,7 @@ const _M_09B5T: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Chicken"),
   children: &[_M_07ST89H, _M_07QN5DC],
   restrictions: &[],
+  index: 99usize,
 };
 const _M_07ST89H: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 2981984771819346660u64,
@@ -1524,6 +1624,7 @@ const _M_07ST89H: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=cluck"),
   children: &[],
   restrictions: &[],
+  index: 100usize,
 };
 const _M_07QN5DC: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 145071658575142602u64,
@@ -1550,6 +1651,7 @@ const _M_07QN5DC: &super::RatedSoundEvent = &super::RatedSoundEvent {
   ),
   children: &[],
   restrictions: &[],
+  index: 101usize,
 };
 const _M_01RD7K: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 10301040946152613005u64,
@@ -1561,6 +1663,7 @@ const _M_01RD7K: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Domesticated_turkey"),
   children: &[_M_07SVC2K],
   restrictions: &[],
+  index: 102usize,
 };
 const _M_07SVC2K: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 3914484180583659469u64,
@@ -1571,6 +1674,7 @@ const _M_07SVC2K: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=gobble"),
   children: &[],
   restrictions: &[],
+  index: 103usize,
 };
 const _M_09DDX: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 16673618194729357701u64,
@@ -1581,6 +1685,7 @@ const _M_09DDX: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Duck"),
   children: &[_M_07QDB04],
   restrictions: &[],
+  index: 104usize,
 };
 const _M_07QDB04: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 17828530472261751007u64,
@@ -1591,6 +1696,7 @@ const _M_07QDB04: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=quack"),
   children: &[],
   restrictions: &[],
+  index: 105usize,
 };
 const _M_0DBVP: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 91108760170909939u64,
@@ -1601,6 +1707,7 @@ const _M_0DBVP: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Goose"),
   children: &[_M_07QWF61],
   restrictions: &[],
+  index: 106usize,
 };
 const _M_07QWF61: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 13246176172130792069u64,
@@ -1611,6 +1718,7 @@ const _M_07QWF61: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=honk"),
   children: &[],
   restrictions: &[],
+  index: 107usize,
 };
 const _M_01280G: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 16731941170195846283u64,
@@ -1635,6 +1743,7 @@ const _M_01280G: &super::RatedSoundEvent = &super::RatedSoundEvent {
     _M_0CDNK, _M_015P6, _M_01Z5F, _M_06HPS, _M_03VT0, _M_09LD4, _M_078JL, _M_032N05,
   ],
   restrictions: &[],
+  index: 108usize,
 };
 const _M_0CDNK: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 6782067992777784994u64,
@@ -1664,6 +1773,7 @@ const _M_0CDNK: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Panthera"),
   children: &[_M_04CVMFC, _M_0GHCN6],
   restrictions: &[],
+  index: 109usize,
 };
 const _M_04CVMFC: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 16308721031832451407u64,
@@ -1676,6 +1786,7 @@ const _M_04CVMFC: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 110usize,
 };
 const _M_015P6: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 9603888700836762953u64,
@@ -1686,6 +1797,7 @@ const _M_015P6: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Bird"),
   children: &[_M_020BB7, _M_0H0RV, _M_04S8YN, _M_09D5_, _M_05_WCQ],
   restrictions: &[],
+  index: 111usize,
 };
 const _M_020BB7: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 8399256362467994538u64,
@@ -1731,6 +1843,7 @@ const _M_020BB7: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Bird_vocalization"),
   children: &[_M_07PGGTN, _M_07SX8X_],
   restrictions: &[],
+  index: 112usize,
 };
 const _M_07PGGTN: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 8800077283229929897u64,
@@ -1749,6 +1862,7 @@ const _M_07PGGTN: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=chirp"),
   children: &[],
   restrictions: &[],
+  index: 113usize,
 };
 const _M_07SX8X_: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 12537039165392739295u64,
@@ -1759,6 +1873,7 @@ const _M_07SX8X_: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=squawk"),
   children: &[],
   restrictions: &[],
+  index: 114usize,
 };
 const _M_0H0RV: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 7794492830126402577u64,
@@ -1778,6 +1893,7 @@ const _M_0H0RV: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Columbidae"),
   children: &[_M_07R_25D],
   restrictions: &[],
+  index: 115usize,
 };
 const _M_07R_25D: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 5352221236854032702u64,
@@ -1788,6 +1904,7 @@ const _M_07R_25D: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=coo"),
   children: &[],
   restrictions: &[],
+  index: 116usize,
 };
 const _M_04S8YN: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 15114130334619773657u64,
@@ -1798,6 +1915,7 @@ const _M_04S8YN: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Corvus"),
   children: &[_M_07R5C2P],
   restrictions: &[],
+  index: 117usize,
 };
 const _M_07R5C2P: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 10895063750316286085u64,
@@ -1808,6 +1926,7 @@ const _M_07R5C2P: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=caw"),
   children: &[],
   restrictions: &[],
+  index: 118usize,
 };
 const _M_09D5_: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 4375445299774467260u64,
@@ -1818,6 +1937,7 @@ const _M_09D5_: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Owl"),
     children: &[_M_07R_80W],
     restrictions: &[],
+    index: 119usize,
 };
 const _M_07R_80W: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 17063388120789152798u64,
@@ -1828,6 +1948,7 @@ const _M_07R_80W: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=hoot"),
   children: &[],
   restrictions: &[],
+  index: 120usize,
 };
 const _M_05_WCQ: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 1603128512979655463u64,
@@ -1862,6 +1983,7 @@ const _M_05_WCQ: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Bird_flight"),
   children: &[],
   restrictions: &[],
+  index: 121usize,
 };
 const _M_01Z5F: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 7751333097660872273u64,
@@ -1883,6 +2005,7 @@ const _M_01Z5F: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Canidae"),
   children: &[_M_07QF0ZM, _M_0GHCN6],
   restrictions: &[],
+  index: 122usize,
 };
 const _M_06HPS: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 13234852220380576594u64,
@@ -1904,6 +2027,7 @@ const _M_06HPS: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Rodent"),
     children: &[_M_04RMV, _M_07R4GKF],
     restrictions: &[],
+    index: 123usize,
 };
 const _M_04RMV: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 17707841411274198130u64,
@@ -1914,6 +2038,7 @@ const _M_04RMV: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Mouse"),
   children: &[],
   restrictions: &[],
+  index: 124usize,
 };
 const _M_07R4GKF: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 5154616311086003254u64,
@@ -1925,6 +2050,7 @@ const _M_07R4GKF: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=patter"),
   children: &[],
   restrictions: &[crate::Restriction::Blacklist],
+  index: 125usize,
 };
 const _M_03VT0: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 14213179460508598781u64,
@@ -1935,6 +2061,7 @@ const _M_03VT0: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Insect"),
     children: &[_M_09XQV, _M_09F96, _M_0H2MP, _M_01H3N],
     restrictions: &[],
+    index: 126usize,
 };
 const _M_09XQV: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 13153071031236102156u64,
@@ -1947,6 +2074,7 @@ const _M_09XQV: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 127usize,
 };
 const _M_09F96: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 9388847463510276327u64,
@@ -1957,6 +2085,7 @@ const _M_09F96: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Mosquito"),
     children: &[],
     restrictions: &[],
+    index: 128usize,
 };
 const _M_0H2MP: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 1650249124233628898u64,
@@ -1967,6 +2096,7 @@ const _M_0H2MP: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Fly"),
     children: &[_M_07PJWQ1],
     restrictions: &[],
+    index: 129usize,
 };
 const _M_07PJWQ1: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 5949798966960044183u64,
@@ -1977,6 +2107,7 @@ const _M_07PJWQ1: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=buzz"),
   children: &[],
   restrictions: &[],
+  index: 130usize,
 };
 const _M_01H3N: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 17802827093773434311u64,
@@ -2001,6 +2132,7 @@ const _M_01H3N: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Bee"),
     children: &[_M_07PJWQ1],
     restrictions: &[],
+    index: 131usize,
 };
 const _M_09LD4: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 4291884489858261512u64,
@@ -2012,6 +2144,7 @@ const _M_09LD4: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Frog"),
   children: &[_M_07ST88B],
   restrictions: &[],
+  index: 132usize,
 };
 const _M_07ST88B: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 782001225001372882u64,
@@ -2022,6 +2155,7 @@ const _M_07ST88B: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=croak"),
   children: &[],
   restrictions: &[],
+  index: 133usize,
 };
 const _M_078JL: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 5545804543822816197u64,
@@ -2033,6 +2167,7 @@ const _M_078JL: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Snake"),
   children: &[_M_07RJWBB, _M_07QN4Z3],
   restrictions: &[],
+  index: 134usize,
 };
 const _M_07QN4Z3: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 14393621178220382738u64,
@@ -2044,6 +2179,7 @@ const _M_07QN4Z3: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=rattle"),
   children: &[],
   restrictions: &[],
+  index: 135usize,
 };
 const _M_032N05: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 1469240492369843918u64,
@@ -2066,6 +2202,7 @@ const _M_032N05: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Whale_vocalization"),
   children: &[],
   restrictions: &[],
+  index: 136usize,
 };
 const _M_04RLF: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 17510786418195470717u64,
@@ -2076,6 +2213,7 @@ const _M_04RLF: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Music"),
     children: &[_M_04SZW],
     restrictions: &[],
+    index: 137usize,
 };
 const _M_04SZW: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 13775796545173576429u64,
@@ -2119,6 +2257,7 @@ const _M_04SZW: &super::RatedSoundEvent = &super::RatedSoundEvent {
         _M_01HGJL,
     ],
     restrictions: &[],
+    index: 138usize,
 };
 const _M_0FX80Y: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 4324122837076872943u64,
@@ -2143,6 +2282,7 @@ const _M_0FX80Y: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[_M_0342H, _M_018J2, _M_0JTG0, _M_04RZD, _M_01BNS_, _M_07XZM],
     restrictions: &[],
+    index: 139usize,
 };
 const _M_0342H: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 7722551465387413330u64,
@@ -2153,6 +2293,7 @@ const _M_0342H: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Guitar"),
     children: &[_M_02SGY, _M_018VS, _M_042V_GX, _M_06W87, _M_01GLHC, _M_07S0S5R],
     restrictions: &[],
+    index: 140usize,
 };
 const _M_02SGY: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 10179985874536563003u64,
@@ -2177,6 +2318,7 @@ const _M_02SGY: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 141usize,
 };
 const _M_018VS: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 8787158485502236832u64,
@@ -2201,6 +2343,7 @@ const _M_018VS: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 142usize,
 };
 const _M_042V_GX: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 1104900847742085566u64,
@@ -2225,6 +2368,7 @@ const _M_042V_GX: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 143usize,
 };
 const _M_06W87: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 1652114797857929175u64,
@@ -2261,6 +2405,7 @@ const _M_06W87: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 144usize,
 };
 const _M_01GLHC: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 4942768282540605343u64,
@@ -2283,6 +2428,7 @@ const _M_01GLHC: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Tapping"),
     children: &[],
     restrictions: &[],
+    index: 145usize,
 };
 const _M_07S0S5R: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 7356465605885135435u64,
@@ -2295,6 +2441,7 @@ const _M_07S0S5R: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 146usize,
 };
 const _M_018J2: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 16126346799548593786u64,
@@ -2305,6 +2452,7 @@ const _M_018J2: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Banjo"),
     children: &[],
     restrictions: &[],
+    index: 147usize,
 };
 const _M_0JTG0: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 14488100693929316171u64,
@@ -2315,6 +2463,7 @@ const _M_0JTG0: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Sitar"),
     children: &[],
     restrictions: &[],
+    index: 148usize,
 };
 const _M_04RZD: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 8941454084924693603u64,
@@ -2325,6 +2474,7 @@ const _M_04RZD: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Mandolin"),
     children: &[],
     restrictions: &[],
+    index: 149usize,
 };
 const _M_01BNS_: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 3305186220779768947u64,
@@ -2335,6 +2485,7 @@ const _M_01BNS_: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Zither"),
     children: &[],
     restrictions: &[],
+    index: 150usize,
 };
 const _M_07XZM: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 11264659774704199077u64,
@@ -2345,6 +2496,7 @@ const _M_07XZM: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Ukulele"),
   children: &[],
   restrictions: &[],
+  index: 151usize,
 };
 const _M_05148P4: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 3492973420661510810u64,
@@ -2369,6 +2521,7 @@ const _M_05148P4: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[_M_05R5C, _M_013Y1F, _M_0L14QV, _M_03Q5T],
     restrictions: &[],
+    index: 152usize,
 };
 const _M_05R5C: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 6224954549995848551u64,
@@ -2379,6 +2532,7 @@ const _M_05R5C: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Piano"),
     children: &[_M_01S0PS],
     restrictions: &[],
+    index: 153usize,
 };
 const _M_01S0PS: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 8716182356286990358u64,
@@ -2403,6 +2557,7 @@ const _M_01S0PS: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 154usize,
 };
 const _M_013Y1F: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 699415158294530525u64,
@@ -2415,6 +2570,7 @@ const _M_013Y1F: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[_M_03XQ_F, _M_03GVT],
     restrictions: &[],
+    index: 155usize,
 };
 const _M_03XQ_F: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 18244502411109671906u64,
@@ -2438,6 +2594,7 @@ const _M_03XQ_F: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Electronic_organ"),
   children: &[],
   restrictions: &[],
+  index: 156usize,
 };
 const _M_03GVT: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 12220171169234814722u64,
@@ -2462,6 +2619,7 @@ const _M_03GVT: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 157usize,
 };
 const _M_0L14QV: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 18381100485042599371u64,
@@ -2474,6 +2632,7 @@ const _M_0L14QV: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[_M_01V1D8],
     restrictions: &[],
+    index: 158usize,
 };
 const _M_01V1D8: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 6892134105602815147u64,
@@ -2486,6 +2645,7 @@ const _M_01V1D8: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 159usize,
 };
 const _M_03Q5T: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 11296736305162487470u64,
@@ -2497,6 +2657,7 @@ const _M_03Q5T: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Harpsichord"),
   children: &[],
   restrictions: &[],
+  index: 160usize,
 };
 const _M_0L14MD: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 15357733829296929750u64,
@@ -2520,6 +2681,7 @@ const _M_0L14MD: &super::RatedSoundEvent = &super::RatedSoundEvent {
         _M_0J45PBJ,
     ],
     restrictions: &[],
+    index: 161usize,
 };
 const _M_02HNL: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 5871128356857765980u64,
@@ -2542,6 +2704,7 @@ const _M_02HNL: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Drum_kit"),
     children: &[_M_0CFDD],
     restrictions: &[],
+    index: 162usize,
 };
 const _M_0CFDD: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 4821525359880442714u64,
@@ -2566,6 +2729,7 @@ const _M_0CFDD: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 163usize,
 };
 const _M_026T6: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 12280269692245768749u64,
@@ -2576,6 +2740,7 @@ const _M_026T6: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Drum"),
     children: &[_M_06RVN, _M_0BM02, _M_011K_J, _M_01P970],
     restrictions: &[],
+    index: 164usize,
 };
 const _M_06RVN: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 7378490953437183749u64,
@@ -2600,6 +2765,7 @@ const _M_06RVN: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[_M_03T3FJ, _M_02K_MR],
     restrictions: &[],
+    index: 165usize,
 };
 const _M_03T3FJ: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 12621967242014249604u64,
@@ -2610,6 +2776,7 @@ const _M_03T3FJ: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Rimshot"),
     children: &[],
     restrictions: &[],
+    index: 166usize,
 };
 const _M_02K_MR: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 5799140892455713073u64,
@@ -2632,6 +2799,7 @@ const _M_02K_MR: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Drum_roll"),
     children: &[],
     restrictions: &[],
+    index: 167usize,
 };
 const _M_0BM02: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 12618373595948314297u64,
@@ -2655,6 +2823,7 @@ const _M_0BM02: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Bass_drum"),
   children: &[],
   restrictions: &[],
+  index: 168usize,
 };
 const _M_011K_J: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 3740060660080010899u64,
@@ -2665,6 +2834,7 @@ const _M_011K_J: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Timpani"),
     children: &[],
     restrictions: &[],
+    index: 169usize,
 };
 const _M_01P970: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 15850253106997021347u64,
@@ -2675,6 +2845,7 @@ const _M_01P970: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Tabla"),
     children: &[],
     restrictions: &[],
+    index: 170usize,
 };
 const _M_01QBL: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 9303016711310010571u64,
@@ -2685,6 +2856,7 @@ const _M_01QBL: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Cymbal"),
     children: &[_M_03QTQ],
     restrictions: &[],
+    index: 171usize,
 };
 const _M_03QTQ: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 4849449161644187101u64,
@@ -2705,6 +2877,7 @@ const _M_03QTQ: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Hi-hat"),
     children: &[],
     restrictions: &[],
+    index: 172usize,
 };
 const _M_01SM1G: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 12256935595161357459u64,
@@ -2729,6 +2902,7 @@ const _M_01SM1G: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 173usize,
 };
 const _M_07BRJ: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 11631933850618737642u64,
@@ -2741,6 +2915,7 @@ const _M_07BRJ: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 174usize,
 };
 const _M_05R5WN: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 13530725648689298288u64,
@@ -2765,6 +2940,7 @@ const _M_05R5WN: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[_M_0XZLY],
     restrictions: &[],
+    index: 175usize,
 };
 const _M_0XZLY: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 2968166534145800984u64,
@@ -2775,6 +2951,7 @@ const _M_0XZLY: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Maraca"),
     children: &[],
     restrictions: &[],
+    index: 176usize,
 };
 const _M_0MBCT: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 11869241734381735446u64,
@@ -2785,6 +2962,7 @@ const _M_0MBCT: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Gong"),
     children: &[],
     restrictions: &[],
+    index: 177usize,
 };
 const _M_016622: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 11353424844141991108u64,
@@ -2809,6 +2987,7 @@ const _M_016622: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 178usize,
 };
 const _M_0J45PBJ: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 12904805753704639273u64,
@@ -2833,6 +3012,7 @@ const _M_0J45PBJ: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[_M_0DWSP, _M_0DWTP, _M_0DWT5, _M_0L156B],
     restrictions: &[],
+    index: 179usize,
 };
 const _M_0DWSP: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 425751352630811689u64,
@@ -2851,6 +3031,7 @@ const _M_0DWSP: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Marimba"),
     children: &[],
     restrictions: &[],
+    index: 180usize,
 };
 const _M_0DWTP: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 1541376289598011901u64,
@@ -2863,6 +3044,7 @@ const _M_0DWTP: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 181usize,
 };
 const _M_0DWT5: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 9021262818298013441u64,
@@ -2875,6 +3057,7 @@ const _M_0DWT5: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 182usize,
 };
 const _M_0L156B: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 1607451910615801045u64,
@@ -2885,6 +3068,7 @@ const _M_0L156B: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Steelpan"),
     children: &[],
     restrictions: &[],
+    index: 183usize,
 };
 const _M_05PD6: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 2577314648983100645u64,
@@ -2895,6 +3079,7 @@ const _M_05PD6: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Orchestra"),
     children: &[],
     restrictions: &[],
+    index: 184usize,
 };
 const _M_01KCD: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 1861646335852316242u64,
@@ -2919,6 +3104,7 @@ const _M_01KCD: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[_M_0319L, _M_07GQL, _M_07C6L],
     restrictions: &[],
+    index: 185usize,
 };
 const _M_0319L: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 9496057094127529267u64,
@@ -2943,6 +3129,7 @@ const _M_0319L: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 186usize,
 };
 const _M_07GQL: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 2434102670367305166u64,
@@ -2953,6 +3140,7 @@ const _M_07GQL: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Trumpet"),
     children: &[],
     restrictions: &[],
+    index: 187usize,
 };
 const _M_07C6L: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 11151673089866707136u64,
@@ -2963,6 +3151,7 @@ const _M_07C6L: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Trombone"),
     children: &[],
     restrictions: &[],
+    index: 188usize,
 };
 const _M_0L14_3: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 9107188554490129903u64,
@@ -2987,6 +3176,7 @@ const _M_0L14_3: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[_M_02QMJ0D, _M_07Y_7, _M_01XQW, _M_02FSN],
     restrictions: &[],
+    index: 189usize,
 };
 const _M_02QMJ0D: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 6993075227808472521u64,
@@ -3011,6 +3201,7 @@ const _M_02QMJ0D: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 190usize,
 };
 const _M_07Y_7: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 2801959009725708366u64,
@@ -3029,6 +3220,7 @@ const _M_07Y_7: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Violin"),
     children: &[_M_0D8_N],
     restrictions: &[],
+    index: 191usize,
 };
 const _M_0D8_N: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 8213055104569599140u64,
@@ -3039,6 +3231,7 @@ const _M_0D8_N: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Pizzicato"),
     children: &[],
     restrictions: &[],
+    index: 192usize,
 };
 const _M_01XQW: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 16767266179688140828u64,
@@ -3049,6 +3242,7 @@ const _M_01XQW: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Cello"),
     children: &[],
     restrictions: &[],
+    index: 193usize,
 };
 const _M_02FSN: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 1010966717590968589u64,
@@ -3073,6 +3267,7 @@ const _M_02FSN: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 194usize,
 };
 const _M_085JW: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 4605605922287008003u64,
@@ -3109,6 +3304,7 @@ const _M_085JW: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[_M_0L14J_, _M_06NCR, _M_01WY6],
     restrictions: &[],
+    index: 195usize,
 };
 const _M_0L14J_: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 1004094134595442898u64,
@@ -3119,6 +3315,7 @@ const _M_0L14J_: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Flute"),
     children: &[],
     restrictions: &[],
+    index: 196usize,
 };
 const _M_06NCR: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 10977055330137546456u64,
@@ -3129,6 +3326,7 @@ const _M_06NCR: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Saxophone"),
     children: &[],
     restrictions: &[],
+    index: 197usize,
 };
 const _M_01WY6: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 3216314243982777854u64,
@@ -3139,6 +3337,7 @@ const _M_01WY6: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Clarinet"),
     children: &[],
     restrictions: &[],
+    index: 198usize,
 };
 const _M_03M5K: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 3321588945265865794u64,
@@ -3149,6 +3348,7 @@ const _M_03M5K: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Harp"),
     children: &[],
     restrictions: &[],
+    index: 199usize,
 };
 const _M_0395LW: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 11213337047285159984u64,
@@ -3167,6 +3367,7 @@ const _M_0395LW: &super::RatedSoundEvent = &super::RatedSoundEvent {
         _M_0150B9,
     ],
     restrictions: &[],
+    index: 200usize,
 };
 const _M_03W41F: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 5467035310729845382u64,
@@ -3191,6 +3392,7 @@ const _M_03W41F: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 201usize,
 };
 const _M_027M70_: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 3810004260232711289u64,
@@ -3215,6 +3417,7 @@ const _M_027M70_: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 202usize,
 };
 const _M_0GY1T2S: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 11845214937804975226u64,
@@ -3239,6 +3442,7 @@ const _M_0GY1T2S: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 203usize,
 };
 const _M_07N_G: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 15265529422528896870u64,
@@ -3263,6 +3467,7 @@ const _M_07N_G: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 204usize,
 };
 const _M_0F8S22: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 10456365908303400486u64,
@@ -3275,6 +3480,7 @@ const _M_0F8S22: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[_M_026FGL],
     restrictions: &[],
+    index: 205usize,
 };
 const _M_026FGL: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 4306980230568350527u64,
@@ -3299,6 +3505,7 @@ const _M_026FGL: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 206usize,
 };
 const _M_0150B9: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 6272643950682117950u64,
@@ -3323,6 +3530,7 @@ const _M_0150B9: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 207usize,
 };
 const _M_03QJG: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 6391821528055209658u64,
@@ -3333,6 +3541,7 @@ const _M_03QJG: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Harmonica"),
     children: &[],
     restrictions: &[],
+    index: 208usize,
 };
 const _M_0MKG: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 7084524690705361464u64,
@@ -3343,6 +3552,7 @@ const _M_0MKG: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Accordion"),
     children: &[],
     restrictions: &[],
+    index: 209usize,
 };
 const _M_0192L: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 830456917768511571u64,
@@ -3353,6 +3563,7 @@ const _M_0192L: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Bagpipes"),
     children: &[],
     restrictions: &[],
+    index: 210usize,
 };
 const _M_02BXD: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 10786274949441879296u64,
@@ -3365,6 +3576,7 @@ const _M_02BXD: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 211usize,
 };
 const _M_0L14L2: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 8651821010144229044u64,
@@ -3376,6 +3588,7 @@ const _M_0L14L2: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Shofar"),
   children: &[],
   restrictions: &[],
+  index: 212usize,
 };
 const _M_07KC_: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 9379479576799876335u64,
@@ -3386,6 +3599,7 @@ const _M_07KC_: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Theremin"),
     children: &[],
     restrictions: &[],
+    index: 213usize,
 };
 const _M_0L14T7: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 7481880543122755252u64,
@@ -3410,6 +3624,7 @@ const _M_0L14T7: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 214usize,
 };
 const _M_01HGJL: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 13842788834779807250u64,
@@ -3434,6 +3649,7 @@ const _M_01HGJL: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 215usize,
 };
 const _M_064T9: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 10381302933441639585u64,
@@ -3456,6 +3672,7 @@ const _M_064T9: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Pop_music"),
     children: &[],
     restrictions: &[],
+    index: 216usize,
 };
 const _M_0GLT670: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 5263586126967361895u64,
@@ -3480,6 +3697,7 @@ const _M_0GLT670: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[_M_02CZ_7],
     restrictions: &[],
+    index: 217usize,
 };
 const _M_02CZ_7: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 3509541604101468456u64,
@@ -3492,6 +3710,7 @@ const _M_02CZ_7: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 218usize,
 };
 const _M_06BY7: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 14842823245700455031u64,
@@ -3516,6 +3735,7 @@ const _M_06BY7: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[_M_03LTY, _M_05R6T, _M_0DLS3, _M_0DL5D, _M_07SBBZ2, _M_05W3F],
     restrictions: &[],
+    index: 219usize,
 };
 const _M_03LTY: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 16972780985067165371u64,
@@ -3540,6 +3760,7 @@ const _M_03LTY: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 220usize,
 };
 const _M_05R6T: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 4035693680176671905u64,
@@ -3562,6 +3783,7 @@ const _M_05R6T: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Punk_rock"),
     children: &[],
     restrictions: &[],
+    index: 221usize,
 };
 const _M_0DLS3: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 6150468226956697364u64,
@@ -3572,6 +3794,7 @@ const _M_0DLS3: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Grunge"),
     children: &[],
     restrictions: &[],
+    index: 222usize,
 };
 const _M_0DL5D: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 7425756922131968709u64,
@@ -3596,6 +3819,7 @@ const _M_0DL5D: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 223usize,
 };
 const _M_07SBBZ2: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 11968325562836521462u64,
@@ -3620,6 +3844,7 @@ const _M_07SBBZ2: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 224usize,
 };
 const _M_05W3F: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 14174250604020908715u64,
@@ -3644,6 +3869,7 @@ const _M_05W3F: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 225usize,
 };
 const _M_06J6L: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 9061330372112127276u64,
@@ -3668,6 +3894,7 @@ const _M_06J6L: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 226usize,
 };
 const _M_0GYWN: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 18290232797768293978u64,
@@ -3692,6 +3919,7 @@ const _M_0GYWN: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 227usize,
 };
 const _M_06CQB: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 16562435484531697306u64,
@@ -3702,6 +3930,7 @@ const _M_06CQB: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Reggae"),
     children: &[],
     restrictions: &[],
+    index: 228usize,
 };
 const _M_01LYV: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 16077542848418785482u64,
@@ -3714,6 +3943,7 @@ const _M_01LYV: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[_M_015Y_N, _M_0GG8L],
     restrictions: &[],
+    index: 229usize,
 };
 const _M_015Y_N: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 792310514874056653u64,
@@ -3738,6 +3968,7 @@ const _M_015Y_N: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 230usize,
 };
 const _M_0GG8L: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 74310644888824532u64,
@@ -3750,6 +3981,7 @@ const _M_0GG8L: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 231usize,
 };
 const _M_02X8M: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 5149885173387381346u64,
@@ -3760,6 +3992,7 @@ const _M_02X8M: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Funk"),
     children: &[],
     restrictions: &[],
+    index: 232usize,
 };
 const _M_02W4V: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 13433141571857972307u64,
@@ -3784,6 +4017,7 @@ const _M_02W4V: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 233usize,
 };
 const _M_06J64V: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 9300333549718793697u64,
@@ -3809,6 +4043,7 @@ const _M_06J64V: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 234usize,
 };
 const _M_03_D0: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 17086540638203874636u64,
@@ -3819,6 +4054,7 @@ const _M_03_D0: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Jazz"),
     children: &[],
     restrictions: &[],
+    index: 235usize,
 };
 const _M_026Z9: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 15867279474044477713u64,
@@ -3829,6 +4065,7 @@ const _M_026Z9: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Disco"),
     children: &[],
     restrictions: &[],
+    index: 236usize,
 };
 const _M_0GGQ0M: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 5529769867185759205u64,
@@ -3853,6 +4090,7 @@ const _M_0GGQ0M: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[_M_05LLS],
     restrictions: &[],
+    index: 237usize,
 };
 const _M_05LLS: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 3635015218675323595u64,
@@ -3863,6 +4101,7 @@ const _M_05LLS: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Opera"),
     children: &[],
     restrictions: &[],
+    index: 238usize,
 };
 const _M_02LKT: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 13525655780191645929u64,
@@ -3894,6 +4133,7 @@ const _M_02LKT: &super::RatedSoundEvent = &super::RatedSoundEvent {
         _M_07LNK,
     ],
     restrictions: &[],
+    index: 239usize,
 };
 const _M_03MB9: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 9581870246111461227u64,
@@ -3918,6 +4158,7 @@ const _M_03MB9: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 240usize,
 };
 const _M_07GXW: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 921161829427039634u64,
@@ -3928,6 +4169,7 @@ const _M_07GXW: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Techno"),
     children: &[],
     restrictions: &[],
+    index: 241usize,
 };
 const _M_07S72N: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 469638673921187286u64,
@@ -3938,6 +4180,7 @@ const _M_07S72N: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Dubstep"),
     children: &[],
     restrictions: &[],
+    index: 242usize,
 };
 const _M_0283D: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 16101208863283235679u64,
@@ -3962,6 +4205,7 @@ const _M_0283D: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 243usize,
 };
 const _M_0M0JC: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 912755912645234788u64,
@@ -3974,6 +4218,7 @@ const _M_0M0JC: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 244usize,
 };
 const _M_08CYFT: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 6071360955265809887u64,
@@ -3998,6 +4243,7 @@ const _M_08CYFT: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 245usize,
 };
 const _M_0FD3Y: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 8566160098464133605u64,
@@ -4022,6 +4268,7 @@ const _M_0FD3Y: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 246usize,
 };
 const _M_07LNK: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 2517164680876120763u64,
@@ -4046,6 +4293,7 @@ const _M_07LNK: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 247usize,
 };
 const _M_0G293: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 9121488755230055262u64,
@@ -4071,6 +4319,7 @@ const _M_0G293: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[_M_0LN16, _M_0326G],
     restrictions: &[],
+    index: 248usize,
 };
 const _M_0LN16: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 2225603595636956778u64,
@@ -4095,6 +4344,7 @@ const _M_0LN16: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 249usize,
 };
 const _M_0326G: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 6382472330609245599u64,
@@ -4105,6 +4355,7 @@ const _M_0326G: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Flamenco"),
     children: &[],
     restrictions: &[],
+    index: 250usize,
 };
 const _M_0155W: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 14897830174178462950u64,
@@ -4115,6 +4366,7 @@ const _M_0155W: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Blues"),
     children: &[],
     restrictions: &[],
+    index: 251usize,
 };
 const _M_05FW6T: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 7895132475684073545u64,
@@ -4139,6 +4391,7 @@ const _M_05FW6T: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 252usize,
 };
 const _M_02V2LH: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 4618515879903387152u64,
@@ -4163,6 +4416,7 @@ const _M_02V2LH: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 253usize,
 };
 const _M_0Y4F8: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 12060317938296592073u64,
@@ -4187,6 +4441,7 @@ const _M_0Y4F8: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[_M_0Z9C, _M_02BK07, _M_02CZ_7],
     restrictions: &[],
+    index: 254usize,
 };
 const _M_0Z9C: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 3464763082985674278u64,
@@ -4209,6 +4464,7 @@ const _M_0Z9C: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/A_cappella"),
   children: &[],
   restrictions: &[],
+  index: 255usize,
 };
 const _M_0164X2: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 5484049521635701664u64,
@@ -4234,6 +4490,7 @@ const _M_0164X2: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[_M_0145M],
     restrictions: &[],
+    index: 256usize,
 };
 const _M_0145M: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 16651101163044110791u64,
@@ -4244,6 +4501,7 @@ const _M_0145M: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Afrobeat"),
     children: &[],
     restrictions: &[],
+    index: 257usize,
 };
 const _M_02MSCN: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 9722861128183565791u64,
@@ -4268,6 +4526,7 @@ const _M_02MSCN: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[_M_016CJB],
     restrictions: &[],
+    index: 258usize,
 };
 const _M_016CJB: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 11084885750442393629u64,
@@ -4292,6 +4551,7 @@ const _M_016CJB: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 259usize,
 };
 const _M_028SQC: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 12347527810137903256u64,
@@ -4317,6 +4577,7 @@ const _M_028SQC: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[_M_015VGC, _M_0DQ0MD],
     restrictions: &[],
+    index: 260usize,
 };
 const _M_015VGC: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 18152511525068818803u64,
@@ -4341,6 +4602,7 @@ const _M_015VGC: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 261usize,
 };
 const _M_0DQ0MD: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 1368326298356760128u64,
@@ -4366,6 +4628,7 @@ const _M_0DQ0MD: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 262usize,
 };
 const _M_06RQW: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 8143058863803319002u64,
@@ -4376,6 +4639,7 @@ const _M_06RQW: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Ska"),
     children: &[],
     restrictions: &[],
+    index: 263usize,
 };
 const _M_02P0SH1: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 1647431530605014373u64,
@@ -4398,6 +4662,7 @@ const _M_02P0SH1: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::None,
     children: &[],
     restrictions: &[],
+    index: 264usize,
 };
 const _M_05RWPB: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 2933069255363000168u64,
@@ -4422,6 +4687,7 @@ const _M_05RWPB: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 265usize,
 };
 const _M_074FT: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 6170429160923079751u64,
@@ -4432,6 +4698,7 @@ const _M_074FT: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Song"),
     children: &[],
     restrictions: &[crate::Restriction::Blacklist],
+    index: 266usize,
 };
 const _M_025TD0T: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 6476013201913388260u64,
@@ -4456,6 +4723,7 @@ const _M_025TD0T: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 267usize,
 };
 const _M_02CJCK: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 17723848090529556992u64,
@@ -4480,6 +4748,7 @@ const _M_02CJCK: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 268usize,
 };
 const _M_03R5Q_: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 13443389610500392750u64,
@@ -4502,6 +4771,7 @@ const _M_03R5Q_: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Jingle"),
     children: &[],
     restrictions: &[],
+    index: 269usize,
 };
 const _M_0L14GG: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 1690370807094956328u64,
@@ -4526,6 +4796,7 @@ const _M_0L14GG: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 270usize,
 };
 const _M_07PKXDP: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 11309936947932316270u64,
@@ -4538,6 +4809,7 @@ const _M_07PKXDP: &super::RatedSoundEvent = &super::RatedSoundEvent {
   ),
   children: &[],
   restrictions: &[],
+  index: 271usize,
 };
 const _M_01Z7DR: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 13170324694915935369u64,
@@ -4562,6 +4834,7 @@ const _M_01Z7DR: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 272usize,
 };
 const _M_0140XF: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 13963027594121596767u64,
@@ -4585,6 +4858,7 @@ const _M_0140XF: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Christmas_music"),
   children: &[],
   restrictions: &[],
+  index: 273usize,
 };
 const _M_0GGX5Q: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 1615219621324862383u64,
@@ -4609,6 +4883,7 @@ const _M_0GGX5Q: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 274usize,
 };
 const _M_04WPTG: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 1151347213414632701u64,
@@ -4633,6 +4908,7 @@ const _M_04WPTG: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 275usize,
 };
 const _T_DD00031: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 15689440511527596191u64,
@@ -4655,6 +4931,7 @@ const _T_DD00031: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::None,
   children: &[],
   restrictions: &[],
+  index: 276usize,
 };
 const _T_DD00032: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 5061886805208263097u64,
@@ -4677,6 +4954,7 @@ const _T_DD00032: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::None,
   children: &[],
   restrictions: &[],
+  index: 277usize,
 };
 const _T_DD00033: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 12283367016966454947u64,
@@ -4699,6 +4977,7 @@ const _T_DD00033: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::None,
   children: &[],
   restrictions: &[],
+  index: 278usize,
 };
 const _T_DD00034: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 15607851285244999129u64,
@@ -4721,6 +5000,7 @@ const _T_DD00034: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::None,
   children: &[],
   restrictions: &[],
+  index: 279usize,
 };
 const _T_DD00035: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 18092597345293671149u64,
@@ -4743,6 +5023,7 @@ const _T_DD00035: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::None,
   children: &[],
   restrictions: &[],
+  index: 280usize,
 };
 const _T_DD00036: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 15465698803464482052u64,
@@ -4765,6 +5046,7 @@ const _T_DD00036: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::None,
   children: &[],
   restrictions: &[],
+  index: 281usize,
 };
 const _T_DD00037: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 17844961825327113865u64,
@@ -4787,6 +5069,7 @@ const _T_DD00037: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::None,
   children: &[],
   restrictions: &[],
+  index: 282usize,
 };
 const _M_03M9D0Z: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 16619366813095956316u64,
@@ -4797,6 +5080,7 @@ const _M_03M9D0Z: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Wind"),
     children: &[_M_09T49, _T_DD00092],
     restrictions: &[],
+    index: 283usize,
 };
 const _M_09T49: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 14003131751759441325u64,
@@ -4819,6 +5103,7 @@ const _M_09T49: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Leaf"),
     children: &[],
     restrictions: &[],
+    index: 284usize,
 };
 const _T_DD00092: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 6873564480913237322u64,
@@ -4841,6 +5126,7 @@ const _T_DD00092: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::None,
     children: &[],
     restrictions: &[],
+    index: 285usize,
 };
 const _M_0JB2L: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 8053466562052108884u64,
@@ -4853,6 +5139,7 @@ const _M_0JB2L: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[_M_0NGT1],
     restrictions: &[],
+    index: 286usize,
 };
 const _M_0NGT1: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 2497627894763056278u64,
@@ -4863,6 +5150,7 @@ const _M_0NGT1: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Thunder"),
     children: &[],
     restrictions: &[],
+    index: 287usize,
 };
 const _M_0838F: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 322086085039306329u64,
@@ -4873,6 +5161,7 @@ const _M_0838F: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Properties_of_water"),
   children: &[_M_06MB1, _M_0J6M2, _M_0J2KX, _M_05KQ4, _M_06WZB, _M_07SWGKS],
   restrictions: &[],
+  index: 288usize,
 };
 const _M_06MB1: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 14859666792151566632u64,
@@ -4883,6 +5172,7 @@ const _M_06MB1: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Rain"),
     children: &[_M_07R10FB, _T_DD00038],
     restrictions: &[],
+    index: 289usize,
 };
 const _M_07R10FB: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 3489491883240243311u64,
@@ -4895,6 +5185,7 @@ const _M_07R10FB: &super::RatedSoundEvent = &super::RatedSoundEvent {
   ),
   children: &[],
   restrictions: &[],
+  index: 290usize,
 };
 const _T_DD00038: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 17597913962783856715u64,
@@ -4917,6 +5208,7 @@ const _T_DD00038: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::None,
   children: &[],
   restrictions: &[],
+  index: 291usize,
 };
 const _M_0J6M2: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 6424920940921064688u64,
@@ -4927,6 +5219,7 @@ const _M_0J6M2: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Stream"),
   children: &[],
   restrictions: &[],
+  index: 292usize,
 };
 const _M_0J2KX: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 12315467112566621718u64,
@@ -4937,6 +5230,7 @@ const _M_0J2KX: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Waterfall"),
     children: &[],
     restrictions: &[],
+    index: 293usize,
 };
 const _M_05KQ4: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 7293815465829113307u64,
@@ -4947,6 +5241,7 @@ const _M_05KQ4: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Ocean"),
   children: &[_M_034SRQ],
   restrictions: &[],
+  index: 294usize,
 };
 const _M_034SRQ: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 14834368142107568813u64,
@@ -4957,6 +5252,7 @@ const _M_034SRQ: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Wind_wave"),
     children: &[],
     restrictions: &[],
+    index: 295usize,
 };
 const _M_06WZB: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 2673343128421771882u64,
@@ -4967,6 +5263,7 @@ const _M_06WZB: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Steam"),
   children: &[_M_07RJWBB],
   restrictions: &[],
+  index: 296usize,
 };
 const _M_07SWGKS: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 13925855546602999322u64,
@@ -4979,6 +5276,7 @@ const _M_07SWGKS: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 297usize,
 };
 const _M_02_41: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 17340924738230573977u64,
@@ -4989,6 +5287,7 @@ const _M_02_41: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Fire"),
     children: &[_M_07PZFMF],
     restrictions: &[],
+    index: 298usize,
 };
 const _M_07PZFMF: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 13934204991856619291u64,
@@ -5001,6 +5300,7 @@ const _M_07PZFMF: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 299usize,
 };
 const _M_07YV9: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 15821946233089502730u64,
@@ -5011,6 +5311,7 @@ const _M_07YV9: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Vehicle"),
   children: &[_M_019JD, _M_012F08, _M_06D_3, _M_0K5J],
   restrictions: &[],
+  index: 300usize,
 };
 const _M_019JD: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 8966135791753458516u64,
@@ -5037,6 +5338,7 @@ const _M_019JD: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Boat"),
   children: &[_M_0HSRW, _M_056KS2, _M_02RLV9, _M_06Q74],
   restrictions: &[],
+  index: 301usize,
 };
 const _M_0HSRW: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 4168195871245754144u64,
@@ -5063,6 +5365,7 @@ const _M_0HSRW: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Sailboat"),
   children: &[],
   restrictions: &[],
+  index: 302usize,
 };
 const _M_056KS2: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 17913985938219870722u64,
@@ -5084,6 +5387,7 @@ const _M_056KS2: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Rowing"),
   children: &[],
   restrictions: &[],
+  index: 303usize,
 };
 const _M_02RLV9: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 15687078319668099917u64,
@@ -5102,6 +5406,7 @@ const _M_02RLV9: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Motorboat"),
   children: &[],
   restrictions: &[],
+  index: 304usize,
 };
 const _M_06Q74: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 5134987270649548258u64,
@@ -5112,6 +5417,7 @@ const _M_06Q74: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Ship"),
     children: &[],
     restrictions: &[],
+    index: 305usize,
 };
 const _M_012F08: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 3887196329475812854u64,
@@ -5136,6 +5442,7 @@ const _M_012F08: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[_M_0K4J, _M_07R04, _M_01BJV, _M_03J1LY, _M_04_SV, _M_0BTP2],
     restrictions: &[],
+    index: 306usize,
 };
 const _M_0K4J: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 91749403008295509u64,
@@ -5154,6 +5461,7 @@ const _M_0K4J: &super::RatedSoundEvent = &super::RatedSoundEvent {
         _M_0LTV,
     ],
     restrictions: &[],
+    index: 307usize,
 };
 const _M_0912C9: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 1058438073150251210u64,
@@ -5193,6 +5501,7 @@ const _M_0912C9: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[_M_07QV_D5],
     restrictions: &[],
+    index: 308usize,
 };
 const _M_07QV_D5: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 17772588525047664436u64,
@@ -5203,6 +5512,7 @@ const _M_07QV_D5: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=toot"),
   children: &[],
   restrictions: &[],
+  index: 309usize,
 };
 const _M_02MFYN: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 15330812608692218664u64,
@@ -5225,6 +5535,7 @@ const _M_02MFYN: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Car_alarm"),
     children: &[],
     restrictions: &[],
+    index: 310usize,
 };
 const _M_04GXBD: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 17432906769988544001u64,
@@ -5261,6 +5572,7 @@ const _M_04GXBD: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 311usize,
 };
 const _M_07RKNQZ: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 6893784401961366959u64,
@@ -5273,6 +5585,7 @@ const _M_07RKNQZ: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 312usize,
 };
 const _M_0H9MV: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 139424597533931290u64,
@@ -5295,6 +5608,7 @@ const _M_0H9MV: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Tire"),
     children: &[],
     restrictions: &[],
+    index: 313usize,
 };
 const _T_DD00134: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 8304056000663616657u64,
@@ -5317,6 +5631,7 @@ const _T_DD00134: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::None,
     children: &[],
     restrictions: &[],
+    index: 314usize,
 };
 const _M_0LTV: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 15464261181975684784u64,
@@ -5353,6 +5668,7 @@ const _M_0LTV: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 315usize,
 };
 const _M_07R04: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 8670380158767133729u64,
@@ -5363,6 +5679,7 @@ const _M_07R04: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Truck"),
   children: &[_M_0GVGW0, _M_05X_TD, _M_02RHDDQ, _M_03CL9H],
   restrictions: &[],
+  index: 316usize,
 };
 const _M_0GVGW0: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 8782035185525488225u64,
@@ -5387,6 +5704,7 @@ const _M_0GVGW0: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 317usize,
 };
 const _M_05X_TD: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 6156454377274197723u64,
@@ -5421,6 +5739,7 @@ const _M_05X_TD: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Air_horn"),
     children: &[],
     restrictions: &[],
+    index: 318usize,
 };
 const _M_02RHDDQ: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 3838340426341323228u64,
@@ -5445,6 +5764,7 @@ const _M_02RHDDQ: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 319usize,
 };
 const _M_03CL9H: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 9736942173955089393u64,
@@ -5481,6 +5801,7 @@ const _M_03CL9H: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 320usize,
 };
 const _M_01BJV: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 11578269872369289964u64,
@@ -5491,6 +5812,7 @@ const _M_01BJV: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Bus"),
   children: &[],
   restrictions: &[],
+  index: 321usize,
 };
 const _M_03J1LY: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 1682383426976966743u64,
@@ -5515,6 +5837,7 @@ const _M_03J1LY: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[_M_04QVTQ, _M_012N7D, _M_012NDJ],
     restrictions: &[],
+    index: 322usize,
 };
 const _M_04QVTQ: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 11330616284078094386u64,
@@ -5538,6 +5861,7 @@ const _M_04QVTQ: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Police_car"),
   children: &[],
   restrictions: &[],
+  index: 323usize,
 };
 const _M_012N7D: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 1034596174278678452u64,
@@ -5560,6 +5884,7 @@ const _M_012N7D: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Ambulance"),
     children: &[],
     restrictions: &[],
+    index: 324usize,
 };
 const _M_012NDJ: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 8208040266712199088u64,
@@ -5596,6 +5921,7 @@ const _M_012NDJ: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 325usize,
 };
 const _M_04_SV: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 17680144193652849599u64,
@@ -5608,6 +5934,7 @@ const _M_04_SV: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 326usize,
 };
 const _M_0BTP2: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 7358037295236380032u64,
@@ -5642,6 +5969,7 @@ const _M_0BTP2: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Traffic"),
   children: &[],
   restrictions: &[],
+  index: 327usize,
 };
 const _M_06D_3: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 7055509846129613279u64,
@@ -5664,6 +5992,7 @@ const _M_06D_3: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Rail_transport"),
   children: &[_M_07JDR, _M_01G50P, _T_DD00048, _M_0195FX],
   restrictions: &[],
+  index: 328usize,
 };
 const _M_07JDR: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 11754258189319947847u64,
@@ -5674,6 +6003,7 @@ const _M_07JDR: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Train"),
     children: &[_M_04ZMVQ, _M_0284VY3],
     restrictions: &[],
+    index: 329usize,
 };
 const _M_04ZMVQ: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 13627145103421987147u64,
@@ -5698,6 +6028,7 @@ const _M_04ZMVQ: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 330usize,
 };
 const _M_0284VY3: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 3315741152360816506u64,
@@ -5722,6 +6053,7 @@ const _M_0284VY3: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 331usize,
 };
 const _M_01G50P: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 10703525315055541566u64,
@@ -5757,6 +6089,7 @@ const _M_01G50P: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Railroad_car"),
   children: &[],
   restrictions: &[],
+  index: 332usize,
 };
 const _T_DD00048: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 5315410868096493560u64,
@@ -5779,6 +6112,7 @@ const _T_DD00048: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::None,
     children: &[],
     restrictions: &[],
+    index: 333usize,
 };
 const _M_0195FX: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 11161644467368392056u64,
@@ -5802,6 +6136,7 @@ const _M_0195FX: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 334usize,
 };
 const _M_0K5J: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 4894676002585895238u64,
@@ -5812,6 +6147,7 @@ const _M_0K5J: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Aircraft"),
   children: &[_M_014YCK, _M_09CT_, _M_0CMF2],
   restrictions: &[],
+  index: 335usize,
 };
 const _M_014YCK: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 17630226419503078187u64,
@@ -5836,6 +6172,7 @@ const _M_014YCK: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[_M_04229, _M_02L6BG],
     restrictions: &[],
+    index: 336usize,
 };
 const _M_04229: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 14505484597857949648u64,
@@ -5860,6 +6197,7 @@ const _M_04229: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 337usize,
 };
 const _M_02L6BG: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 1726780585032576769u64,
@@ -5880,6 +6218,7 @@ const _M_02L6BG: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 338usize,
 };
 const _M_09CT_: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 5531860983559953426u64,
@@ -5892,6 +6231,7 @@ const _M_09CT_: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 339usize,
 };
 const _M_0CMF2: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 1438940690903614874u64,
@@ -5920,6 +6260,7 @@ const _M_0CMF2: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 340usize,
 };
 const _M_0199G: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 10781749368461017508u64,
@@ -5930,6 +6271,7 @@ const _M_0199G: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Bicycle"),
     children: &[_M_0GY1T2S],
     restrictions: &[],
+    index: 341usize,
 };
 const _M_06_FW: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 16584472074455913u64,
@@ -5942,6 +6284,7 @@ const _M_06_FW: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 342usize,
 };
 const _M_02MK9: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 621244648700317526u64,
@@ -5961,6 +6304,7 @@ const _M_02MK9: &super::RatedSoundEvent = &super::RatedSoundEvent {
         _M_07Q2Z82,
     ],
     restrictions: &[],
+    index: 343usize,
 };
 const _T_DD00065: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 11937579647284428116u64,
@@ -5983,6 +6327,7 @@ const _T_DD00065: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::None,
   children: &[_M_08J51Y, _M_01YG9G, _M_01J4Z9],
   restrictions: &[],
+  index: 344usize,
 };
 const _M_08J51Y: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 1051616139310357205u64,
@@ -6019,6 +6364,7 @@ const _M_08J51Y: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 345usize,
 };
 const _M_01YG9G: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 1896587689375189939u64,
@@ -6043,6 +6389,7 @@ const _M_01YG9G: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 346usize,
 };
 const _M_01J4Z9: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 11336737193731963959u64,
@@ -6053,6 +6400,7 @@ const _M_01J4Z9: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Chainsaw"),
     children: &[],
     restrictions: &[],
+    index: 347usize,
 };
 const _T_DD00066: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 11129584302226533010u64,
@@ -6075,6 +6423,7 @@ const _T_DD00066: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::None,
     children: &[],
     restrictions: &[],
+    index: 348usize,
 };
 const _T_DD00067: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 2439831509108393024u64,
@@ -6097,6 +6446,7 @@ const _T_DD00067: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::None,
     children: &[],
     restrictions: &[],
+    index: 349usize,
 };
 const _M_01H82_: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 14443739050219571919u64,
@@ -6121,6 +6471,7 @@ const _M_01H82_: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[crate::Restriction::Blacklist],
+    index: 350usize,
 };
 const _T_DD00130: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 16429992585356712728u64,
@@ -6143,6 +6494,7 @@ const _T_DD00130: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::None,
     children: &[],
     restrictions: &[],
+    index: 351usize,
 };
 const _M_07PB8FC: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 1437090648317320796u64,
@@ -6155,6 +6507,7 @@ const _M_07PB8FC: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 352usize,
 };
 const _M_07Q2Z82: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 6208447140843342296u64,
@@ -6178,6 +6531,7 @@ const _M_07Q2Z82: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 353usize,
 };
 const _M_02DGV: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 7407483773707431944u64,
@@ -6188,6 +6542,7 @@ const _M_02DGV: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Door"),
     children: &[_M_03WWCY, _M_02Y_763, _M_07RJZL8, _M_07R4WB8, _M_07QCPGN, _M_07Q6CD_],
     restrictions: &[],
+    index: 354usize,
 };
 const _M_03WWCY: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 6635708666751677776u64,
@@ -6198,6 +6553,7 @@ const _M_03WWCY: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Doorbell"),
     children: &[_M_07R67YG],
     restrictions: &[],
+    index: 355usize,
 };
 const _M_07R67YG: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 4291918606807347903u64,
@@ -6220,6 +6576,7 @@ const _M_07R67YG: &super::RatedSoundEvent = &super::RatedSoundEvent {
   ),
   children: &[],
   restrictions: &[],
+  index: 356usize,
 };
 const _M_02Y_763: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 17979511861058925130u64,
@@ -6243,6 +6600,7 @@ const _M_02Y_763: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Sliding_door"),
   children: &[],
   restrictions: &[],
+  index: 357usize,
 };
 const _M_07RJZL8: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 4762410389503581796u64,
@@ -6253,6 +6611,7 @@ const _M_07RJZL8: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=slam"),
   children: &[],
   restrictions: &[],
+  index: 358usize,
 };
 const _M_07R4WB8: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 1111115258733994212u64,
@@ -6265,6 +6624,7 @@ const _M_07R4WB8: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 359usize,
 };
 const _M_07QCPGN: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 11377111859909085442u64,
@@ -6277,6 +6637,7 @@ const _M_07QCPGN: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 360usize,
 };
 const _M_07Q6CD_: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 7979630401561229819u64,
@@ -6287,6 +6648,7 @@ const _M_07Q6CD_: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=squeak"),
   children: &[],
   restrictions: &[],
+  index: 361usize,
 };
 const _M_0642B4: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 14388513078585897841u64,
@@ -6309,6 +6671,7 @@ const _M_0642B4: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Cupboard"),
   children: &[],
   restrictions: &[],
+  index: 362usize,
 };
 const _M_0FQFQC: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 6507426810322132258u64,
@@ -6333,6 +6696,7 @@ const _M_0FQFQC: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 363usize,
 };
 const _M_04BRG2: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 2790114558086688195u64,
@@ -6362,6 +6726,7 @@ const _M_04BRG2: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Tableware"),
     children: &[],
     restrictions: &[],
+    index: 364usize,
 };
 const _M_023PJK: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 16872370357949736654u64,
@@ -6380,6 +6745,7 @@ const _M_023PJK: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Cutlery"),
     children: &[],
     restrictions: &[],
+    index: 365usize,
 };
 const _M_07PN_8Q: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 9247441256836271848u64,
@@ -6402,6 +6768,7 @@ const _M_07PN_8Q: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=chop"),
   children: &[],
   restrictions: &[],
+  index: 366usize,
 };
 const _M_0DXRF: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 2131183074523801760u64,
@@ -6424,6 +6791,7 @@ const _M_0DXRF: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Frying"),
   children: &[],
   restrictions: &[],
+  index: 367usize,
 };
 const _M_0FX9L: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 5980764229692274555u64,
@@ -6448,6 +6816,7 @@ const _M_0FX9L: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 368usize,
 };
 const _M_02PJR4: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 7205728398509874078u64,
@@ -6458,6 +6827,7 @@ const _M_02PJR4: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Blender"),
     children: &[],
     restrictions: &[],
+    index: 369usize,
 };
 const _M_02JZ0L: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 11378679767769592378u64,
@@ -6486,6 +6856,7 @@ const _M_02JZ0L: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 370usize,
 };
 const _M_0130JX: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 15716757279602613860u64,
@@ -6508,6 +6879,7 @@ const _M_0130JX: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Sink"),
     children: &[],
     restrictions: &[],
+    index: 371usize,
 };
 const _M_03DNZN: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 379962457604721023u64,
@@ -6531,6 +6903,7 @@ const _M_03DNZN: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Bathtub"),
   children: &[],
   restrictions: &[],
+  index: 372usize,
 };
 const _M_03WVSK: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 8642767741674810284u64,
@@ -6555,6 +6928,7 @@ const _M_03WVSK: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 373usize,
 };
 const _M_01JT3M: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 9664512067454227782u64,
@@ -6577,6 +6951,7 @@ const _M_01JT3M: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Flush_toilet"),
   children: &[],
   restrictions: &[],
+  index: 374usize,
 };
 const _M_012XFF: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 4099692626029560000u64,
@@ -6589,6 +6964,7 @@ const _M_012XFF: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[_M_04FGWM],
     restrictions: &[],
+    index: 375usize,
 };
 const _M_04FGWM: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 5797027368478509460u64,
@@ -6613,6 +6989,7 @@ const _M_04FGWM: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 376usize,
 };
 const _M_0D31P: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 9410697461200611967u64,
@@ -6637,6 +7014,7 @@ const _M_0D31P: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 377usize,
 };
 const _M_01S0VC: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 7287798967893250467u64,
@@ -6659,6 +7037,7 @@ const _M_01S0VC: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Zipper"),
     children: &[],
     restrictions: &[],
+    index: 378usize,
 };
 const _M_03V3YW: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 14575545562751973801u64,
@@ -6683,6 +7062,7 @@ const _M_03V3YW: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 379usize,
 };
 const _M_0242L: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 18096727928022521009u64,
@@ -6705,6 +7085,7 @@ const _M_0242L: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Coin"),
     children: &[],
     restrictions: &[],
+    index: 380usize,
 };
 const _M_01LSMM: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 360843141617063591u64,
@@ -6715,6 +7096,7 @@ const _M_01LSMM: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Scissors"),
     children: &[],
     restrictions: &[],
+    index: 381usize,
 };
 const _M_02G901: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 17736222425199536147u64,
@@ -6749,6 +7131,7 @@ const _M_02G901: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Razor"),
     children: &[],
     restrictions: &[],
+    index: 382usize,
 };
 const _M_05RJ2: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 8828215361533382052u64,
@@ -6771,6 +7154,7 @@ const _M_05RJ2: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Shuffling"),
   children: &[],
   restrictions: &[],
+  index: 383usize,
 };
 const _M_0316DW: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 8067982344024223133u64,
@@ -6781,6 +7165,7 @@ const _M_0316DW: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Typing"),
     children: &[_M_0C2WF, _M_01M2V],
     restrictions: &[],
+    index: 384usize,
 };
 const _M_0C2WF: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 9463487027693899778u64,
@@ -6793,6 +7178,7 @@ const _M_0C2WF: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 385usize,
 };
 const _M_01M2V: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 15216367884005303878u64,
@@ -6817,6 +7203,7 @@ const _M_01M2V: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 386usize,
 };
 const _M_081RB: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 1922241895384242233u64,
@@ -6827,6 +7214,7 @@ const _M_081RB: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Writing"),
     children: &[],
     restrictions: &[],
+    index: 387usize,
 };
 const _M_07PP_MV: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 12601215512338414125u64,
@@ -6840,6 +7228,7 @@ const _M_07PP_MV: &super::RatedSoundEvent = &super::RatedSoundEvent {
     _M_0912C9, _M_0GY1T2S, _M_05X_TD, _M_04FQ5Q, _M_0L156K,
   ],
   restrictions: &[],
+  index: 388usize,
 };
 const _M_07CX4: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 4367448700479988988u64,
@@ -6850,6 +7239,7 @@ const _M_07CX4: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Telephone"),
     children: &[_M_07PP8CL, _M_01HNZM, _M_02C8P, _M_015JPF, _M_01Z47D],
     restrictions: &[],
+    index: 389usize,
 };
 const _M_07PP8CL: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 18188966972447381117u64,
@@ -6874,6 +7264,7 @@ const _M_07PP8CL: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 390usize,
 };
 const _M_01HNZM: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 9502872064956853345u64,
@@ -6884,6 +7275,7 @@ const _M_01HNZM: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Ringtone"),
     children: &[],
     restrictions: &[],
+    index: 391usize,
 };
 const _M_02C8P: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 8605562517375807285u64,
@@ -6912,6 +7304,7 @@ const _M_02C8P: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 392usize,
 };
 const _M_015JPF: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 9282211542183632818u64,
@@ -6934,6 +7327,7 @@ const _M_015JPF: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Dial_tone"),
     children: &[],
     restrictions: &[],
+    index: 393usize,
 };
 const _M_01Z47D: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 4342203054961133417u64,
@@ -6958,6 +7352,7 @@ const _M_01Z47D: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 394usize,
 };
 const _M_046DLR: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 104132281951173491u64,
@@ -6982,6 +7377,7 @@ const _M_046DLR: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 395usize,
 };
 const _M_03KMC9: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 2415518440168745993u64,
@@ -6994,6 +7390,7 @@ const _M_03KMC9: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[_M_04QVTQ, _M_012N7D, _M_012NDJ, _M_0DGBQ],
     restrictions: &[],
+    index: 396usize,
 };
 const _M_0DGBQ: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 31459706836224456u64,
@@ -7018,6 +7415,7 @@ const _M_0DGBQ: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 397usize,
 };
 const _M_030RVX: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 7885709657140095106u64,
@@ -7028,6 +7426,7 @@ const _M_030RVX: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Buzzer"),
     children: &[],
     restrictions: &[],
+    index: 398usize,
 };
 const _M_01Y3HG: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 12417243452837216193u64,
@@ -7062,6 +7461,7 @@ const _M_01Y3HG: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Smoke_detector"),
   children: &[],
   restrictions: &[],
+  index: 399usize,
 };
 const _M_0C3F7M: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 6195857563687159118u64,
@@ -7086,6 +7486,7 @@ const _M_0C3F7M: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 400usize,
 };
 const _M_04FQ5Q: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 2283281885503580987u64,
@@ -7096,6 +7497,7 @@ const _M_04FQ5Q: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Foghorn"),
     children: &[],
     restrictions: &[],
+    index: 401usize,
 };
 const _M_0L156K: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 13204021917833953515u64,
@@ -7106,6 +7508,7 @@ const _M_0L156K: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Whistle"),
   children: &[_M_06HCK5],
   restrictions: &[],
+  index: 402usize,
 };
 const _M_06HCK5: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 9718716529016712510u64,
@@ -7130,6 +7533,7 @@ const _M_06HCK5: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 403usize,
 };
 const _T_DD00077: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 5183848735457094120u64,
@@ -7143,6 +7547,7 @@ const _T_DD00077: &super::RatedSoundEvent = &super::RatedSoundEvent {
     _M_0DV5R,
   ],
   restrictions: &[],
+  index: 404usize,
 };
 const _M_02BM9N: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 7046680102276395833u64,
@@ -7155,6 +7560,7 @@ const _M_02BM9N: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 405usize,
 };
 const _M_01X3Z: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 2232452904159953824u64,
@@ -7165,6 +7571,7 @@ const _M_01X3Z: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Clock"),
   children: &[_M_07QJZNT, _M_07QJZNL],
   restrictions: &[],
+  index: 406usize,
 };
 const _M_07QJZNT: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 13954958964426594860u64,
@@ -7175,6 +7582,7 @@ const _M_07QJZNT: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=tick"),
   children: &[],
   restrictions: &[],
+  index: 407usize,
 };
 const _M_07QJZNL: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 10459298584571997426u64,
@@ -7197,6 +7605,7 @@ const _M_07QJZNL: &super::RatedSoundEvent = &super::RatedSoundEvent {
   ),
   children: &[],
   restrictions: &[],
+  index: 408usize,
 };
 const _M_0L7XG: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 2083594477795203216u64,
@@ -7207,6 +7616,7 @@ const _M_0L7XG: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Gear"),
     children: &[],
     restrictions: &[],
+    index: 409usize,
 };
 const _M_05ZC1: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 15723181029449064219u64,
@@ -7217,6 +7627,7 @@ const _M_05ZC1: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Pulley"),
     children: &[],
     restrictions: &[],
+    index: 410usize,
 };
 const _M_0LLZX: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 12220284052651517379u64,
@@ -7240,6 +7651,7 @@ const _M_0LLZX: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Sewing_machine"),
   children: &[],
   restrictions: &[],
+  index: 411usize,
 };
 const _M_02X984L: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 5729169158174525287u64,
@@ -7264,6 +7676,7 @@ const _M_02X984L: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 412usize,
 };
 const _M_025WKY1: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 17435405842921879849u64,
@@ -7288,6 +7701,7 @@ const _M_025WKY1: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 413usize,
 };
 const _M_024DL: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 15987649720830128197u64,
@@ -7312,6 +7726,7 @@ const _M_024DL: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 414usize,
 };
 const _M_01M4T: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 13753474013656126774u64,
@@ -7324,6 +7739,7 @@ const _M_01M4T: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 415usize,
 };
 const _M_0DV5R: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 2062125782760588170u64,
@@ -7335,6 +7751,7 @@ const _M_0DV5R: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Camera"),
   children: &[_M_07BJF],
   restrictions: &[],
+  index: 416usize,
 };
 const _M_07BJF: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 7297090660794380185u64,
@@ -7359,6 +7776,7 @@ const _M_07BJF: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 417usize,
 };
 const _M_07K1X: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 14942465813277753785u64,
@@ -7369,6 +7787,7 @@ const _M_07K1X: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Tool"),
     children: &[_M_03L9G, _M_03P19W, _M_01B82R, _M_02P01Q, _M_023VSD, _M_0_KSK],
     restrictions: &[],
+    index: 418usize,
 };
 const _M_03L9G: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 15828025710729916774u64,
@@ -7379,6 +7798,7 @@ const _M_03L9G: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Hammer"),
     children: &[],
     restrictions: &[],
+    index: 419usize,
 };
 const _M_03P19W: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 9727888160048023120u64,
@@ -7391,6 +7811,7 @@ const _M_03P19W: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 420usize,
 };
 const _M_01B82R: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 12897899196045271232u64,
@@ -7401,6 +7822,7 @@ const _M_01B82R: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Saw"),
     children: &[],
     restrictions: &[],
+    index: 421usize,
 };
 const _M_02P01Q: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 17453688489897474802u64,
@@ -7425,6 +7847,7 @@ const _M_02P01Q: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 422usize,
 };
 const _M_023VSD: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 2865168850168411568u64,
@@ -7435,6 +7858,7 @@ const _M_023VSD: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Sandpaper"),
     children: &[],
     restrictions: &[],
+    index: 423usize,
 };
 const _M_0_KSK: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 5904436099239437460u64,
@@ -7459,6 +7883,7 @@ const _M_0_KSK: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[_M_01D380],
     restrictions: &[],
+    index: 424usize,
 };
 const _M_01D380: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 3044389151848034659u64,
@@ -7470,6 +7895,7 @@ const _M_01D380: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Drill"),
   children: &[_M_08J51Y],
   restrictions: &[],
+  index: 425usize,
 };
 const _M_014ZDL: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 5699065955108252614u64,
@@ -7480,6 +7906,7 @@ const _M_014ZDL: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Explosion"),
     children: &[_M_032S66, _M_0G6B5, _M_07QSVVW, _M_07PXG6Y, _M_07QQYL4],
     restrictions: &[],
+    index: 426usize,
 };
 const _M_032S66: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 10593464344646328378u64,
@@ -7498,6 +7925,7 @@ const _M_032S66: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Gunshot"),
   children: &[_M_04ZJC, _M_02Z32QM, _M_0_1C, _M_073CG4],
   restrictions: &[],
+  index: 427usize,
 };
 const _M_04ZJC: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 5161087997190975771u64,
@@ -7522,6 +7950,7 @@ const _M_04ZJC: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 428usize,
 };
 const _M_02Z32QM: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 2637715574441012793u64,
@@ -7533,6 +7962,7 @@ const _M_02Z32QM: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Fusillade"),
   children: &[],
   restrictions: &[crate::Restriction::Blacklist],
+  index: 429usize,
 };
 const _M_0_1C: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 11570786262825982557u64,
@@ -7555,6 +7985,7 @@ const _M_0_1C: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Artillery"),
     children: &[],
     restrictions: &[],
+    index: 430usize,
 };
 const _M_073CG4: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 6082814729072586789u64,
@@ -7577,6 +8008,7 @@ const _M_073CG4: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Cap_gun"),
     children: &[],
     restrictions: &[],
+    index: 431usize,
 };
 const _M_0G6B5: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 14345479450895731005u64,
@@ -7587,6 +8019,7 @@ const _M_0G6B5: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Fireworks"),
     children: &[_G_122Z_QXW],
     restrictions: &[],
+    index: 432usize,
 };
 const _G_122Z_QXW: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 15717621158404121209u64,
@@ -7599,6 +8032,7 @@ const _G_122Z_QXW: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 433usize,
 };
 const _M_07QSVVW: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 12843306275840256806u64,
@@ -7610,6 +8044,7 @@ const _M_07QSVVW: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=burst"),
   children: &[],
   restrictions: &[],
+  index: 434usize,
 };
 const _M_07PXG6Y: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 5493534750164015392u64,
@@ -7622,6 +8057,7 @@ const _M_07PXG6Y: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 435usize,
 };
 const _M_07QQYL4: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 6023152533183791681u64,
@@ -7632,6 +8068,7 @@ const _M_07QQYL4: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=boom"),
   children: &[],
   restrictions: &[],
+  index: 436usize,
 };
 const _M_083VT: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 7810247715322133732u64,
@@ -7642,6 +8079,7 @@ const _M_083VT: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Wood"),
     children: &[_M_07PCZHZ, _M_07PL1BW, _M_07QS1CX],
     restrictions: &[],
+    index: 437usize,
 };
 const _M_07PCZHZ: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 8491194830800509165u64,
@@ -7654,6 +8092,7 @@ const _M_07PCZHZ: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 438usize,
 };
 const _M_07PL1BW: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 4103263748448978511u64,
@@ -7667,6 +8106,7 @@ const _M_07PL1BW: &super::RatedSoundEvent = &super::RatedSoundEvent {
   ),
   children: &[],
   restrictions: &[],
+  index: 439usize,
 };
 const _M_07QS1CX: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 7296034332792593780u64,
@@ -7677,6 +8117,7 @@ const _M_07QS1CX: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=crack"),
   children: &[],
   restrictions: &[],
+  index: 440usize,
 };
 const _M_039JQ: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 11013911198572608990u64,
@@ -7687,6 +8128,7 @@ const _M_039JQ: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Glass"),
     children: &[_M_07Q7NJN, _M_07RN7SZ],
     restrictions: &[],
+    index: 441usize,
 };
 const _M_07Q7NJN: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 2947942088695222948u64,
@@ -7705,6 +8147,7 @@ const _M_07Q7NJN: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=chink"),
   children: &[],
   restrictions: &[],
+  index: 442usize,
 };
 const _M_07RN7SZ: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 577178189775647643u64,
@@ -7717,6 +8160,7 @@ const _M_07RN7SZ: &super::RatedSoundEvent = &super::RatedSoundEvent {
   ),
   children: &[],
   restrictions: &[],
+  index: 443usize,
 };
 const _M_04K94: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 10610049865125625315u64,
@@ -7737,6 +8181,7 @@ const _M_04K94: &super::RatedSoundEvent = &super::RatedSoundEvent {
         _M_0DV3J,
     ],
     restrictions: &[],
+    index: 444usize,
 };
 const _M_07RRLB6: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 5511612638323324034u64,
@@ -7755,6 +8200,7 @@ const _M_07RRLB6: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=splash"),
   children: &[_M_07P6MQD],
   restrictions: &[],
+  index: 445usize,
 };
 const _M_07P6MQD: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 1958958551277921199u64,
@@ -7765,6 +8211,7 @@ const _M_07P6MQD: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=slosh"),
   children: &[],
   restrictions: &[],
+  index: 446usize,
 };
 const _M_07QLWH6: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 16735344077367916974u64,
@@ -7775,6 +8222,7 @@ const _M_07QLWH6: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=squish"),
   children: &[],
   restrictions: &[],
+  index: 447usize,
 };
 const _M_07R5V4S: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 8513803010072823011u64,
@@ -7785,6 +8233,7 @@ const _M_07R5V4S: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=drip"),
   children: &[],
   restrictions: &[],
+  index: 448usize,
 };
 const _M_07PRGKL: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 15619767141366945796u64,
@@ -7795,6 +8244,7 @@ const _M_07PRGKL: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=pour"),
   children: &[_M_07PQC89, _T_DD00088],
   restrictions: &[],
+  index: 449usize,
 };
 const _M_07PQC89: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 220640805229576254u64,
@@ -7815,6 +8265,7 @@ const _M_07PQC89: &super::RatedSoundEvent = &super::RatedSoundEvent {
   ),
   children: &[],
   restrictions: &[],
+  index: 450usize,
 };
 const _T_DD00088: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 8025363266856545705u64,
@@ -7826,6 +8277,7 @@ const _T_DD00088: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::None,
   children: &[],
   restrictions: &[],
+  index: 451usize,
 };
 const _M_07P7B8Y: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 3611655610379661055u64,
@@ -7848,6 +8300,7 @@ const _M_07P7B8Y: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=fill"),
   children: &[],
   restrictions: &[],
+  index: 452usize,
 };
 const _M_07QLF79: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 10838410857525526996u64,
@@ -7858,6 +8311,7 @@ const _M_07QLF79: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=spray"),
   children: &[],
   restrictions: &[],
+  index: 453usize,
 };
 const _M_07PTZWD: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 7523856977485885428u64,
@@ -7880,6 +8334,7 @@ const _M_07PTZWD: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=pump"),
   children: &[],
   restrictions: &[],
+  index: 454usize,
 };
 const _M_07PTFMF: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 17163194243506378738u64,
@@ -7890,6 +8345,7 @@ const _M_07PTFMF: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=stir"),
   children: &[],
   restrictions: &[],
+  index: 455usize,
 };
 const _M_0DV3J: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 14670821475275761926u64,
@@ -7900,6 +8356,7 @@ const _M_0DV3J: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Boiling"),
     children: &[],
     restrictions: &[],
+    index: 456usize,
 };
 const _M_0790C: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 15953642593059054055u64,
@@ -7910,6 +8367,7 @@ const _M_0790C: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Sonar"),
     children: &[],
     restrictions: &[],
+    index: 457usize,
 };
 const _M_0DL83: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 272687849868595809u64,
@@ -7920,6 +8378,7 @@ const _M_0DL83: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Arrow"),
   children: &[_M_07RQSJT, _M_07QNQ_Y],
   restrictions: &[],
+  index: 458usize,
 };
 const _M_07RQSJT: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 13784983208985938009u64,
@@ -7941,6 +8400,7 @@ const _M_07RQSJT: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=whoosh"),
   children: &[],
   restrictions: &[],
+  index: 459usize,
 };
 const _M_07QNQ_Y: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 12619370572576216047u64,
@@ -7953,6 +8413,7 @@ const _M_07QNQ_Y: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[_M_07RRH0C],
     restrictions: &[],
+    index: 460usize,
 };
 const _M_07RRH0C: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 17421620248239272569u64,
@@ -7963,6 +8424,7 @@ const _M_07RRH0C: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=thunk"),
   children: &[],
   restrictions: &[],
+  index: 461usize,
 };
 const _M_0B_FWT: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 12216569385653517096u64,
@@ -7987,6 +8449,7 @@ const _M_0B_FWT: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[crate::Restriction::Blacklist],
+    index: 462usize,
 };
 const _M_02RR_: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 5720429132912575323u64,
@@ -8011,6 +8474,7 @@ const _M_02RR_: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[_M_07M2KT],
     restrictions: &[],
+    index: 463usize,
 };
 const _M_07M2KT: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 14879959395833793844u64,
@@ -8035,6 +8499,7 @@ const _M_07M2KT: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 464usize,
 };
 const _M_018W8: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 5144968357995134870u64,
@@ -8057,6 +8522,7 @@ const _M_018W8: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Basketball"),
   children: &[],
   restrictions: &[],
+  index: 465usize,
 };
 const _M_07PWS3F: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 740832601568364126u64,
@@ -8067,6 +8533,7 @@ const _M_07PWS3F: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=bang"),
   children: &[],
   restrictions: &[],
+  index: 466usize,
 };
 const _M_07RYJZK: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 6825529376662886280u64,
@@ -8086,6 +8553,7 @@ const _M_07RYJZK: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=slap"),
   children: &[],
   restrictions: &[],
+  index: 467usize,
 };
 const _M_07RDHZS: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 10767827376888581171u64,
@@ -8098,6 +8566,7 @@ const _M_07RDHZS: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 468usize,
 };
 const _M_07PJJRJ: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 2898384918232932441u64,
@@ -8116,6 +8585,7 @@ const _M_07PJJRJ: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=smash"),
   children: &[],
   restrictions: &[],
+  index: 469usize,
 };
 const _M_07PC8LB: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 13589833928566485399u64,
@@ -8126,6 +8596,7 @@ const _M_07PC8LB: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=break"),
   children: &[],
   restrictions: &[],
+  index: 470usize,
 };
 const _M_07PQN27: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 2239944453152240323u64,
@@ -8138,6 +8609,7 @@ const _M_07PQN27: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 471usize,
 };
 const _M_07RBP7_: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 9961127444732630003u64,
@@ -8150,6 +8622,7 @@ const _M_07RBP7_: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 472usize,
 };
 const _M_07PYF11: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 11609684852145363043u64,
@@ -8162,6 +8635,7 @@ const _M_07PYF11: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 473usize,
 };
 const _M_07QB_DV: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 1685212113261473909u64,
@@ -8175,6 +8649,7 @@ const _M_07QB_DV: &super::RatedSoundEvent = &super::RatedSoundEvent {
   ),
   children: &[],
   restrictions: &[],
+  index: 474usize,
 };
 const _M_07QV4K0: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 10358859464316309947u64,
@@ -8185,6 +8660,7 @@ const _M_07QV4K0: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=scrape"),
   children: &[],
   restrictions: &[],
+  index: 475usize,
 };
 const _M_07PDJHY: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 17752942302181318237u64,
@@ -8197,6 +8673,7 @@ const _M_07PDJHY: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 476usize,
 };
 const _M_07S8J8T: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 12398269104841722804u64,
@@ -8207,6 +8684,7 @@ const _M_07S8J8T: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=roll"),
   children: &[],
   restrictions: &[crate::Restriction::Blacklist],
+  index: 477usize,
 };
 const _M_07PLCT2: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 15178089268648675686u64,
@@ -8219,6 +8697,7 @@ const _M_07PLCT2: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 478usize,
 };
 const _T_DD00112: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 3247036663406553632u64,
@@ -8237,6 +8716,7 @@ const _T_DD00112: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::None,
     children: &[],
     restrictions: &[],
+    index: 479usize,
 };
 const _M_07QCX4Z: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 7219066684737501009u64,
@@ -8247,6 +8727,7 @@ const _M_07QCX4Z: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=tear"),
   children: &[],
   restrictions: &[],
+  index: 480usize,
 };
 const _M_02FS_R: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 10659368013895123436u64,
@@ -8259,6 +8740,7 @@ const _M_02FS_R: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 481usize,
 };
 const _M_07QWDCK: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 7152962183617565401u64,
@@ -8269,6 +8751,7 @@ const _M_07QWDCK: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=ping"),
   children: &[],
   restrictions: &[],
+  index: 482usize,
 };
 const _M_07PHXS1: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 8359342952489913297u64,
@@ -8279,6 +8762,7 @@ const _M_07PHXS1: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=ding"),
   children: &[],
   restrictions: &[],
+  index: 483usize,
 };
 const _M_07RV4DM: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 3640132018198605223u64,
@@ -8291,6 +8775,7 @@ const _M_07RV4DM: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 484usize,
 };
 const _M_07S02Z0: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 2450847119787262541u64,
@@ -8302,6 +8787,7 @@ const _M_07S02Z0: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=squeal"),
   children: &[],
   restrictions: &[],
+  index: 485usize,
 };
 const _M_07QH7JL: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 2608227224799236844u64,
@@ -8314,6 +8800,7 @@ const _M_07QH7JL: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 486usize,
 };
 const _M_07QWYJ0: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 13283226265677244098u64,
@@ -8324,6 +8811,7 @@ const _M_07QWYJ0: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=rustle"),
   children: &[],
   restrictions: &[],
+  index: 487usize,
 };
 const _M_07S34LS: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 17064522363517034516u64,
@@ -8334,6 +8822,7 @@ const _M_07S34LS: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=whir"),
   children: &[],
   restrictions: &[],
+  index: 488usize,
 };
 const _M_07QMPDM: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 17201645379858774854u64,
@@ -8346,6 +8835,7 @@ const _M_07QMPDM: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[crate::Restriction::Blacklist],
+    index: 489usize,
 };
 const _M_07P9K1K: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 1173867086148270307u64,
@@ -8357,6 +8847,7 @@ const _M_07P9K1K: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=sizzle"),
   children: &[],
   restrictions: &[],
+  index: 490usize,
 };
 const _M_07QC9XJ: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 8782164412755087059u64,
@@ -8368,6 +8859,7 @@ const _M_07QC9XJ: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=click"),
   children: &[_M_07QJZNT, _M_07RV9RH, _M_07RWM0C],
   restrictions: &[],
+  index: 491usize,
 };
 const _M_07RWM0C: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 13090896843367613737u64,
@@ -8390,6 +8882,7 @@ const _M_07RWM0C: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 492usize,
 };
 const _M_07PHHSH: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 455784416740134167u64,
@@ -8400,6 +8893,7 @@ const _M_07PHHSH: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=rumble"),
   children: &[],
   restrictions: &[],
+  index: 493usize,
 };
 const _M_07QYRCZ: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 12990703461069272492u64,
@@ -8410,6 +8904,7 @@ const _M_07QYRCZ: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=plop"),
   children: &[],
   restrictions: &[],
+  index: 494usize,
 };
 const _M_07QFGPX: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 535303045304991258u64,
@@ -8430,6 +8925,7 @@ const _M_07QFGPX: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 495usize,
 };
 const _M_07RCGPL: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 7714818651665545987u64,
@@ -8440,6 +8936,7 @@ const _M_07RCGPL: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=hum"),
   children: &[],
   restrictions: &[],
+  index: 496usize,
 };
 const _M_07P78V5: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 3575052168874625777u64,
@@ -8450,6 +8947,7 @@ const _M_07P78V5: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=zing"),
   children: &[],
   restrictions: &[],
+  index: 497usize,
 };
 const _T_DD00121: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 14941115218968609070u64,
@@ -8460,6 +8958,7 @@ const _T_DD00121: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::None,
   children: &[],
   restrictions: &[],
+  index: 498usize,
 };
 const _M_07S12Q4: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 10781847392875218141u64,
@@ -8470,6 +8969,7 @@ const _M_07S12Q4: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=crunch"),
   children: &[],
   restrictions: &[],
+  index: 499usize,
 };
 const _M_028V0C: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 14365528928269107110u64,
@@ -8480,6 +8980,7 @@ const _M_028V0C: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Silence"),
   children: &[],
   restrictions: &[],
+  index: 500usize,
 };
 const _M_01V_M0: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 972823999848265869u64,
@@ -8502,6 +9003,7 @@ const _M_01V_M0: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Sine_wave"),
   children: &[_M_0B9M1, _M_0HDSK],
   restrictions: &[],
+  index: 501usize,
 };
 const _M_0B9M1: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 2475297077146732826u64,
@@ -8512,6 +9014,7 @@ const _M_0B9M1: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Harmonic"),
   children: &[],
   restrictions: &[crate::Restriction::Blacklist],
+  index: 502usize,
 };
 const _M_0HDSK: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 12141017874326982381u64,
@@ -8534,6 +9037,7 @@ const _M_0HDSK: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Chirp"),
   children: &[],
   restrictions: &[],
+  index: 503usize,
 };
 const _M_0C1DJ: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 17167510894276100300u64,
@@ -8558,6 +9062,7 @@ const _M_0C1DJ: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 504usize,
 };
 const _M_07PT_G0: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 17527279754515510046u64,
@@ -8570,6 +9075,7 @@ const _M_07PT_G0: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 505usize,
 };
 const _T_DD00125: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 15207256470109636139u64,
@@ -8596,6 +9102,7 @@ const _T_DD00125: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::None,
     children: &[],
     restrictions: &[],
+    index: 506usize,
 };
 const _T_DD00126: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 1373058655080922167u64,
@@ -8622,6 +9129,7 @@ const _T_DD00126: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::None,
     children: &[],
     restrictions: &[],
+    index: 507usize,
 };
 const _T_DD00127: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 15126735518726861029u64,
@@ -8648,6 +9156,7 @@ const _T_DD00127: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::None,
     children: &[],
     restrictions: &[],
+    index: 508usize,
 };
 const _T_DD00128: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 12912594332130620810u64,
@@ -8675,6 +9184,7 @@ const _T_DD00128: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::None,
   children: &[],
   restrictions: &[],
+  index: 509usize,
 };
 const _T_DD00129: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 5298807715416099936u64,
@@ -8702,6 +9212,7 @@ const _T_DD00129: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::None,
   children: &[],
   restrictions: &[],
+  index: 510usize,
 };
 const _M_01B9NN: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 14076733692258327301u64,
@@ -8714,6 +9225,7 @@ const _M_01B9NN: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 511usize,
 };
 const _M_01JNBD: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 9163728156975015746u64,
@@ -8724,6 +9236,7 @@ const _M_01JNBD: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Echo"),
     children: &[],
     restrictions: &[],
+    index: 512usize,
 };
 const _M_096M7Z: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 14162913176479032151u64,
@@ -8736,6 +9249,7 @@ const _M_096M7Z: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[_M_07QFR4H, _M_07SZFH9, _M_0CHX_, _M_0CJ0R, _M_07P_0GM, _M_01JWX6],
     restrictions: &[],
+    index: 513usize,
 };
 const _M_06_Y0BY: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 16842345243838119570u64,
@@ -8758,6 +9272,7 @@ const _M_06_Y0BY: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Environmental_noise"),
   children: &[],
   restrictions: &[],
+  index: 514usize,
 };
 const _M_07RGKC5: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 15661156454456203052u64,
@@ -8768,6 +9283,7 @@ const _M_07RGKC5: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://wordnetweb.princeton.edu/perl/webwn?s=static"),
   children: &[],
   restrictions: &[],
+  index: 515usize,
 };
 const _M_06XKWV: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 12339785873710660243u64,
@@ -8790,6 +9306,7 @@ const _M_06XKWV: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Mains_hum"),
     children: &[],
     restrictions: &[],
+    index: 516usize,
 };
 const _M_0G12C5: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 17068020530495551979u64,
@@ -8802,6 +9319,7 @@ const _M_0G12C5: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 517usize,
 };
 const _M_08P9Q4: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 2094700964186505847u64,
@@ -8812,6 +9330,7 @@ const _M_08P9Q4: &super::RatedSoundEvent = &super::RatedSoundEvent {
     citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Sidetone"),
     children: &[],
     restrictions: &[crate::Restriction::Blacklist],
+    index: 518usize,
 };
 const _M_07SZFH9: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 17875320339669377435u64,
@@ -8825,6 +9344,7 @@ const _M_07SZFH9: &super::RatedSoundEvent = &super::RatedSoundEvent {
   ),
   children: &[],
   restrictions: &[],
+  index: 519usize,
 };
 const _M_0CHX_: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 7151472713636316492u64,
@@ -8849,6 +9369,7 @@ const _M_0CHX_: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 520usize,
 };
 const _M_0CJ0R: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 12233002342986233351u64,
@@ -8873,6 +9394,7 @@ const _M_0CJ0R: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[],
+    index: 521usize,
 };
 const _M_07P_0GM: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 15576912298345958763u64,
@@ -8885,6 +9407,7 @@ const _M_07P_0GM: &super::RatedSoundEvent = &super::RatedSoundEvent {
   ),
   children: &[],
   restrictions: &[],
+  index: 522usize,
 };
 const _M_01JWX6: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 14875408761855397603u64,
@@ -8895,6 +9418,7 @@ const _M_01JWX6: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Vibration"),
   children: &[],
   restrictions: &[crate::Restriction::Blacklist],
+  index: 523usize,
 };
 const _M_07C52: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 2552904504973550307u64,
@@ -8905,6 +9429,7 @@ const _M_07C52: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Television"),
   children: &[],
   restrictions: &[],
+  index: 524usize,
 };
 const _M_06BZ3: &super::RatedSoundEvent = &super::RatedSoundEvent {
   code: 11307229377907862828u64,
@@ -8915,6 +9440,7 @@ const _M_06BZ3: &super::RatedSoundEvent = &super::RatedSoundEvent {
   citation_uri: ::core::option::Option::Some("http://en.wikipedia.org/wiki/Radio"),
   children: &[],
   restrictions: &[],
+  index: 525usize,
 };
 const _M_07HVW1: &super::RatedSoundEvent = &super::RatedSoundEvent {
     code: 4264355335138764593u64,
@@ -8939,6 +9465,7 @@ const _M_07HVW1: &super::RatedSoundEvent = &super::RatedSoundEvent {
     ),
     children: &[],
     restrictions: &[crate::Restriction::Blacklist],
+    index: 526usize,
 };
 #[doc(hidden)]
 const fn __slice(
@@ -9497,6 +10024,540 @@ const _: () = {
         _ => return ::core::option::Option::None,
       })
     }
+    /// Get an entry by its model output index, if it exists.
+    #[cfg_attr(not(tarpaulin), inline(always))]
+    pub const fn from_index(index: usize) -> ::core::option::Option<&'static Self> {
+      ::core::option::Option::Some(match index {
+        0usize => _M_09X0R,
+        1usize => _M_05ZPPZ,
+        2usize => _M_02ZSN,
+        3usize => _M_0YTGT,
+        4usize => _M_01H8N0,
+        5usize => _M_02QLDY,
+        6usize => _M_0261R1,
+        7usize => _M_0BRHX,
+        8usize => _M_07P6FTY,
+        9usize => _M_07Q4NTR,
+        10usize => _M_07RWJ3X,
+        11usize => _M_07SR1LC,
+        12usize => _M_04GY_2,
+        13usize => _T_DD00135,
+        14usize => _M_03QC9ZR,
+        15usize => _M_02RTXLG,
+        16usize => _M_01J3SZ,
+        17usize => _T_DD00001,
+        18usize => _M_07R660_,
+        19usize => _M_07S04W4,
+        20usize => _M_07SQ110,
+        21usize => _M_07RGT08,
+        22usize => _M_0463CQ4,
+        23usize => _T_DD00002,
+        24usize => _M_07QZ6J3,
+        25usize => _M_07QW_06,
+        26usize => _M_07PLZ5L,
+        27usize => _M_015LZ1,
+        28usize => _M_0L14JD,
+        29usize => _M_01SWY6,
+        30usize => _M_02BK07,
+        31usize => _M_01C194,
+        32usize => _T_DD00003,
+        33usize => _T_DD00004,
+        34usize => _T_DD00005,
+        35usize => _T_DD00006,
+        36usize => _M_06BXC,
+        37usize => _M_02FXYJ,
+        38usize => _M_07S2XCH,
+        39usize => _M_07R4K75,
+        40usize => _M_01W250,
+        41usize => _M_0LYF6,
+        42usize => _M_07MZM6,
+        43usize => _M_01D3SD,
+        44usize => _M_07S0DTB,
+        45usize => _M_07PYY8B,
+        46usize => _M_07Q0YL5,
+        47usize => _M_01B_21,
+        48usize => _M_0DL9SF8,
+        49usize => _M_01HSR_,
+        50usize => _M_07PPN3J,
+        51usize => _M_06H7J,
+        52usize => _M_07QV_X_,
+        53usize => _M_07PBTC8,
+        54usize => _M_03CCZK,
+        55usize => _M_07PDHP0,
+        56usize => _M_0939N_,
+        57usize => _M_01G90H,
+        58usize => _M_03Q5_W,
+        59usize => _M_02P3NC,
+        60usize => _M_02_NN,
+        61usize => _M_0K65P,
+        62usize => _M_025_JNM,
+        63usize => _M_0L15BQ,
+        64usize => _M_01JG02,
+        65usize => _M_01JG1Z,
+        66usize => _M_053HZ1,
+        67usize => _M_028GHT,
+        68usize => _M_07RKBFH,
+        69usize => _M_03QTWD,
+        70usize => _M_07QFR4H,
+        71usize => _T_DD00013,
+        72usize => _M_0JBK,
+        73usize => _M_068HY,
+        74usize => _M_0BT9LR,
+        75usize => _M_05TNY_,
+        76usize => _M_07R_K2N,
+        77usize => _M_07QF0ZM,
+        78usize => _M_07RC7D9,
+        79usize => _M_0GHCN6,
+        80usize => _T_DD00136,
+        81usize => _M_01YRX,
+        82usize => _M_02YDS9,
+        83usize => _M_07QRKRW,
+        84usize => _M_07RJWBB,
+        85usize => _M_07R81J2,
+        86usize => _M_0CH8V,
+        87usize => _M_03K3R,
+        88usize => _M_07RV9RH,
+        89usize => _M_07Q5RW0,
+        90usize => _M_01XQ0K1,
+        91usize => _M_07RPKH9,
+        92usize => _M_0239KH,
+        93usize => _M_068ZJ,
+        94usize => _T_DD00018,
+        95usize => _M_03FWL,
+        96usize => _M_07Q0H5T,
+        97usize => _M_07BGP,
+        98usize => _M_025RV6N,
+        99usize => _M_09B5T,
+        100usize => _M_07ST89H,
+        101usize => _M_07QN5DC,
+        102usize => _M_01RD7K,
+        103usize => _M_07SVC2K,
+        104usize => _M_09DDX,
+        105usize => _M_07QDB04,
+        106usize => _M_0DBVP,
+        107usize => _M_07QWF61,
+        108usize => _M_01280G,
+        109usize => _M_0CDNK,
+        110usize => _M_04CVMFC,
+        111usize => _M_015P6,
+        112usize => _M_020BB7,
+        113usize => _M_07PGGTN,
+        114usize => _M_07SX8X_,
+        115usize => _M_0H0RV,
+        116usize => _M_07R_25D,
+        117usize => _M_04S8YN,
+        118usize => _M_07R5C2P,
+        119usize => _M_09D5_,
+        120usize => _M_07R_80W,
+        121usize => _M_05_WCQ,
+        122usize => _M_01Z5F,
+        123usize => _M_06HPS,
+        124usize => _M_04RMV,
+        125usize => _M_07R4GKF,
+        126usize => _M_03VT0,
+        127usize => _M_09XQV,
+        128usize => _M_09F96,
+        129usize => _M_0H2MP,
+        130usize => _M_07PJWQ1,
+        131usize => _M_01H3N,
+        132usize => _M_09LD4,
+        133usize => _M_07ST88B,
+        134usize => _M_078JL,
+        135usize => _M_07QN4Z3,
+        136usize => _M_032N05,
+        137usize => _M_04RLF,
+        138usize => _M_04SZW,
+        139usize => _M_0FX80Y,
+        140usize => _M_0342H,
+        141usize => _M_02SGY,
+        142usize => _M_018VS,
+        143usize => _M_042V_GX,
+        144usize => _M_06W87,
+        145usize => _M_01GLHC,
+        146usize => _M_07S0S5R,
+        147usize => _M_018J2,
+        148usize => _M_0JTG0,
+        149usize => _M_04RZD,
+        150usize => _M_01BNS_,
+        151usize => _M_07XZM,
+        152usize => _M_05148P4,
+        153usize => _M_05R5C,
+        154usize => _M_01S0PS,
+        155usize => _M_013Y1F,
+        156usize => _M_03XQ_F,
+        157usize => _M_03GVT,
+        158usize => _M_0L14QV,
+        159usize => _M_01V1D8,
+        160usize => _M_03Q5T,
+        161usize => _M_0L14MD,
+        162usize => _M_02HNL,
+        163usize => _M_0CFDD,
+        164usize => _M_026T6,
+        165usize => _M_06RVN,
+        166usize => _M_03T3FJ,
+        167usize => _M_02K_MR,
+        168usize => _M_0BM02,
+        169usize => _M_011K_J,
+        170usize => _M_01P970,
+        171usize => _M_01QBL,
+        172usize => _M_03QTQ,
+        173usize => _M_01SM1G,
+        174usize => _M_07BRJ,
+        175usize => _M_05R5WN,
+        176usize => _M_0XZLY,
+        177usize => _M_0MBCT,
+        178usize => _M_016622,
+        179usize => _M_0J45PBJ,
+        180usize => _M_0DWSP,
+        181usize => _M_0DWTP,
+        182usize => _M_0DWT5,
+        183usize => _M_0L156B,
+        184usize => _M_05PD6,
+        185usize => _M_01KCD,
+        186usize => _M_0319L,
+        187usize => _M_07GQL,
+        188usize => _M_07C6L,
+        189usize => _M_0L14_3,
+        190usize => _M_02QMJ0D,
+        191usize => _M_07Y_7,
+        192usize => _M_0D8_N,
+        193usize => _M_01XQW,
+        194usize => _M_02FSN,
+        195usize => _M_085JW,
+        196usize => _M_0L14J_,
+        197usize => _M_06NCR,
+        198usize => _M_01WY6,
+        199usize => _M_03M5K,
+        200usize => _M_0395LW,
+        201usize => _M_03W41F,
+        202usize => _M_027M70_,
+        203usize => _M_0GY1T2S,
+        204usize => _M_07N_G,
+        205usize => _M_0F8S22,
+        206usize => _M_026FGL,
+        207usize => _M_0150B9,
+        208usize => _M_03QJG,
+        209usize => _M_0MKG,
+        210usize => _M_0192L,
+        211usize => _M_02BXD,
+        212usize => _M_0L14L2,
+        213usize => _M_07KC_,
+        214usize => _M_0L14T7,
+        215usize => _M_01HGJL,
+        216usize => _M_064T9,
+        217usize => _M_0GLT670,
+        218usize => _M_02CZ_7,
+        219usize => _M_06BY7,
+        220usize => _M_03LTY,
+        221usize => _M_05R6T,
+        222usize => _M_0DLS3,
+        223usize => _M_0DL5D,
+        224usize => _M_07SBBZ2,
+        225usize => _M_05W3F,
+        226usize => _M_06J6L,
+        227usize => _M_0GYWN,
+        228usize => _M_06CQB,
+        229usize => _M_01LYV,
+        230usize => _M_015Y_N,
+        231usize => _M_0GG8L,
+        232usize => _M_02X8M,
+        233usize => _M_02W4V,
+        234usize => _M_06J64V,
+        235usize => _M_03_D0,
+        236usize => _M_026Z9,
+        237usize => _M_0GGQ0M,
+        238usize => _M_05LLS,
+        239usize => _M_02LKT,
+        240usize => _M_03MB9,
+        241usize => _M_07GXW,
+        242usize => _M_07S72N,
+        243usize => _M_0283D,
+        244usize => _M_0M0JC,
+        245usize => _M_08CYFT,
+        246usize => _M_0FD3Y,
+        247usize => _M_07LNK,
+        248usize => _M_0G293,
+        249usize => _M_0LN16,
+        250usize => _M_0326G,
+        251usize => _M_0155W,
+        252usize => _M_05FW6T,
+        253usize => _M_02V2LH,
+        254usize => _M_0Y4F8,
+        255usize => _M_0Z9C,
+        256usize => _M_0164X2,
+        257usize => _M_0145M,
+        258usize => _M_02MSCN,
+        259usize => _M_016CJB,
+        260usize => _M_028SQC,
+        261usize => _M_015VGC,
+        262usize => _M_0DQ0MD,
+        263usize => _M_06RQW,
+        264usize => _M_02P0SH1,
+        265usize => _M_05RWPB,
+        266usize => _M_074FT,
+        267usize => _M_025TD0T,
+        268usize => _M_02CJCK,
+        269usize => _M_03R5Q_,
+        270usize => _M_0L14GG,
+        271usize => _M_07PKXDP,
+        272usize => _M_01Z7DR,
+        273usize => _M_0140XF,
+        274usize => _M_0GGX5Q,
+        275usize => _M_04WPTG,
+        276usize => _T_DD00031,
+        277usize => _T_DD00032,
+        278usize => _T_DD00033,
+        279usize => _T_DD00034,
+        280usize => _T_DD00035,
+        281usize => _T_DD00036,
+        282usize => _T_DD00037,
+        283usize => _M_03M9D0Z,
+        284usize => _M_09T49,
+        285usize => _T_DD00092,
+        286usize => _M_0JB2L,
+        287usize => _M_0NGT1,
+        288usize => _M_0838F,
+        289usize => _M_06MB1,
+        290usize => _M_07R10FB,
+        291usize => _T_DD00038,
+        292usize => _M_0J6M2,
+        293usize => _M_0J2KX,
+        294usize => _M_05KQ4,
+        295usize => _M_034SRQ,
+        296usize => _M_06WZB,
+        297usize => _M_07SWGKS,
+        298usize => _M_02_41,
+        299usize => _M_07PZFMF,
+        300usize => _M_07YV9,
+        301usize => _M_019JD,
+        302usize => _M_0HSRW,
+        303usize => _M_056KS2,
+        304usize => _M_02RLV9,
+        305usize => _M_06Q74,
+        306usize => _M_012F08,
+        307usize => _M_0K4J,
+        308usize => _M_0912C9,
+        309usize => _M_07QV_D5,
+        310usize => _M_02MFYN,
+        311usize => _M_04GXBD,
+        312usize => _M_07RKNQZ,
+        313usize => _M_0H9MV,
+        314usize => _T_DD00134,
+        315usize => _M_0LTV,
+        316usize => _M_07R04,
+        317usize => _M_0GVGW0,
+        318usize => _M_05X_TD,
+        319usize => _M_02RHDDQ,
+        320usize => _M_03CL9H,
+        321usize => _M_01BJV,
+        322usize => _M_03J1LY,
+        323usize => _M_04QVTQ,
+        324usize => _M_012N7D,
+        325usize => _M_012NDJ,
+        326usize => _M_04_SV,
+        327usize => _M_0BTP2,
+        328usize => _M_06D_3,
+        329usize => _M_07JDR,
+        330usize => _M_04ZMVQ,
+        331usize => _M_0284VY3,
+        332usize => _M_01G50P,
+        333usize => _T_DD00048,
+        334usize => _M_0195FX,
+        335usize => _M_0K5J,
+        336usize => _M_014YCK,
+        337usize => _M_04229,
+        338usize => _M_02L6BG,
+        339usize => _M_09CT_,
+        340usize => _M_0CMF2,
+        341usize => _M_0199G,
+        342usize => _M_06_FW,
+        343usize => _M_02MK9,
+        344usize => _T_DD00065,
+        345usize => _M_08J51Y,
+        346usize => _M_01YG9G,
+        347usize => _M_01J4Z9,
+        348usize => _T_DD00066,
+        349usize => _T_DD00067,
+        350usize => _M_01H82_,
+        351usize => _T_DD00130,
+        352usize => _M_07PB8FC,
+        353usize => _M_07Q2Z82,
+        354usize => _M_02DGV,
+        355usize => _M_03WWCY,
+        356usize => _M_07R67YG,
+        357usize => _M_02Y_763,
+        358usize => _M_07RJZL8,
+        359usize => _M_07R4WB8,
+        360usize => _M_07QCPGN,
+        361usize => _M_07Q6CD_,
+        362usize => _M_0642B4,
+        363usize => _M_0FQFQC,
+        364usize => _M_04BRG2,
+        365usize => _M_023PJK,
+        366usize => _M_07PN_8Q,
+        367usize => _M_0DXRF,
+        368usize => _M_0FX9L,
+        369usize => _M_02PJR4,
+        370usize => _M_02JZ0L,
+        371usize => _M_0130JX,
+        372usize => _M_03DNZN,
+        373usize => _M_03WVSK,
+        374usize => _M_01JT3M,
+        375usize => _M_012XFF,
+        376usize => _M_04FGWM,
+        377usize => _M_0D31P,
+        378usize => _M_01S0VC,
+        379usize => _M_03V3YW,
+        380usize => _M_0242L,
+        381usize => _M_01LSMM,
+        382usize => _M_02G901,
+        383usize => _M_05RJ2,
+        384usize => _M_0316DW,
+        385usize => _M_0C2WF,
+        386usize => _M_01M2V,
+        387usize => _M_081RB,
+        388usize => _M_07PP_MV,
+        389usize => _M_07CX4,
+        390usize => _M_07PP8CL,
+        391usize => _M_01HNZM,
+        392usize => _M_02C8P,
+        393usize => _M_015JPF,
+        394usize => _M_01Z47D,
+        395usize => _M_046DLR,
+        396usize => _M_03KMC9,
+        397usize => _M_0DGBQ,
+        398usize => _M_030RVX,
+        399usize => _M_01Y3HG,
+        400usize => _M_0C3F7M,
+        401usize => _M_04FQ5Q,
+        402usize => _M_0L156K,
+        403usize => _M_06HCK5,
+        404usize => _T_DD00077,
+        405usize => _M_02BM9N,
+        406usize => _M_01X3Z,
+        407usize => _M_07QJZNT,
+        408usize => _M_07QJZNL,
+        409usize => _M_0L7XG,
+        410usize => _M_05ZC1,
+        411usize => _M_0LLZX,
+        412usize => _M_02X984L,
+        413usize => _M_025WKY1,
+        414usize => _M_024DL,
+        415usize => _M_01M4T,
+        416usize => _M_0DV5R,
+        417usize => _M_07BJF,
+        418usize => _M_07K1X,
+        419usize => _M_03L9G,
+        420usize => _M_03P19W,
+        421usize => _M_01B82R,
+        422usize => _M_02P01Q,
+        423usize => _M_023VSD,
+        424usize => _M_0_KSK,
+        425usize => _M_01D380,
+        426usize => _M_014ZDL,
+        427usize => _M_032S66,
+        428usize => _M_04ZJC,
+        429usize => _M_02Z32QM,
+        430usize => _M_0_1C,
+        431usize => _M_073CG4,
+        432usize => _M_0G6B5,
+        433usize => _G_122Z_QXW,
+        434usize => _M_07QSVVW,
+        435usize => _M_07PXG6Y,
+        436usize => _M_07QQYL4,
+        437usize => _M_083VT,
+        438usize => _M_07PCZHZ,
+        439usize => _M_07PL1BW,
+        440usize => _M_07QS1CX,
+        441usize => _M_039JQ,
+        442usize => _M_07Q7NJN,
+        443usize => _M_07RN7SZ,
+        444usize => _M_04K94,
+        445usize => _M_07RRLB6,
+        446usize => _M_07P6MQD,
+        447usize => _M_07QLWH6,
+        448usize => _M_07R5V4S,
+        449usize => _M_07PRGKL,
+        450usize => _M_07PQC89,
+        451usize => _T_DD00088,
+        452usize => _M_07P7B8Y,
+        453usize => _M_07QLF79,
+        454usize => _M_07PTZWD,
+        455usize => _M_07PTFMF,
+        456usize => _M_0DV3J,
+        457usize => _M_0790C,
+        458usize => _M_0DL83,
+        459usize => _M_07RQSJT,
+        460usize => _M_07QNQ_Y,
+        461usize => _M_07RRH0C,
+        462usize => _M_0B_FWT,
+        463usize => _M_02RR_,
+        464usize => _M_07M2KT,
+        465usize => _M_018W8,
+        466usize => _M_07PWS3F,
+        467usize => _M_07RYJZK,
+        468usize => _M_07RDHZS,
+        469usize => _M_07PJJRJ,
+        470usize => _M_07PC8LB,
+        471usize => _M_07PQN27,
+        472usize => _M_07RBP7_,
+        473usize => _M_07PYF11,
+        474usize => _M_07QB_DV,
+        475usize => _M_07QV4K0,
+        476usize => _M_07PDJHY,
+        477usize => _M_07S8J8T,
+        478usize => _M_07PLCT2,
+        479usize => _T_DD00112,
+        480usize => _M_07QCX4Z,
+        481usize => _M_02FS_R,
+        482usize => _M_07QWDCK,
+        483usize => _M_07PHXS1,
+        484usize => _M_07RV4DM,
+        485usize => _M_07S02Z0,
+        486usize => _M_07QH7JL,
+        487usize => _M_07QWYJ0,
+        488usize => _M_07S34LS,
+        489usize => _M_07QMPDM,
+        490usize => _M_07P9K1K,
+        491usize => _M_07QC9XJ,
+        492usize => _M_07RWM0C,
+        493usize => _M_07PHHSH,
+        494usize => _M_07QYRCZ,
+        495usize => _M_07QFGPX,
+        496usize => _M_07RCGPL,
+        497usize => _M_07P78V5,
+        498usize => _T_DD00121,
+        499usize => _M_07S12Q4,
+        500usize => _M_028V0C,
+        501usize => _M_01V_M0,
+        502usize => _M_0B9M1,
+        503usize => _M_0HDSK,
+        504usize => _M_0C1DJ,
+        505usize => _M_07PT_G0,
+        506usize => _T_DD00125,
+        507usize => _T_DD00126,
+        508usize => _T_DD00127,
+        509usize => _T_DD00128,
+        510usize => _T_DD00129,
+        511usize => _M_01B9NN,
+        512usize => _M_01JNBD,
+        513usize => _M_096M7Z,
+        514usize => _M_06_Y0BY,
+        515usize => _M_07RGKC5,
+        516usize => _M_06XKWV,
+        517usize => _M_0G12C5,
+        518usize => _M_08P9Q4,
+        519usize => _M_07SZFH9,
+        520usize => _M_0CHX_,
+        521usize => _M_0CJ0R,
+        522usize => _M_07P_0GM,
+        523usize => _M_01JWX6,
+        524usize => _M_07C52,
+        525usize => _M_06BZ3,
+        526usize => _M_07HVW1,
+        _ => return ::core::option::Option::None,
+      })
+    }
     /// Get all entries matching an id, name, or alias.
     ///
     /// Lookups are case-insensitive: `"man speaking"`, `"MAN SPEAKING"`,
@@ -9513,6 +10574,540 @@ const _: () = {
         ::core::option::Option::Some(slice) => slice,
         ::core::option::Option::None => &[],
       }
+    }
+    /// Returns a slice of all possible events of `RatedSoundEvent`.
+    #[cfg_attr(not(tarpaulin), inline(always))]
+    pub const fn events() -> &'static [&'static Self] {
+      const EVENTS: &[&super::RatedSoundEvent] = &[
+        _M_09X0R,
+        _M_05ZPPZ,
+        _M_02ZSN,
+        _M_0YTGT,
+        _M_01H8N0,
+        _M_02QLDY,
+        _M_0261R1,
+        _M_0BRHX,
+        _M_07P6FTY,
+        _M_07Q4NTR,
+        _M_07RWJ3X,
+        _M_07SR1LC,
+        _M_04GY_2,
+        _T_DD00135,
+        _M_03QC9ZR,
+        _M_02RTXLG,
+        _M_01J3SZ,
+        _T_DD00001,
+        _M_07R660_,
+        _M_07S04W4,
+        _M_07SQ110,
+        _M_07RGT08,
+        _M_0463CQ4,
+        _T_DD00002,
+        _M_07QZ6J3,
+        _M_07QW_06,
+        _M_07PLZ5L,
+        _M_015LZ1,
+        _M_0L14JD,
+        _M_01SWY6,
+        _M_02BK07,
+        _M_01C194,
+        _T_DD00003,
+        _T_DD00004,
+        _T_DD00005,
+        _T_DD00006,
+        _M_06BXC,
+        _M_02FXYJ,
+        _M_07S2XCH,
+        _M_07R4K75,
+        _M_01W250,
+        _M_0LYF6,
+        _M_07MZM6,
+        _M_01D3SD,
+        _M_07S0DTB,
+        _M_07PYY8B,
+        _M_07Q0YL5,
+        _M_01B_21,
+        _M_0DL9SF8,
+        _M_01HSR_,
+        _M_07PPN3J,
+        _M_06H7J,
+        _M_07QV_X_,
+        _M_07PBTC8,
+        _M_03CCZK,
+        _M_07PDHP0,
+        _M_0939N_,
+        _M_01G90H,
+        _M_03Q5_W,
+        _M_02P3NC,
+        _M_02_NN,
+        _M_0K65P,
+        _M_025_JNM,
+        _M_0L15BQ,
+        _M_01JG02,
+        _M_01JG1Z,
+        _M_053HZ1,
+        _M_028GHT,
+        _M_07RKBFH,
+        _M_03QTWD,
+        _M_07QFR4H,
+        _T_DD00013,
+        _M_0JBK,
+        _M_068HY,
+        _M_0BT9LR,
+        _M_05TNY_,
+        _M_07R_K2N,
+        _M_07QF0ZM,
+        _M_07RC7D9,
+        _M_0GHCN6,
+        _T_DD00136,
+        _M_01YRX,
+        _M_02YDS9,
+        _M_07QRKRW,
+        _M_07RJWBB,
+        _M_07R81J2,
+        _M_0CH8V,
+        _M_03K3R,
+        _M_07RV9RH,
+        _M_07Q5RW0,
+        _M_01XQ0K1,
+        _M_07RPKH9,
+        _M_0239KH,
+        _M_068ZJ,
+        _T_DD00018,
+        _M_03FWL,
+        _M_07Q0H5T,
+        _M_07BGP,
+        _M_025RV6N,
+        _M_09B5T,
+        _M_07ST89H,
+        _M_07QN5DC,
+        _M_01RD7K,
+        _M_07SVC2K,
+        _M_09DDX,
+        _M_07QDB04,
+        _M_0DBVP,
+        _M_07QWF61,
+        _M_01280G,
+        _M_0CDNK,
+        _M_04CVMFC,
+        _M_015P6,
+        _M_020BB7,
+        _M_07PGGTN,
+        _M_07SX8X_,
+        _M_0H0RV,
+        _M_07R_25D,
+        _M_04S8YN,
+        _M_07R5C2P,
+        _M_09D5_,
+        _M_07R_80W,
+        _M_05_WCQ,
+        _M_01Z5F,
+        _M_06HPS,
+        _M_04RMV,
+        _M_07R4GKF,
+        _M_03VT0,
+        _M_09XQV,
+        _M_09F96,
+        _M_0H2MP,
+        _M_07PJWQ1,
+        _M_01H3N,
+        _M_09LD4,
+        _M_07ST88B,
+        _M_078JL,
+        _M_07QN4Z3,
+        _M_032N05,
+        _M_04RLF,
+        _M_04SZW,
+        _M_0FX80Y,
+        _M_0342H,
+        _M_02SGY,
+        _M_018VS,
+        _M_042V_GX,
+        _M_06W87,
+        _M_01GLHC,
+        _M_07S0S5R,
+        _M_018J2,
+        _M_0JTG0,
+        _M_04RZD,
+        _M_01BNS_,
+        _M_07XZM,
+        _M_05148P4,
+        _M_05R5C,
+        _M_01S0PS,
+        _M_013Y1F,
+        _M_03XQ_F,
+        _M_03GVT,
+        _M_0L14QV,
+        _M_01V1D8,
+        _M_03Q5T,
+        _M_0L14MD,
+        _M_02HNL,
+        _M_0CFDD,
+        _M_026T6,
+        _M_06RVN,
+        _M_03T3FJ,
+        _M_02K_MR,
+        _M_0BM02,
+        _M_011K_J,
+        _M_01P970,
+        _M_01QBL,
+        _M_03QTQ,
+        _M_01SM1G,
+        _M_07BRJ,
+        _M_05R5WN,
+        _M_0XZLY,
+        _M_0MBCT,
+        _M_016622,
+        _M_0J45PBJ,
+        _M_0DWSP,
+        _M_0DWTP,
+        _M_0DWT5,
+        _M_0L156B,
+        _M_05PD6,
+        _M_01KCD,
+        _M_0319L,
+        _M_07GQL,
+        _M_07C6L,
+        _M_0L14_3,
+        _M_02QMJ0D,
+        _M_07Y_7,
+        _M_0D8_N,
+        _M_01XQW,
+        _M_02FSN,
+        _M_085JW,
+        _M_0L14J_,
+        _M_06NCR,
+        _M_01WY6,
+        _M_03M5K,
+        _M_0395LW,
+        _M_03W41F,
+        _M_027M70_,
+        _M_0GY1T2S,
+        _M_07N_G,
+        _M_0F8S22,
+        _M_026FGL,
+        _M_0150B9,
+        _M_03QJG,
+        _M_0MKG,
+        _M_0192L,
+        _M_02BXD,
+        _M_0L14L2,
+        _M_07KC_,
+        _M_0L14T7,
+        _M_01HGJL,
+        _M_064T9,
+        _M_0GLT670,
+        _M_02CZ_7,
+        _M_06BY7,
+        _M_03LTY,
+        _M_05R6T,
+        _M_0DLS3,
+        _M_0DL5D,
+        _M_07SBBZ2,
+        _M_05W3F,
+        _M_06J6L,
+        _M_0GYWN,
+        _M_06CQB,
+        _M_01LYV,
+        _M_015Y_N,
+        _M_0GG8L,
+        _M_02X8M,
+        _M_02W4V,
+        _M_06J64V,
+        _M_03_D0,
+        _M_026Z9,
+        _M_0GGQ0M,
+        _M_05LLS,
+        _M_02LKT,
+        _M_03MB9,
+        _M_07GXW,
+        _M_07S72N,
+        _M_0283D,
+        _M_0M0JC,
+        _M_08CYFT,
+        _M_0FD3Y,
+        _M_07LNK,
+        _M_0G293,
+        _M_0LN16,
+        _M_0326G,
+        _M_0155W,
+        _M_05FW6T,
+        _M_02V2LH,
+        _M_0Y4F8,
+        _M_0Z9C,
+        _M_0164X2,
+        _M_0145M,
+        _M_02MSCN,
+        _M_016CJB,
+        _M_028SQC,
+        _M_015VGC,
+        _M_0DQ0MD,
+        _M_06RQW,
+        _M_02P0SH1,
+        _M_05RWPB,
+        _M_074FT,
+        _M_025TD0T,
+        _M_02CJCK,
+        _M_03R5Q_,
+        _M_0L14GG,
+        _M_07PKXDP,
+        _M_01Z7DR,
+        _M_0140XF,
+        _M_0GGX5Q,
+        _M_04WPTG,
+        _T_DD00031,
+        _T_DD00032,
+        _T_DD00033,
+        _T_DD00034,
+        _T_DD00035,
+        _T_DD00036,
+        _T_DD00037,
+        _M_03M9D0Z,
+        _M_09T49,
+        _T_DD00092,
+        _M_0JB2L,
+        _M_0NGT1,
+        _M_0838F,
+        _M_06MB1,
+        _M_07R10FB,
+        _T_DD00038,
+        _M_0J6M2,
+        _M_0J2KX,
+        _M_05KQ4,
+        _M_034SRQ,
+        _M_06WZB,
+        _M_07SWGKS,
+        _M_02_41,
+        _M_07PZFMF,
+        _M_07YV9,
+        _M_019JD,
+        _M_0HSRW,
+        _M_056KS2,
+        _M_02RLV9,
+        _M_06Q74,
+        _M_012F08,
+        _M_0K4J,
+        _M_0912C9,
+        _M_07QV_D5,
+        _M_02MFYN,
+        _M_04GXBD,
+        _M_07RKNQZ,
+        _M_0H9MV,
+        _T_DD00134,
+        _M_0LTV,
+        _M_07R04,
+        _M_0GVGW0,
+        _M_05X_TD,
+        _M_02RHDDQ,
+        _M_03CL9H,
+        _M_01BJV,
+        _M_03J1LY,
+        _M_04QVTQ,
+        _M_012N7D,
+        _M_012NDJ,
+        _M_04_SV,
+        _M_0BTP2,
+        _M_06D_3,
+        _M_07JDR,
+        _M_04ZMVQ,
+        _M_0284VY3,
+        _M_01G50P,
+        _T_DD00048,
+        _M_0195FX,
+        _M_0K5J,
+        _M_014YCK,
+        _M_04229,
+        _M_02L6BG,
+        _M_09CT_,
+        _M_0CMF2,
+        _M_0199G,
+        _M_06_FW,
+        _M_02MK9,
+        _T_DD00065,
+        _M_08J51Y,
+        _M_01YG9G,
+        _M_01J4Z9,
+        _T_DD00066,
+        _T_DD00067,
+        _M_01H82_,
+        _T_DD00130,
+        _M_07PB8FC,
+        _M_07Q2Z82,
+        _M_02DGV,
+        _M_03WWCY,
+        _M_07R67YG,
+        _M_02Y_763,
+        _M_07RJZL8,
+        _M_07R4WB8,
+        _M_07QCPGN,
+        _M_07Q6CD_,
+        _M_0642B4,
+        _M_0FQFQC,
+        _M_04BRG2,
+        _M_023PJK,
+        _M_07PN_8Q,
+        _M_0DXRF,
+        _M_0FX9L,
+        _M_02PJR4,
+        _M_02JZ0L,
+        _M_0130JX,
+        _M_03DNZN,
+        _M_03WVSK,
+        _M_01JT3M,
+        _M_012XFF,
+        _M_04FGWM,
+        _M_0D31P,
+        _M_01S0VC,
+        _M_03V3YW,
+        _M_0242L,
+        _M_01LSMM,
+        _M_02G901,
+        _M_05RJ2,
+        _M_0316DW,
+        _M_0C2WF,
+        _M_01M2V,
+        _M_081RB,
+        _M_07PP_MV,
+        _M_07CX4,
+        _M_07PP8CL,
+        _M_01HNZM,
+        _M_02C8P,
+        _M_015JPF,
+        _M_01Z47D,
+        _M_046DLR,
+        _M_03KMC9,
+        _M_0DGBQ,
+        _M_030RVX,
+        _M_01Y3HG,
+        _M_0C3F7M,
+        _M_04FQ5Q,
+        _M_0L156K,
+        _M_06HCK5,
+        _T_DD00077,
+        _M_02BM9N,
+        _M_01X3Z,
+        _M_07QJZNT,
+        _M_07QJZNL,
+        _M_0L7XG,
+        _M_05ZC1,
+        _M_0LLZX,
+        _M_02X984L,
+        _M_025WKY1,
+        _M_024DL,
+        _M_01M4T,
+        _M_0DV5R,
+        _M_07BJF,
+        _M_07K1X,
+        _M_03L9G,
+        _M_03P19W,
+        _M_01B82R,
+        _M_02P01Q,
+        _M_023VSD,
+        _M_0_KSK,
+        _M_01D380,
+        _M_014ZDL,
+        _M_032S66,
+        _M_04ZJC,
+        _M_02Z32QM,
+        _M_0_1C,
+        _M_073CG4,
+        _M_0G6B5,
+        _G_122Z_QXW,
+        _M_07QSVVW,
+        _M_07PXG6Y,
+        _M_07QQYL4,
+        _M_083VT,
+        _M_07PCZHZ,
+        _M_07PL1BW,
+        _M_07QS1CX,
+        _M_039JQ,
+        _M_07Q7NJN,
+        _M_07RN7SZ,
+        _M_04K94,
+        _M_07RRLB6,
+        _M_07P6MQD,
+        _M_07QLWH6,
+        _M_07R5V4S,
+        _M_07PRGKL,
+        _M_07PQC89,
+        _T_DD00088,
+        _M_07P7B8Y,
+        _M_07QLF79,
+        _M_07PTZWD,
+        _M_07PTFMF,
+        _M_0DV3J,
+        _M_0790C,
+        _M_0DL83,
+        _M_07RQSJT,
+        _M_07QNQ_Y,
+        _M_07RRH0C,
+        _M_0B_FWT,
+        _M_02RR_,
+        _M_07M2KT,
+        _M_018W8,
+        _M_07PWS3F,
+        _M_07RYJZK,
+        _M_07RDHZS,
+        _M_07PJJRJ,
+        _M_07PC8LB,
+        _M_07PQN27,
+        _M_07RBP7_,
+        _M_07PYF11,
+        _M_07QB_DV,
+        _M_07QV4K0,
+        _M_07PDJHY,
+        _M_07S8J8T,
+        _M_07PLCT2,
+        _T_DD00112,
+        _M_07QCX4Z,
+        _M_02FS_R,
+        _M_07QWDCK,
+        _M_07PHXS1,
+        _M_07RV4DM,
+        _M_07S02Z0,
+        _M_07QH7JL,
+        _M_07QWYJ0,
+        _M_07S34LS,
+        _M_07QMPDM,
+        _M_07P9K1K,
+        _M_07QC9XJ,
+        _M_07RWM0C,
+        _M_07PHHSH,
+        _M_07QYRCZ,
+        _M_07QFGPX,
+        _M_07RCGPL,
+        _M_07P78V5,
+        _T_DD00121,
+        _M_07S12Q4,
+        _M_028V0C,
+        _M_01V_M0,
+        _M_0B9M1,
+        _M_0HDSK,
+        _M_0C1DJ,
+        _M_07PT_G0,
+        _T_DD00125,
+        _T_DD00126,
+        _T_DD00127,
+        _T_DD00128,
+        _T_DD00129,
+        _M_01B9NN,
+        _M_01JNBD,
+        _M_096M7Z,
+        _M_06_Y0BY,
+        _M_07RGKC5,
+        _M_06XKWV,
+        _M_0G12C5,
+        _M_08P9Q4,
+        _M_07SZFH9,
+        _M_0CHX_,
+        _M_0CJ0R,
+        _M_07P_0GM,
+        _M_01JWX6,
+        _M_07C52,
+        _M_06BZ3,
+        _M_07HVW1,
+      ];
+      EVENTS
     }
   }
 };

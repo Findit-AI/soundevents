@@ -25,10 +25,9 @@ struct RawSoundEvent {
 }
 
 /// One row of `class_labels_indices.csv`.
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Clone, Deserialize)]
 struct CsvRow {
-  #[allow(dead_code)]
-  index: u32,
+  index: usize,
   mid: String,
   #[allow(dead_code)]
   display_name: String,
@@ -89,7 +88,11 @@ fn codegen() {
 
   // 2. Parse the rated CSV into a set of mids (preserves CSV ordering, but
   //    we only need set membership for filtering).
-  let rated_ids = read_rated_ids(&csv_path);
+  let rated_rows = read_rated_rows(&csv_path);
+  let rated_ids = rated_rows
+    .iter()
+    .map(|row| row.mid.clone())
+    .collect::<Vec<_>>();
 
   // 3. Emit the full ontology module (all 632 records).
   let all_ids: HashSet<&str> = records.iter().map(|r| r.id.as_str()).collect();
@@ -100,6 +103,7 @@ fn codegen() {
     "UnknownSoundEventCode",
     "ontology",
     &ontology_out,
+    None,
   );
 
   // 4. Emit the rated module (only the 527 entries in the CSV; their child
@@ -112,17 +116,26 @@ fn codegen() {
     "UnknownRatedSoundEventCode",
     "rated",
     &rated_out,
+    Some(&rated_rows),
   );
 }
 
-fn read_rated_ids(path: &PathBuf) -> Vec<String> {
+fn read_rated_rows(path: &PathBuf) -> Vec<CsvRow> {
   let mut rdr = csv::ReaderBuilder::new()
     .has_headers(true)
     .from_path(path)
     .unwrap_or_else(|e| panic!("failed to open {}: {e}", path.display()));
   let mut out = Vec::new();
   for row in rdr.deserialize::<CsvRow>() {
-    out.push(row.expect("failed to parse CSV row").mid);
+    out.push(row.expect("failed to parse CSV row"));
+  }
+  out.sort_unstable_by_key(|row| row.index);
+  for (expected_index, row) in out.iter().enumerate() {
+    assert_eq!(
+      row.index, expected_index,
+      "CSV indices must be contiguous and start from 0; expected {expected_index}, found {} for {}",
+      row.index, row.mid
+    );
   }
   out
 }
@@ -219,14 +232,23 @@ fn emit_module(
   err_name: &str,
   module_name: &str,
   output_path: &PathBuf,
+  rated_rows: Option<&[CsvRow]>,
 ) {
   let type_ident = format_ident!("{}", type_name);
   let err_ident = format_ident!("{}", err_name);
 
   let mut consts = Vec::new();
+  let mut events = Vec::new();
   let mut from_code_arms = Vec::new();
+  let mut from_index_arms = Vec::new();
   // alias_to_consts: lowercased phf key -> set of const idents pointing at it.
   let mut alias_to_consts: IndexMap<String, IndexSet<syn::Ident>> = IndexMap::new();
+  let rated_indices = rated_rows.map(|rows| {
+    rows
+      .iter()
+      .map(|row| (row.mid.as_str(), row.index))
+      .collect::<IndexMap<_, _>>()
+  });
 
   for record in records {
     if !included_ids.contains(record.id.as_str()) {
@@ -243,6 +265,11 @@ fn emit_module(
     };
     let aliases = record.alias_strings.iter().map(|s| s.as_str());
     let restrictions = record.restrictions.iter();
+    let rated_index = rated_indices
+      .as_ref()
+      .and_then(|indices| indices.get(record.id.as_str()))
+      .copied();
+    let rated_index_field = rated_index.map(|index| quote! { index: #index, });
     // Filter children to those still inside the included set.
     let children = record
       .child_ids
@@ -260,8 +287,10 @@ fn emit_module(
         citation_uri: #citation_uri,
         children: &[#(#children),*],
         restrictions: &[#(#restrictions),*],
+        #rated_index_field
       };
     });
+    events.push(const_name_ident.clone());
 
     from_code_arms.push(quote! {
       #code => #const_name_ident
@@ -273,6 +302,32 @@ fn emit_module(
         .or_default()
         .insert(const_name_ident.clone());
     }
+  }
+
+  if let Some(rows) = rated_rows {
+    events = rows
+      .iter()
+      .map(|row| {
+        assert!(
+          included_ids.contains(row.mid.as_str()),
+          "rated CSV entry {} is missing from the generated {} module",
+          row.mid,
+          module_name
+        );
+        id_to_const_name_ident(&row.mid)
+      })
+      .collect();
+
+    from_index_arms = rows
+      .iter()
+      .map(|row| {
+        let index = row.index;
+        let const_ident = id_to_const_name_ident(&row.mid);
+        quote! {
+          #index => #const_ident
+        }
+      })
+      .collect();
   }
 
   // Build the perfect-hash map with phf_codegen, keyed by &UncasedStr so
@@ -296,6 +351,22 @@ fn emit_module(
 
   // The handcoded chunk of generated.rs (consts + helper + impls). The phf
   // static is appended afterwards as raw text from `phf_built`.
+  let events_doc = format!(" Returns a slice of all possible events of `{type_name}`.");
+  let from_index_impl = if rated_rows.is_some() {
+    quote! {
+      /// Get an entry by its model output index, if it exists.
+      #[cfg_attr(not(tarpaulin), inline(always))]
+      pub const fn from_index(index: usize) -> ::core::option::Option<&'static Self> {
+        ::core::option::Option::Some(match index {
+          #(#from_index_arms),*,
+          _ => return ::core::option::Option::None,
+        })
+      }
+    }
+  } else {
+    quote! {}
+  };
+
   let body = quote! {
     #(#consts)*
 
@@ -337,6 +408,8 @@ fn emit_module(
           })
         }
 
+        #from_index_impl
+
         /// Get all entries matching an id, name, or alias.
         ///
         /// Lookups are case-insensitive: `"man speaking"`, `"MAN SPEAKING"`,
@@ -353,6 +426,14 @@ fn emit_module(
             ::core::option::Option::Some(slice) => slice,
             ::core::option::Option::None => &[],
           }
+        }
+
+        #[doc = #events_doc]
+        #[cfg_attr(not(tarpaulin), inline(always))]
+        pub const fn events() -> &'static [&'static Self] {
+          const EVENTS: &[&super::#type_ident] = &[#(#events),*];
+
+          EVENTS
         }
       }
     };

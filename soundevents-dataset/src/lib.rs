@@ -98,7 +98,18 @@ macro_rules! define_sound_event {
     name: $name:ident,
     $(#[$err_meta:meta])*
     error: $err_name:ident,
-    error_message: $err_msg:literal $(,)?
+    error_message: $err_msg:literal
+    $(,
+      extra_fields: {
+        $($extra_field:tt)*
+      }
+    )?
+    $(,
+      extra_impl: {
+        $($extra_impl:tt)*
+      }
+    )?
+    $(,)?
   ) => {
     $(#[$struct_meta])*
     #[derive(Debug, Clone, PartialEq, Eq, Hash)]
@@ -117,6 +128,7 @@ macro_rules! define_sound_event {
       pub(crate) children: &'static [&'static $name],
       #[cfg_attr(feature = "serde", serde(skip_serializing_if = "<[_]>::is_empty"))]
       pub(crate) restrictions: &'static [$crate::Restriction],
+      $($($extra_field)*)?
     }
 
     impl ::core::fmt::Display for $name {
@@ -174,6 +186,8 @@ macro_rules! define_sound_event {
       pub const fn restrictions(&self) -> &'static [$crate::Restriction] {
         self.restrictions
       }
+
+      $($($extra_impl)*)?
     }
 
     $(#[$err_meta])*

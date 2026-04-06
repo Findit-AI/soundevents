@@ -2,19 +2,17 @@
 
 #[cfg(feature = "ontology")]
 mod ontology {
-  use soundevents_dataset::ontology::{SoundEvent, DATASET};
+  use soundevents_dataset::ontology::SoundEvent;
 
   #[test]
   fn ontology_count_matches_upstream() {
     // SoundEvent::from_code is generated from every entry, so we can count
-    // distinct ids reachable through DATASET as a sanity check.
-    let mut ids = std::collections::HashSet::new();
-    for slice in DATASET.values() {
-      for entry in slice.iter() {
-        ids.insert(entry.id());
-      }
-    }
-    assert_eq!(ids.len(), 632, "expected 632 ontology entries");
+    // distinct ids reachable through EVENTS as a sanity check.
+    assert_eq!(
+      SoundEvent::events().len(),
+      632,
+      "expected 632 ontology entries"
+    );
   }
 
   #[test]
@@ -48,17 +46,15 @@ mod ontology {
 
 #[cfg(feature = "rated")]
 mod rated {
-  use soundevents_dataset::rated::{RatedSoundEvent, DATASET};
+  use soundevents_dataset::rated::RatedSoundEvent;
 
   #[test]
   fn rated_count_matches_csv() {
-    let mut ids = std::collections::HashSet::new();
-    for slice in DATASET.values() {
-      for entry in slice.iter() {
-        ids.insert(entry.id());
-      }
-    }
-    assert_eq!(ids.len(), 527, "expected 527 rated entries");
+    assert_eq!(
+      RatedSoundEvent::events().len(),
+      527,
+      "expected 527 rated entries"
+    );
   }
 
   #[test]

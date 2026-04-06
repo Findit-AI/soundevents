@@ -14,4 +14,3 @@ crate::define_sound_event! {
 }
 
 mod generated;
-pub use generated::*;
