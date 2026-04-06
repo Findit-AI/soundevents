@@ -9,6 +9,7 @@ use quote::{format_ident, quote};
 use serde::{Deserialize, Serialize};
 use siphasher::sip::SipHasher;
 use syn::parse::{Parse, Parser};
+use uncased::UncasedStr;
 
 /// A tag for the audioset.
 #[derive(Debug, Clone, PartialEq, Eq, Hash, Serialize, Deserialize)]
@@ -64,7 +65,7 @@ fn codegen() {
     let code = SipHasher::new().hash(name.as_bytes());
 
     alias_to_consts
-      .entry(id.to_string())
+      .entry(id.to_lowercase())
       .or_default()
       .insert(const_name_ident.clone());
     from_code_maps.push(quote! {
@@ -109,8 +110,12 @@ fn codegen() {
       .collect::<IndexSet<_>>()
       .into_iter()
       .inspect(|s| {
+        // Phf map keys are uncased: store the lowercased form so all
+        // case variants of the same separator-distinct alias collapse
+        // into a single bucket (and cross-entry case differences merge
+        // correctly too).
         alias_to_consts
-          .entry(s.clone())
+          .entry(s.to_lowercase())
           .or_default()
           .insert(const_name_ident.clone());
       })
@@ -152,7 +157,10 @@ fn codegen() {
   // need the `phf macros` proc-macro at compile time. Each value is wrapped in
   // `__slice(...)` so that array literals of differing lengths all coerce to
   // the same `&'static [&'static SoundEvent]` type.
-  let mut phf_map = phf_codegen::Map::<&str>::new();
+  // Build the phf map keyed by `&UncasedStr` so lookups are case-insensitive.
+  // We don't need to enumerate every case variant in the keyspace — any case
+  // form of the same separator-distinct alias resolves to the same bucket.
+  let mut phf_map = phf_codegen::Map::<&UncasedStr>::new();
   let value_strings: Vec<(String, String)> = alias_to_consts
     .iter()
     .map(|(key, idents)| {
@@ -165,18 +173,21 @@ fn codegen() {
     })
     .collect();
   for (key, value) in &value_strings {
-    phf_map.entry(key.as_str(), value);
+    phf_map.entry(UncasedStr::new(key.as_str()), value);
   }
   let phf_static = format!(
-    "/// The dataset of all tags in the \
+    "use ::uncased::UncasedStr;\n\n\
+     /// The dataset of all tags in the \
      [https://github.com/audioset/ontology/blob/master/ontology.json]\
      (https://github.com/audioset/ontology/blob/master/ontology.json), \
      indexed by their id, name, and aliases.\n\
      ///\n\
-     /// Each key maps to a slice of all entries that share that name or alias.\n\
-     /// Most keys map to a single entry; a few ambiguous aliases (e.g. `\"Inside\"`)\n\
-     /// map to multiple entries.\n\
-     pub static DATASET: ::phf::Map<&'static ::core::primitive::str, &'static [&'static crate::SoundEvent]> = {};\n",
+     /// Lookups are case-insensitive (the keys are `UncasedStr`), so any\n\
+     /// case form of an alias resolves through the same bucket. Each key\n\
+     /// maps to a slice of all entries that share that name or alias —\n\
+     /// most keys map to a single entry, but a few ambiguous aliases\n\
+     /// (e.g. `\"Inside\"`) map to multiple entries.\n\
+     pub static DATASET: ::phf::Map<&'static UncasedStr, &'static [&'static crate::SoundEvent]> = {};\n",
     phf_map.build()
   );
 
@@ -223,12 +234,17 @@ fn codegen() {
 
         /// Get all entries matching an id, name, or alias.
         ///
+        /// Lookups are case-insensitive: `"man speaking"`, `"MAN SPEAKING"`,
+        /// and `"Man Speaking"` all resolve to the same entry. Separator
+        /// styles (`"man_speaking"`, `"man-speaking"`, `"manSpeaking"`) are
+        /// each indexed separately.
+        ///
         /// Returns an empty slice if no entries match. Most names map to a
         /// single entry, but ambiguous aliases (e.g. `"Inside"`) may return
         /// multiple entries.
         #[cfg_attr(not(tarpaulin), inline(always))]
         pub fn from_key(name: &str) -> &'static [&'static Self] {
-          match DATASET.get(name) {
+          match DATASET.get(::uncased::UncasedStr::new(name)) {
             ::core::option::Option::Some(slice) => slice,
             ::core::option::Option::None => &[],
           }

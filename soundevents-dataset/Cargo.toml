@@ -12,13 +12,14 @@ rust-version = "1.59"
 [features]
 default = ["std"]
 alloc = []
-std = ["thiserror/default"]
+std = ["thiserror/default", "phf/std"]
 
 serde = ["dep:serde"]
 
 [dependencies]
 thiserror = { workspace = true, default-features = false }
-phf = "0.13"
+phf = { version = "0.13", default-features = false, features = ["uncased"] }
+uncased = { version = "0.9", default-features = false }
 
 serde = { workspace = true, features = ["derive"], optional = true }
 

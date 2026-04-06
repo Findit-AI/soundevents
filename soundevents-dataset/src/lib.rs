@@ -4,8 +4,6 @@
 #![cfg_attr(docsrs, allow(unused_attributes))]
 #![deny(missing_docs)]
 
-pub use generated::*;
-
 mod generated;
 
 /// Errors that can occur when looking up a sound entry by code
