@@ -93,6 +93,7 @@ impl Restriction {
 /// `Unknown*Code` error type, and `Display`. Used twice — once in the
 /// `ontology` module and once in the `rated` module — to produce two
 /// independent types with identical shape.
+#[cfg(any(feature = "ontology", feature = "rated"))]
 macro_rules! define_sound_event {
   (
     $(#[$struct_meta:meta])*
