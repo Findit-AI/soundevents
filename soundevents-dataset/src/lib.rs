@@ -207,4 +207,5 @@ macro_rules! define_sound_event {
   };
 }
 
+#[cfg(any(feature = "ontology", feature = "rated"))]
 pub(crate) use define_sound_event;
