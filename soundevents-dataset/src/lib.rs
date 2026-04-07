@@ -71,21 +71,21 @@ impl Restriction {
   #[cfg_attr(not(tarpaulin), inline(always))]
   pub const fn as_str(&self) -> &'static str {
     match self {
-      Restriction::Abstract => "abstract",
-      Restriction::Blacklist => "blacklist",
+      Self::Abstract => "abstract",
+      Self::Blacklist => "blacklist",
     }
   }
 
   /// Return `true` if the restriction is an abstract category
   #[cfg_attr(not(tarpaulin), inline(always))]
   pub const fn is_abstract(&self) -> bool {
-    matches!(self, Restriction::Abstract)
+    matches!(self, Self::Abstract)
   }
 
   /// Return `true` if the restriction is a blacklisted entry.
   #[cfg_attr(not(tarpaulin), inline(always))]
   pub const fn is_blacklist(&self) -> bool {
-    matches!(self, Restriction::Blacklist)
+    matches!(self, Self::Blacklist)
   }
 }
 
