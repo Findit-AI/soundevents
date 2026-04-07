@@ -7,7 +7,7 @@ homepage = "https://github.com/findit-ai/soundevents"
 documentation = "https://docs.rs/soundevents"
 description = "Audio Set Ontology aims to provide a comprehensive set of categories to describe sound events."
 license = "MIT OR Apache-2.0"
-rust-version = "1.59"
+rust-version = "1.59.0"
 
 [features]
 default = ["std", "rated"]
