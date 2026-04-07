@@ -1,0 +1,35 @@
+[package]
+name = "soundevents"
+version = "0.1.0"
+edition = "2024"
+description = "Production-oriented Rust inference wrapper for CED AudioSet classifiers."
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/findit-ai/soundevents"
+homepage = "https://github.com/findit-ai/soundevents"
+documentation = "https://docs.rs/soundevents"
+rust-version = "1.85"
+include = [
+  "Cargo.toml",
+  "build.rs",
+  "models/tiny.onnx",
+  "src/**",
+]
+
+[features]
+default = []
+bundled-tiny = []
+
+[dependencies]
+ort = "2.0.0-rc.12"
+smol_str = "0.3"
+thiserror = { workspace = true, features = ["default"] }
+
+soundevents-dataset = { workspace = true, features = ["rated"] }
+
+[lints.rust]
+rust_2018_idioms = "warn"
+single_use_lifetimes = "warn"
+unexpected_cfgs = { level = "warn", check-cfg = [
+  'cfg(all_tests)',
+  'cfg(tarpaulin)',
+] }

@@ -16,3 +16,8 @@
 
 /target
 Cargo.lock
+
+**.claude/
+soundevents/models/mini.onnx
+soundevents/models/base.onnx
+soundevents/models/small.onnx

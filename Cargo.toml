@@ -1,29 +1,20 @@
-[package]
-name = "template-rs"
-version = "0.0.0"
-edition = "2021"
-repository = "https://github.com/al8n/template-rs"
-homepage = "https://github.com/al8n/template-rs"
-documentation = "https://docs.rs/template-rs"
-description = "A template for creating Rust open-source repo on GitHub"
-license = "MIT OR Apache-2.0"
-rust-version = "1.73"
+[workspace]
+members = [
+  "soundevents",
+  "soundevents-dataset",
+  "xtask",
+]
+default-members = [
+  "soundevents",
+  "soundevents-dataset",
+]
+resolver = "3"
 
-[[bench]]
-path = "benches/foo.rs"
-name = "foo"
-harness = false
+[workspace.dependencies]
+thiserror = { version = "2", default-features = false }
+serde = "1"
 
-[features]
-default = ["std"]
-alloc = []
-std = []
-
-[dependencies]
-
-[dev-dependencies]
-criterion = "0.8"
-tempfile = "3"
+soundevents-dataset = { version = "0.1", path = "soundevents-dataset", default-features = false }
 
 [profile.bench]
 opt-level = 3
@@ -34,15 +25,3 @@ incremental = false
 debug-assertions = false
 overflow-checks = false
 rpath = false
-
-[package.metadata.docs.rs]
-all-features = true
-rustdoc-args = ["--cfg", "docsrs"]
-
-[lints.rust]
-rust_2018_idioms = "warn"
-single_use_lifetimes = "warn"
-unexpected_cfgs = { level = "warn", check-cfg = [
-  'cfg(all_tests)',
-  'cfg(tarpaulin)',
-] }
