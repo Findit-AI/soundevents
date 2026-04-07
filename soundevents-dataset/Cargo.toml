@@ -1,0 +1,45 @@
+[package]
+name = "soundevents-dataset"
+version = "0.1.0"
+edition = "2021"
+repository = "https://github.com/findit-ai/soundevents"
+homepage = "https://github.com/findit-ai/soundevents"
+documentation = "https://docs.rs/soundevents"
+description = "Audio Set Ontology aims to provide a comprehensive set of categories to describe sound events."
+license = "MIT OR Apache-2.0"
+rust-version = "1.59.0"
+
+[features]
+default = ["std", "rated"]
+alloc = []
+std = ["thiserror/default", "phf/std"]
+
+# Include the full AudioSet ontology (632 entries) — exposes the
+# `ontology` module with `SoundEvent`, `DATASET`, etc.
+ontology = []
+
+# Include the released AudioSet rated label set (527 entries from
+# `class_labels_indices.csv`) — exposes the `rated` module with
+# `RatedSoundEvent`, `RATED_DATASET`, etc.
+rated = []
+
+serde = ["dep:serde"]
+
+[dependencies]
+thiserror = { workspace = true, default-features = false }
+phf = { version = "0.13", default-features = false, features = ["uncased"] }
+uncased = { version = "0.9", default-features = false }
+
+serde = { workspace = true, features = ["derive"], optional = true }
+
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]
+
+[lints.rust]
+rust_2018_idioms = "warn"
+single_use_lifetimes = "warn"
+unexpected_cfgs = { level = "warn", check-cfg = [
+  'cfg(all_tests)',
+  'cfg(tarpaulin)',
+] }
