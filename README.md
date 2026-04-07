@@ -124,15 +124,6 @@ use soundevents::{Classifier, Options};
 let mut classifier = Classifier::tiny(Options::default())?;
 ```
 
-## Crates in this workspace
-
-| Crate | Status | Description |
-| --- | --- | --- |
-| [`soundevents`](./soundevents) | **available** | This crate. ONNX inference wrapper for CED AudioSet classifiers. Built on [`ort`](https://docs.rs/ort) and [`soundevents-dataset`](./soundevents-dataset). |
-| [`soundevents-dataset`](./soundevents-dataset) | **available** | Zero-allocation, `no_std`-friendly access to AudioSet's sound-event taxonomies. Two feature-gated views: the full **632-entry** ontology (`ontology` module) and the **527-class** rated label set used by released AudioSet models (`rated` module). See its [README](./soundevents-dataset/README.md) for usage. |
-
-If you only need taxonomy lookup (no inference), depend on `soundevents-dataset` directly. If you want full classification, depend on `soundevents` — it pulls in the rated dataset for you.
-
 ## Features
 
 | Feature | Default | What you get |
