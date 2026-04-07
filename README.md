@@ -52,7 +52,6 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     }
     Ok(())
 }
-# fn load_mono_16k_audio(_: &str) -> Result<Vec<f32>, Box<dyn std::error::Error>> { Ok(vec![]) }
 ```
 
 ### Long clips: chunked inference
@@ -78,7 +77,6 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     }
     Ok(())
 }
-# fn load_long_clip() -> Result<Vec<f32>, Box<dyn std::error::Error>> { Ok(vec![]) }
 ```
 
 ## Models
