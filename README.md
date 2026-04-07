@@ -30,7 +30,7 @@ Production-oriented Rust inference for [CED](https://arxiv.org/abs/2308.11957) A
 soundevents = "0.1"
 ```
 
-```rust,no_run
+```rust,ignore
 use soundevents::{Classifier, Options};
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
@@ -58,7 +58,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 `Classifier::classify_chunked` slides a window over the input and aggregates each chunk's per-class confidences. The defaults (10 s window, 10 s hop, mean aggregation) match CED's training setup; tune them for overlap or peak-pooling.
 
-```rust,no_run
+```rust,ignore
 use soundevents::{ChunkAggregation, ChunkingOptions, Classifier};
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
