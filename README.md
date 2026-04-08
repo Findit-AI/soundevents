@@ -22,8 +22,9 @@ Production-oriented Rust inference for [CED](https://arxiv.org/abs/2308.11957) A
 - **Drop-in CED inference** — load any [CED](https://arxiv.org/abs/2308.11957) AudioSet ONNX model (or use the bundled `tiny` variant) and run it directly on `&[f32]` PCM samples. No Python, no preprocessing pipeline.
 - **Typed labels, not bare integers** — every prediction comes back as an [`EventPrediction`] carrying a `&'static RatedSoundEvent` from [`soundevents-dataset`](./soundevents-dataset), so you get the canonical AudioSet name, the `/m/...` id, the model class index, and the confidence in one struct.
 - **Compile-time class-count guarantee** — the `NUM_CLASSES = 527` constant comes from the rated dataset at codegen time. If a model returns the wrong number of classes you get a typed [`ClassifierError::UnexpectedClassCount`] instead of a silent mismatch.
-- **Long-clip chunking built in** — `classify_chunked` / `classify_all_chunked` window the input at a configurable hop, run inference on each chunk, and aggregate the per-chunk confidences with either `Mean` or `Max`. Defaults match CED's 10 s training window (160 000 samples at 16 kHz).
+- **Long-clip chunking built in** — `classify_chunked` / `classify_all_chunked` window the input at a configurable hop, run inference on each chunk, and aggregate the per-chunk confidences with either `Mean` or `Max`. Defaults match CED's 10 s training window (160 000 samples at 16 kHz), and fixed-size chunk batches can now be packed into one model call.
 - **Top-k via a tiny min-heap** — `classify(samples, k)` does not allocate a full 527-element scores vector to find the top results.
+- **Batch-ready low-level API** — `predict_raw_scores_batch`, `predict_raw_scores_batch_flat`, `predict_raw_scores_batch_into`, `classify_all_batch`, and `classify_batch` accept equal-length clip batches for service-layer batching.
 - **Bring-your-own model or bundle one** — load from a path, from in-memory bytes, or enable the `bundled-tiny` feature to embed `models/tiny.onnx` directly into your binary.
 
 ## Quick start
@@ -33,9 +34,12 @@ Production-oriented Rust inference for [CED](https://arxiv.org/abs/2308.11957) A
 soundevents = "0.1"
 ```
 
-```rust,ignore
+```rust,no_run
 use soundevents::{Classifier, Options};
 
+# fn load_mono_16k_audio(_: &str) -> Result<Vec<f32>, Box<dyn std::error::Error>> {
+#     Ok(vec![0.0; 16_000])
+# }
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut classifier = Classifier::from_file("soundevents/models/tiny.onnx")?;
 
@@ -61,9 +65,12 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 `Classifier::classify_chunked` slides a window over the input and aggregates each chunk's per-class confidences. The defaults (10 s window, 10 s hop, mean aggregation) match CED's training setup; tune them for overlap or peak-pooling.
 
-```rust,ignore
+```rust,no_run
 use soundevents::{ChunkAggregation, ChunkingOptions, Classifier};
 
+# fn load_long_clip() -> Result<Vec<f32>, Box<dyn std::error::Error>> {
+#     Ok(vec![0.0; 320_000])
+# }
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut classifier = Classifier::from_file("soundevents/models/tiny.onnx")?;
     let samples: Vec<f32> = load_long_clip()?;
@@ -71,6 +78,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let opts = ChunkingOptions::default()
         // 5 s overlap (50%) between adjacent windows
         .with_hop_samples(80_000)
+        // Batch up to 4 equal-length windows per session.run()
+        .with_batch_size(4)
         // Keep the loudest detection in any window instead of averaging
         .with_aggregation(ChunkAggregation::Max);
 
@@ -119,10 +128,18 @@ Enable the `bundled-tiny` feature to embed `models/tiny.onnx` into your binary �
 soundevents = { version = "0.1", features = ["bundled-tiny"] }
 ```
 
-```rust,ignore
+```rust
+# #[cfg(feature = "bundled-tiny")]
 use soundevents::{Classifier, Options};
 
+# fn main() -> Result<(), Box<dyn std::error::Error>> {
+# #[cfg(feature = "bundled-tiny")]
+# {
 let mut classifier = Classifier::tiny(Options::default())?;
+# let _ = &mut classifier;
+# }
+# Ok(())
+# }
 ```
 
 ## Features
@@ -138,6 +155,8 @@ The full input/output contract:
 | `SAMPLE_RATE_HZ` | `16_000` | Required input sample rate (mono `f32`). |
 | `DEFAULT_CHUNK_SAMPLES` | `160_000` | Default 10 s window/hop for chunked inference. |
 | `NUM_CLASSES` | `527` | Number of CED output classes — derived at compile time from `RatedSoundEvent::events().len()`. |
+
+For low-level batching, every clip in `predict_raw_scores_batch*` / `classify_*_batch` must be non-empty and have the same sample count. `predict_raw_scores_batch_flat` returns one row-major `Vec<f32>`, and `predict_raw_scores_batch_into` lets callers reuse their own output buffer to avoid per-call result allocations. `classify_chunked` uses the same equal-length restriction internally when `ChunkingOptions::batch_size() > 1`, which is naturally satisfied for fixed-size windows and automatically falls back to smaller batches for the final short tail chunk.
 
 ## Development
 

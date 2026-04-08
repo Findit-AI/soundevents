@@ -7,15 +7,23 @@ license = "MIT OR Apache-2.0"
 repository = "https://github.com/findit-ai/soundevents"
 homepage = "https://github.com/findit-ai/soundevents"
 documentation = "https://docs.rs/soundevents"
+readme = "README.md"
+keywords = ["audioset", "audio-classification", "ced", "sound-events", "onnx"]
+categories = ["multimedia::audio", "science"]
 rust-version = "1.85"
 include = [
   "Cargo.toml",
+  "README.md",
   "build.rs",
+  "LICENSE-APACHE",
+  "LICENSE-MIT",
   "models/tiny.onnx",
   "src/**",
 ]
 
 [features]
+# Tiny CED is ~6.4 MB, so bundling stays opt-in instead of inflating every
+# binary by default.
 default = []
 bundled-tiny = []
 
@@ -33,3 +41,7 @@ unexpected_cfgs = { level = "warn", check-cfg = [
   'cfg(all_tests)',
   'cfg(tarpaulin)',
 ] }
+
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]
