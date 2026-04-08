@@ -14,7 +14,12 @@ resolver = "3"
 thiserror = { version = "2", default-features = false }
 serde = "1"
 
-soundevents-dataset = { version = "0.1", path = "soundevents-dataset", default-features = false }
+soundevents-dataset = { version = "0.2", path = "soundevents-dataset", default-features = false }
+
+[workspace.package]
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/findit-ai/soundevents"
+homepage = "https://github.com/findit-ai/soundevents"
 
 [profile.bench]
 opt-level = 3
