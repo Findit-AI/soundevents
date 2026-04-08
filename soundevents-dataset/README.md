@@ -45,82 +45,11 @@ The two are independent: each lives in its own module, has its own `&'static` co
 
 ### `rated` — AudioSet rated label set (527 entries)
 
-```rust,no_run
-use soundevents_dataset::rated::RatedSoundEvent;
-
-# let scores = [0.0_f32; 527];
-// Look up by name, alias, or AudioSet id (case-insensitive).
-let speech = RatedSoundEvent::from_key("Speech");
-assert_eq!(speech.len(), 1);
-assert_eq!(speech[0].name(), "Speech");
-assert_eq!(speech[0].index(), 0); // class index in the released model output
-
-// Decode a model's argmax: `scores: [f32; 527]`.
-let predicted = scores.iter().enumerate()
-    .max_by(|a, b| a.1.partial_cmp(b.1).unwrap())
-    .unwrap().0;
-let label = RatedSoundEvent::from_index(predicted).unwrap();
-println!("predicted: {}", label.name());
-
-// AudioSet id lookup uses the same case-insensitive map.
-assert_eq!(
-    RatedSoundEvent::from_key("/m/09x0r"),
-    RatedSoundEvent::from_key("/M/09X0R"),
-);
-
-// Iterate every rated class in CSV order.
-for entry in RatedSoundEvent::events() {
-    println!("{:>3}  {}  {}", entry.index(), entry.id(), entry.name());
-}
-```
-
 `RatedSoundEvent` exposes the same metadata accessors as `SoundEvent` (`id`, `name`, `description`, `aliases`, `citation_uri`, `children`, `restrictions`) plus a rated-only [`index()`](https://docs.rs/soundevents-dataset) — the integer 0..527 used as the position in released AudioSet models' output vectors. Walking `children()` stays inside the rated namespace: any ontology child that is *not* in the rated set is dropped, so the hierarchy remains self-consistent.
-
-### `ontology` — full AudioSet taxonomy (632 entries)
-
-```rust,no_run
-# #[cfg(feature = "ontology")]
-use soundevents_dataset::ontology::SoundEvent;
-use soundevents_dataset::Restriction;
-
-# fn main() {
-# #[cfg(feature = "ontology")]
-# {
-// Walk the hierarchy from an abstract container down to leaves.
-let voice = SoundEvent::from_key("Human voice")[0];
-assert!(voice.restrictions().contains(&Restriction::Abstract));
-for child in voice.children() {
-    println!("- {}", child.name());
-}
-
-// `from_key` returns a slice — most aliases are unique (one match), a few
-// ambiguous ones like "Inside" map to several entries.
-let inside = SoundEvent::from_key("Inside");
-assert!(inside.len() > 1);
-
-// Stable 64-bit code (SipHash of the canonical name) for compact storage.
-let code = SoundEvent::from_key("Speech")[0].encode();
-let round_tripped = SoundEvent::from_code(code).unwrap();
-assert_eq!(round_tripped.name(), "Speech");
-# }
-# }
-```
 
 ### Case-insensitive, separator-distinct lookup
 
 `from_key` is keyed by [`UncasedStr`](https://docs.rs/uncased), so any case form of an alias resolves to the same entry without us having to enumerate every possibility:
-
-```rust
-use soundevents_dataset::rated::RatedSoundEvent;
-
-let queries = [
-    "man speaking", "MAN SPEAKING", "Man Speaking", "mAn SpEaKiNg",
-    "man_speaking", "manSpeaking", "Man-Speaking",
-];
-for q in queries {
-    assert_eq!(RatedSoundEvent::from_key(q)[0].id(), "/m/05zppz");
-}
-```
 
 Separator styles are still indexed independently (`"man speaking"` ≠ `"man_speaking"` ≠ `"man-speaking"` ≠ `"manSpeaking"`), so you only pay for the four shapes the codegen actually emits — every case variant of each shape collapses into one phf bucket.
 
