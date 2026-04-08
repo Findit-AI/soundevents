@@ -1,11 +1,11 @@
 [package]
 name = "soundevents"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2024"
 description = "Production-oriented Rust inference wrapper for CED AudioSet classifiers."
-license = "MIT OR Apache-2.0"
-repository = "https://github.com/findit-ai/soundevents"
-homepage = "https://github.com/findit-ai/soundevents"
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
 documentation = "https://docs.rs/soundevents"
 readme = "README.md"
 keywords = ["audioset", "audio-classification", "ced", "sound-events", "onnx"]
