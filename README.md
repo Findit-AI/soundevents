@@ -31,15 +31,16 @@ Production-oriented Rust inference for [CED](https://arxiv.org/abs/2308.11957) A
 
 ```toml
 [dependencies]
-soundevents = "0.1"
+soundevents = "0.2"
 ```
 
 ```rust,no_run
 use soundevents::{Classifier, Options};
 
-# fn load_mono_16k_audio(_: &str) -> Result<Vec<f32>, Box<dyn std::error::Error>> {
-#     Ok(vec![0.0; 16_000])
-# }
+fn load_mono_16k_audio(_: &str) -> Result<Vec<f32>, Box<dyn std::error::Error>> {
+    Ok(vec![0.0; 16_000])
+}
+
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut classifier = Classifier::from_file("soundevents/models/tiny.onnx")?;
 
@@ -68,9 +69,10 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 ```rust,no_run
 use soundevents::{ChunkAggregation, ChunkingOptions, Classifier};
 
-# fn load_long_clip() -> Result<Vec<f32>, Box<dyn std::error::Error>> {
-#     Ok(vec![0.0; 320_000])
-# }
+fn load_long_clip() -> Result<Vec<f32>, Box<dyn std::error::Error>> {
+    Ok(vec![0.0; 320_000])
+}
+
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut classifier = Classifier::from_file("soundevents/models/tiny.onnx")?;
     let samples: Vec<f32> = load_long_clip()?;
