@@ -122,12 +122,15 @@ If upstream releases new weights, or you cloned without the model files, refetch
 
 The script downloads the `*.onnx` artifact from each `mispeech/ced-*` Hugging Face repo and writes it as `soundevents/models/<variant>.onnx`.
 
+See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for upstream model
+sources and attribution details.
+
 ### Bundled tiny model
 
 Enable the `bundled-tiny` feature to embed `models/tiny.onnx` into your binary — useful for CLI tools and self-contained services where you don't want to ship a separate model file.
 
 ```toml
-soundevents = { version = "0.1", features = ["bundled-tiny"] }
+soundevents = { version = "0.2", features = ["bundled-tiny"] }
 ```
 
 ```rust
@@ -183,6 +186,8 @@ cargo test
 Apache License (Version 2.0).
 
 See [LICENSE-APACHE](LICENSE-APACHE), [LICENSE-MIT](LICENSE-MIT) for details.
+Bundled third-party model attributions and source licenses are documented in
+[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
 Copyright (c) 2026 FinDIT studio authors.
 

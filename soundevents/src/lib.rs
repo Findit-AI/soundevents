@@ -470,7 +470,16 @@ impl Classifier {
     f: impl FnOnce(&[f32], usize) -> Result<T, ClassifierError>,
   ) -> Result<T, ClassifierError> {
     let chunk_len = validate_batch_inputs(batch_16k)?;
-    let batch_size = batch_16k.len();
+    self.with_validated_raw_scores_batch(batch_16k, batch_16k.len(), chunk_len, f)
+  }
+
+  fn with_validated_raw_scores_batch<T>(
+    &mut self,
+    batch_16k: &[&[f32]],
+    batch_size: usize,
+    chunk_len: usize,
+    f: impl FnOnce(&[f32], usize) -> Result<T, ClassifierError>,
+  ) -> Result<T, ClassifierError> {
     let total_samples = checked_batch_len(batch_size, chunk_len)?;
 
     self.input_scratch.clear();
@@ -560,19 +569,25 @@ impl Classifier {
     batch_16k: &[&[f32]],
     top_k: usize,
   ) -> Result<Vec<Vec<EventPrediction>>, ClassifierError> {
-    let _ = validate_batch_inputs(batch_16k)?;
+    let chunk_len = validate_batch_inputs(batch_16k)?;
+    let batch_size = batch_16k.len();
 
     if top_k == 0 {
-      return Ok((0..batch_16k.len()).map(|_| Vec::new()).collect());
+      return Ok((0..batch_size).map(|_| Vec::new()).collect());
     }
 
-    self.with_raw_scores_batch(batch_16k, |raw_scores, batch_size| {
-      raw_scores
-        .chunks_exact(NUM_CLASSES)
-        .take(batch_size)
-        .map(|row| top_k_from_scores(row.iter().copied().enumerate(), top_k, sigmoid))
-        .collect()
-    })
+    self.with_validated_raw_scores_batch(
+      batch_16k,
+      batch_size,
+      chunk_len,
+      |raw_scores, batch_size| {
+        raw_scores
+          .chunks_exact(NUM_CLASSES)
+          .take(batch_size)
+          .map(|row| top_k_from_scores(row.iter().copied().enumerate(), top_k, sigmoid))
+          .collect()
+      },
+    )
   }
 
   /// Classify a long clip by chunking it into windows and aggregating chunk confidences.

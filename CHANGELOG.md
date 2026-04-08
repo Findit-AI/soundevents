@@ -10,12 +10,15 @@ All notable changes to this workspace will be documented in this file.
 
 - Added `predict_raw_scores_batch_flat` and `predict_raw_scores_batch_into` for lower-allocation batched raw-score access.
 - Expanded batched inference coverage with regression tests that verify flat and buffer-reuse paths against sequential inference.
+- Removed redundant input validation in `classify_batch` while preserving the existing error behavior for invalid batches.
 - Tightened crate metadata and docs.rs configuration so feature-gated APIs, including `Classifier::tiny`, render correctly on published docs.
+- Added packaged third-party notices for bundled CED model artifacts.
 
 ### `soundevents-dataset`
 
 - Packaged the dual-license texts with the published crate and aligned crate metadata for docs.rs and crates.io discovery.
 - Kept the crate on its Rust 1.59 / edition 2021 compatibility track while removing the in-source `deny(warnings)` footgun.
+- Added packaged third-party notices for bundled AudioSet ontology and label metadata.
 
 ### Workspace
 

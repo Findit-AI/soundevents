@@ -14,6 +14,7 @@ rust-version = "1.85"
 include = [
   "Cargo.toml",
   "README.md",
+  "THIRD_PARTY_NOTICES.md",
   "build.rs",
   "LICENSE-APACHE",
   "LICENSE-MIT",

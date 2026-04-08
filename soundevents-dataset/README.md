@@ -28,10 +28,10 @@ By default this pulls in the [`rated`](#rated--audioset-rated-label-set-527-entr
 
 ```toml
 # Just the full AudioSet ontology, no rated set.
-soundevents-dataset = { version = "0.1", default-features = false, features = ["std", "ontology"] }
+soundevents-dataset = { version = "0.2", default-features = false, features = ["std", "ontology"] }
 
 # Both views.
-soundevents-dataset = { version = "0.1", features = ["ontology"] }
+soundevents-dataset = { version = "0.2", features = ["ontology"] }
 ```
 
 ## Two views, two modules
@@ -79,6 +79,8 @@ cargo xtask codegen
 Apache License (Version 2.0).
 
 See [LICENSE-APACHE](LICENSE-APACHE), [LICENSE-MIT](LICENSE-MIT) for details.
+Bundled AudioSet metadata attribution and upstream license details are
+documented in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
 Copyright (c) 2026 FinDIT studio authors.
 
