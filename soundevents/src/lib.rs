@@ -237,6 +237,16 @@ pub enum ClassifierError {
     /// The mismatched clip length encountered later in the batch.
     actual: usize,
   },
+  /// The requested batch is too large to pack or buffer safely.
+  #[error(
+    "batched inference request is too large to allocate safely (batch={batch_size}, item_len={item_len})"
+  )]
+  BatchTooLarge {
+    /// Number of items in the batch.
+    batch_size: usize,
+    /// Length of each item in elements.
+    item_len: usize,
+  },
   /// A model class index could not be resolved to a rated entry.
   #[error("no rated sound event exists for model class index {index}")]
   MissingRatedEventIndex {
@@ -432,9 +442,15 @@ impl Classifier {
     batch_16k: &[&[f32]],
     out: &mut Vec<f32>,
   ) -> Result<(), ClassifierError> {
-    self.with_raw_scores_batch(batch_16k, |raw_scores, _| {
+    self.with_raw_scores_batch(batch_16k, |raw_scores, batch_size| {
       out.clear();
-      out.reserve(raw_scores.len());
+      let total_scores = checked_batch_len(batch_size, NUM_CLASSES)?;
+      out
+        .try_reserve(total_scores)
+        .map_err(|_| ClassifierError::BatchTooLarge {
+          batch_size,
+          item_len: NUM_CLASSES,
+        })?;
       out.extend_from_slice(raw_scores);
       Ok(())
     })
@@ -455,10 +471,16 @@ impl Classifier {
   ) -> Result<T, ClassifierError> {
     let chunk_len = validate_batch_inputs(batch_16k)?;
     let batch_size = batch_16k.len();
-    let total_samples = batch_size * chunk_len;
+    let total_samples = checked_batch_len(batch_size, chunk_len)?;
 
     self.input_scratch.clear();
-    self.input_scratch.reserve(total_samples);
+    self
+      .input_scratch
+      .try_reserve(total_samples)
+      .map_err(|_| ClassifierError::BatchTooLarge {
+        batch_size,
+        item_len: chunk_len,
+      })?;
     for clip in batch_16k {
       self.input_scratch.extend_from_slice(clip);
     }
@@ -774,6 +796,16 @@ fn validate_chunking(options: ChunkingOptions) -> Result<(), ClassifierError> {
   Ok(())
 }
 
+#[cfg_attr(not(tarpaulin), inline(always))]
+fn checked_batch_len(batch_size: usize, item_len: usize) -> Result<usize, ClassifierError> {
+  batch_size
+    .checked_mul(item_len)
+    .ok_or(ClassifierError::BatchTooLarge {
+      batch_size,
+      item_len,
+    })
+}
+
 fn validate_output(
   shape: &ort::value::Shape,
   raw_scores: &[f32],
@@ -957,6 +989,17 @@ mod tests {
         expected: 2,
         actual: 1,
       })
+    ));
+  }
+
+  #[test]
+  fn checked_batch_len_reports_overflow() {
+    assert!(matches!(
+      checked_batch_len(usize::MAX, 2),
+      Err(ClassifierError::BatchTooLarge {
+        batch_size,
+        item_len: 2,
+      }) if batch_size == usize::MAX
     ));
   }
 
