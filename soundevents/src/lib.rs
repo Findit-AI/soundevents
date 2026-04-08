@@ -830,7 +830,7 @@ fn validate_output(
     return Err(ClassifierError::EmptyOutput);
   }
 
-  let expected_values = expected_batch_size.saturating_mul(NUM_CLASSES);
+  let expected_values = checked_batch_len(expected_batch_size, NUM_CLASSES)?;
   if raw_scores.len() != expected_values {
     if raw_scores.len() % expected_batch_size.max(1) == 0 {
       return Err(ClassifierError::UnexpectedClassCount {
