@@ -1,7 +1,7 @@
 #![doc = include_str!("../README.md")]
 #![cfg_attr(docsrs, feature(doc_cfg))]
 #![cfg_attr(docsrs, allow(unused_attributes))]
-#![deny(missing_docs, warnings)]
+#![deny(missing_docs)]
 #![forbid(unsafe_code)]
 
 use ort::{
@@ -114,6 +114,7 @@ pub enum ChunkAggregation {
 pub struct ChunkingOptions {
   window_samples: usize,
   hop_samples: usize,
+  batch_size: usize,
   aggregation: ChunkAggregation,
 }
 
@@ -122,6 +123,7 @@ impl Default for ChunkingOptions {
     Self {
       window_samples: DEFAULT_CHUNK_SAMPLES,
       hop_samples: DEFAULT_CHUNK_SAMPLES,
+      batch_size: 1,
       aggregation: ChunkAggregation::Mean,
     }
   }
@@ -138,6 +140,12 @@ impl ChunkingOptions {
   #[cfg_attr(not(tarpaulin), inline(always))]
   pub const fn hop_samples(&self) -> usize {
     self.hop_samples
+  }
+
+  /// Returns the maximum number of equal-length chunks to batch into one model call.
+  #[cfg_attr(not(tarpaulin), inline(always))]
+  pub const fn batch_size(&self) -> usize {
+    self.batch_size
   }
 
   /// Returns the aggregation strategy.
@@ -157,6 +165,13 @@ impl ChunkingOptions {
   #[cfg_attr(not(tarpaulin), inline(always))]
   pub const fn with_hop_samples(mut self, hop_samples: usize) -> Self {
     self.hop_samples = hop_samples;
+    self
+  }
+
+  /// Sets the chunk batch size used by batched chunked inference.
+  #[cfg_attr(not(tarpaulin), inline(always))]
+  pub const fn with_batch_size(mut self, batch_size: usize) -> Self {
+    self.batch_size = batch_size;
     self
   }
 
@@ -186,16 +201,21 @@ pub enum ClassifierError {
   /// Empty audio was passed to the classifier.
   #[error("input audio is empty; expected mono {SAMPLE_RATE_HZ} Hz samples")]
   EmptyInput,
+  /// An empty batch was passed to the classifier.
+  #[error("input batch is empty; expected at least one mono {SAMPLE_RATE_HZ} Hz clip")]
+  EmptyBatch,
   /// Model output is empty.
   #[error("model returned empty output")]
   EmptyOutput,
   /// The model returned an unexpected output shape.
   #[error(
-    "unexpected model output shape {shape:?}; expected batch-one scores for {expected} classes"
+    "unexpected model output shape {shape:?}; expected batch scores for {expected_batch} x {expected_classes}"
   )]
   UnexpectedOutputShape {
+    /// The expected batch size.
+    expected_batch: usize,
     /// The expected number of classes.
-    expected: usize,
+    expected_classes: usize,
     /// The actual output shape returned by the model.
     shape: Vec<i64>,
   },
@@ -207,6 +227,26 @@ pub enum ClassifierError {
     /// The actual number of classes returned by the model.
     actual: usize,
   },
+  /// Batch members must have the same length to be packed into one tensor.
+  #[error(
+    "batched inference requires equal clip lengths; expected {expected} samples, got {actual}"
+  )]
+  MismatchedBatchLength {
+    /// The clip length established by the first batch member.
+    expected: usize,
+    /// The mismatched clip length encountered later in the batch.
+    actual: usize,
+  },
+  /// The requested batch is too large to pack or buffer safely.
+  #[error(
+    "batched inference request is too large to allocate safely (batch={batch_size}, item_len={item_len})"
+  )]
+  BatchTooLarge {
+    /// Number of items in the batch.
+    batch_size: usize,
+    /// Length of each item in elements.
+    item_len: usize,
+  },
   /// A model class index could not be resolved to a rated entry.
   #[error("no rated sound event exists for model class index {index}")]
   MissingRatedEventIndex {
@@ -215,13 +255,15 @@ pub enum ClassifierError {
   },
   /// Invalid chunking parameters were provided.
   #[error(
-    "chunking options require non-zero window and hop sizes (window={window_samples}, hop={hop_samples})"
+    "chunking options require non-zero window, hop, and batch sizes (window={window_samples}, hop={hop_samples}, batch={batch_size})"
   )]
   InvalidChunkingOptions {
     /// The chunk window size in samples.
     window_samples: usize,
     /// The chunk hop size in samples.
     hop_samples: usize,
+    /// The chunk batch size.
+    batch_size: usize,
   },
 }
 
@@ -306,6 +348,7 @@ pub struct Classifier {
   session: Session,
   input_name: SmolStr,
   output_name: SmolStr,
+  input_scratch: Vec<f32>,
   confidence_scratch: Vec<f32>,
 }
 
@@ -353,22 +396,137 @@ impl Classifier {
     self.with_raw_scores(samples_16k, |raw_scores| Ok(raw_scores.to_vec()))
   }
 
+  /// Run the model on a batch of equal-length mono 16 kHz clips.
+  ///
+  /// Every clip in `batch_16k` must be non-empty and have the same number of
+  /// samples. This low-level API is intended for service-layer batching and
+  /// for chunked inference over fixed windows. If you need a single
+  /// row-major buffer instead of one allocation per clip, prefer
+  /// [`predict_raw_scores_batch_flat`](Self::predict_raw_scores_batch_flat) or
+  /// [`predict_raw_scores_batch_into`](Self::predict_raw_scores_batch_into).
+  pub fn predict_raw_scores_batch(
+    &mut self,
+    batch_16k: &[&[f32]],
+  ) -> Result<Vec<Vec<f32>>, ClassifierError> {
+    self.with_raw_scores_batch(batch_16k, |raw_scores, batch_size| {
+      Ok(
+        raw_scores
+          .chunks_exact(NUM_CLASSES)
+          .take(batch_size)
+          .map(|scores| scores.to_vec())
+          .collect(),
+      )
+    })
+  }
+
+  /// Run the model on a batch of equal-length mono 16 kHz clips and return
+  /// all raw scores in one row-major buffer.
+  ///
+  /// The returned vector contains `batch_16k.len() * NUM_CLASSES` elements in
+  /// `[batch, class]` order, so callers can iterate with
+  /// `.chunks_exact(NUM_CLASSES)`.
+  pub fn predict_raw_scores_batch_flat(
+    &mut self,
+    batch_16k: &[&[f32]],
+  ) -> Result<Vec<f32>, ClassifierError> {
+    self.with_raw_scores_batch(batch_16k, |raw_scores, _| Ok(raw_scores.to_vec()))
+  }
+
+  /// Run the model on a batch of equal-length mono 16 kHz clips and write the
+  /// raw scores into a caller-provided row-major buffer.
+  ///
+  /// `out` is cleared before writing and then filled with
+  /// `batch_16k.len() * NUM_CLASSES` elements in `[batch, class]` order.
+  pub fn predict_raw_scores_batch_into(
+    &mut self,
+    batch_16k: &[&[f32]],
+    out: &mut Vec<f32>,
+  ) -> Result<(), ClassifierError> {
+    self.with_raw_scores_batch(batch_16k, |raw_scores, batch_size| {
+      out.clear();
+      let total_scores = checked_batch_len(batch_size, NUM_CLASSES)?;
+      out
+        .try_reserve(total_scores)
+        .map_err(|_| ClassifierError::BatchTooLarge {
+          batch_size,
+          item_len: NUM_CLASSES,
+        })?;
+      out.extend_from_slice(raw_scores);
+      Ok(())
+    })
+  }
+
   fn with_raw_scores<T>(
     &mut self,
     samples_16k: &[f32],
     f: impl FnOnce(&[f32]) -> Result<T, ClassifierError>,
   ) -> Result<T, ClassifierError> {
-    ensure_non_empty(samples_16k)?;
+    self.with_raw_scores_batch(&[samples_16k], |raw_scores, _| f(raw_scores))
+  }
 
-    let input_ref = TensorRef::from_array_view(([1usize, samples_16k.len()], samples_16k))?;
+  fn with_raw_scores_batch<T>(
+    &mut self,
+    batch_16k: &[&[f32]],
+    f: impl FnOnce(&[f32], usize) -> Result<T, ClassifierError>,
+  ) -> Result<T, ClassifierError> {
+    let chunk_len = validate_batch_inputs(batch_16k)?;
+    self.with_validated_raw_scores_batch(batch_16k, batch_16k.len(), chunk_len, f)
+  }
+
+  fn with_validated_raw_scores_batch<T>(
+    &mut self,
+    batch_16k: &[&[f32]],
+    batch_size: usize,
+    chunk_len: usize,
+    f: impl FnOnce(&[f32], usize) -> Result<T, ClassifierError>,
+  ) -> Result<T, ClassifierError> {
+    let total_samples = checked_batch_len(batch_size, chunk_len)?;
+
+    self.input_scratch.clear();
+    self
+      .input_scratch
+      .try_reserve(total_samples)
+      .map_err(|_| ClassifierError::BatchTooLarge {
+        batch_size,
+        item_len: chunk_len,
+      })?;
+    for clip in batch_16k {
+      self.input_scratch.extend_from_slice(clip);
+    }
+
+    let input_ref =
+      TensorRef::from_array_view(([batch_size, chunk_len], self.input_scratch.as_slice()))?;
     let outputs = self
       .session
       .run(ort::inputs![self.input_name.as_str() => input_ref])?;
     let (shape, raw_scores) = outputs[self.output_name.as_str()].try_extract_tensor::<f32>()?;
 
-    validate_output(shape, raw_scores)?;
+    validate_output(shape, raw_scores, batch_size)?;
 
-    f(raw_scores)
+    f(raw_scores, batch_size)
+  }
+
+  /// Classify a batch of equal-length mono 16 kHz clips and return every class in model order.
+  pub fn classify_all_batch(
+    &mut self,
+    batch_16k: &[&[f32]],
+  ) -> Result<Vec<Vec<EventPrediction>>, ClassifierError> {
+    self.with_raw_scores_batch(batch_16k, |raw_scores, batch_size| {
+      raw_scores
+        .chunks_exact(NUM_CLASSES)
+        .take(batch_size)
+        .map(|row| {
+          row
+            .iter()
+            .copied()
+            .enumerate()
+            .map(|(class_index, raw_score)| {
+              EventPrediction::from_confidence(class_index, sigmoid(raw_score))
+            })
+            .collect()
+        })
+        .collect()
+    })
   }
 
   /// Classify a mono 16 kHz clip and return every class in model order.
@@ -403,6 +561,33 @@ impl Classifier {
     self.with_raw_scores(samples_16k, |raw_scores| {
       top_k_from_scores(raw_scores.iter().copied().enumerate(), top_k, sigmoid)
     })
+  }
+
+  /// Classify a batch of equal-length mono 16 kHz clips and return the top `k` classes for each clip.
+  pub fn classify_batch(
+    &mut self,
+    batch_16k: &[&[f32]],
+    top_k: usize,
+  ) -> Result<Vec<Vec<EventPrediction>>, ClassifierError> {
+    let chunk_len = validate_batch_inputs(batch_16k)?;
+    let batch_size = batch_16k.len();
+
+    if top_k == 0 {
+      return Ok((0..batch_size).map(|_| Vec::new()).collect());
+    }
+
+    self.with_validated_raw_scores_batch(
+      batch_16k,
+      batch_size,
+      chunk_len,
+      |raw_scores, batch_size| {
+        raw_scores
+          .chunks_exact(NUM_CLASSES)
+          .take(batch_size)
+          .map(|row| top_k_from_scores(row.iter().copied().enumerate(), top_k, sigmoid))
+          .collect()
+      },
+    )
   }
 
   /// Classify a long clip by chunking it into windows and aggregating chunk confidences.
@@ -475,6 +660,7 @@ impl Classifier {
       session,
       input_name,
       output_name,
+      input_scratch: Vec::new(),
       confidence_scratch: Vec::with_capacity(NUM_CLASSES),
     })
   }
@@ -503,36 +689,19 @@ fn fill_aggregated_confidences(
   ensure_non_empty(samples_16k)?;
   validate_chunking(options)?;
 
-  let mut chunks = chunk_slices(samples_16k, options.window_samples(), options.hop_samples());
-  let Some(first_chunk) = chunks.next() else {
-    return Err(ClassifierError::EmptyInput);
-  };
-  classifier.with_raw_scores(first_chunk, |raw_scores| {
-    aggregated.clear();
-    aggregated.extend(raw_scores.iter().copied().map(sigmoid));
-    Ok(())
-  })?;
-  let mut chunk_count = 1usize;
+  let mut chunk_count = 0usize;
+  let mut initialized = false;
 
-  for chunk in chunks {
-    classifier.with_raw_scores(chunk, |raw_scores| {
-      match options.aggregation() {
-        ChunkAggregation::Mean => {
-          for (aggregate, raw_score) in aggregated.iter_mut().zip(raw_scores.iter().copied()) {
-            *aggregate += sigmoid(raw_score);
-          }
-        }
-        ChunkAggregation::Max => {
-          for (aggregate, raw_score) in aggregated.iter_mut().zip(raw_scores.iter().copied()) {
-            *aggregate = aggregate.max(sigmoid(raw_score));
-          }
-        }
-      }
-
-      Ok(())
-    })?;
-
-    chunk_count += 1;
+  for batch in chunk_batches(samples_16k, options) {
+    accumulate_chunk_batch(
+      classifier,
+      aggregated,
+      &batch,
+      options.aggregation(),
+      initialized,
+    )?;
+    chunk_count += batch.len();
+    initialized = true;
   }
 
   if matches!(options.aggregation(), ChunkAggregation::Mean) && chunk_count > 1 {
@@ -543,6 +712,43 @@ fn fill_aggregated_confidences(
   }
 
   Ok(())
+}
+
+fn accumulate_chunk_batch(
+  classifier: &mut Classifier,
+  aggregated: &mut Vec<f32>,
+  batch: &[&[f32]],
+  aggregation: ChunkAggregation,
+  initialized: bool,
+) -> Result<(), ClassifierError> {
+  classifier.with_raw_scores_batch(batch, |raw_scores, batch_size| {
+    for (row_index, row) in raw_scores
+      .chunks_exact(NUM_CLASSES)
+      .take(batch_size)
+      .enumerate()
+    {
+      if !initialized && row_index == 0 {
+        aggregated.clear();
+        aggregated.extend(row.iter().copied().map(sigmoid));
+        continue;
+      }
+
+      match aggregation {
+        ChunkAggregation::Mean => {
+          for (aggregate, raw_score) in aggregated.iter_mut().zip(row.iter().copied()) {
+            *aggregate += sigmoid(raw_score);
+          }
+        }
+        ChunkAggregation::Max => {
+          for (aggregate, raw_score) in aggregated.iter_mut().zip(row.iter().copied()) {
+            *aggregate = aggregate.max(sigmoid(raw_score));
+          }
+        }
+      }
+    }
+
+    Ok(())
+  })
 }
 
 #[cfg_attr(not(tarpaulin), inline(always))]
@@ -594,37 +800,117 @@ fn ensure_non_empty(samples_16k: &[f32]) -> Result<(), ClassifierError> {
 }
 
 fn validate_chunking(options: ChunkingOptions) -> Result<(), ClassifierError> {
-  if options.window_samples() == 0 || options.hop_samples() == 0 {
+  if options.window_samples() == 0 || options.hop_samples() == 0 || options.batch_size() == 0 {
     return Err(ClassifierError::InvalidChunkingOptions {
       window_samples: options.window_samples(),
       hop_samples: options.hop_samples(),
+      batch_size: options.batch_size(),
     });
   }
 
   Ok(())
 }
 
-fn validate_output(shape: &ort::value::Shape, raw_scores: &[f32]) -> Result<(), ClassifierError> {
+#[cfg_attr(not(tarpaulin), inline(always))]
+fn checked_batch_len(batch_size: usize, item_len: usize) -> Result<usize, ClassifierError> {
+  batch_size
+    .checked_mul(item_len)
+    .ok_or(ClassifierError::BatchTooLarge {
+      batch_size,
+      item_len,
+    })
+}
+
+fn validate_output(
+  shape: &ort::value::Shape,
+  raw_scores: &[f32],
+  expected_batch_size: usize,
+) -> Result<(), ClassifierError> {
   if raw_scores.is_empty() {
     return Err(ClassifierError::EmptyOutput);
   }
 
-  if raw_scores.len() != NUM_CLASSES {
-    return Err(ClassifierError::UnexpectedClassCount {
-      expected: NUM_CLASSES,
-      actual: raw_scores.len(),
+  let expected_values = checked_batch_len(expected_batch_size, NUM_CLASSES)?;
+  if raw_scores.len() != expected_values {
+    if raw_scores.len() % expected_batch_size.max(1) == 0 {
+      return Err(ClassifierError::UnexpectedClassCount {
+        expected: NUM_CLASSES,
+        actual: raw_scores.len() / expected_batch_size.max(1),
+      });
+    }
+
+    return Err(ClassifierError::UnexpectedOutputShape {
+      expected_batch: expected_batch_size,
+      expected_classes: NUM_CLASSES,
+      shape: shape.to_vec(),
     });
   }
 
+  // Keep shape validation strict: released CED exports use `[batch, 527]`
+  // (and some runtimes collapse batch-one to `[527]`). Accepting arbitrary
+  // shapes with the same element count would make tensor-packing bugs much
+  // harder to catch.
   match &shape[..] {
-    [classes] if *classes as usize == NUM_CLASSES => Ok(()),
-    [batch, classes] if *batch == 1 && *classes as usize == NUM_CLASSES => Ok(()),
-    _ if shape.num_elements() == NUM_CLASSES => Ok(()),
+    [classes] if expected_batch_size == 1 && *classes as usize == NUM_CLASSES => Ok(()),
+    [batch, classes]
+      if *batch as usize == expected_batch_size && *classes as usize == NUM_CLASSES =>
+    {
+      Ok(())
+    }
     _ => Err(ClassifierError::UnexpectedOutputShape {
-      expected: NUM_CLASSES,
+      expected_batch: expected_batch_size,
+      expected_classes: NUM_CLASSES,
       shape: shape.to_vec(),
     }),
   }
+}
+
+/// Validates a batch of clips and returns the common clip length in samples.
+fn validate_batch_inputs(batch_16k: &[&[f32]]) -> Result<usize, ClassifierError> {
+  let Some(first) = batch_16k.first() else {
+    return Err(ClassifierError::EmptyBatch);
+  };
+
+  ensure_non_empty(first)?;
+  let expected = first.len();
+
+  for clip in &batch_16k[1..] {
+    ensure_non_empty(clip)?;
+    if clip.len() != expected {
+      return Err(ClassifierError::MismatchedBatchLength {
+        expected,
+        actual: clip.len(),
+      });
+    }
+  }
+
+  Ok(expected)
+}
+
+/// Groups consecutive equal-length chunks into batches so one tensor never
+/// mixes the usual short tail chunk with full-size windows.
+fn chunk_batches(samples: &[f32], options: ChunkingOptions) -> impl Iterator<Item = Vec<&[f32]>> {
+  let mut chunks =
+    chunk_slices(samples, options.window_samples(), options.hop_samples()).peekable();
+
+  std::iter::from_fn(move || {
+    let first = chunks.next()?;
+    let first_len = first.len();
+    let mut batch = Vec::with_capacity(options.batch_size());
+    batch.push(first);
+
+    while batch.len() < options.batch_size() {
+      let Some(next_len) = chunks.peek().map(|chunk| chunk.len()) else {
+        break;
+      };
+      if next_len != first_len {
+        break;
+      }
+      batch.push(chunks.next().expect("peeked chunk must exist"));
+    }
+
+    Some(batch)
+  })
 }
 
 fn chunk_slices(
@@ -655,6 +941,17 @@ fn sigmoid(x: f32) -> f32 {
 mod tests {
   use super::*;
 
+  #[cfg(feature = "bundled-tiny")]
+  fn pseudo_audio(len: usize, mut seed: u64) -> Vec<f32> {
+    let mut samples = Vec::with_capacity(len);
+    for _ in 0..len {
+      seed = seed.wrapping_mul(6364136223846793005).wrapping_add(1);
+      let value = ((seed >> 40) as u32) as f32 / u32::MAX as f32;
+      samples.push(value * 2.0 - 1.0);
+    }
+    samples
+  }
+
   #[test]
   fn rated_indices_round_trip() {
     for event in RatedSoundEvent::events() {
@@ -681,7 +978,135 @@ mod tests {
 
     assert_eq!(options.window_samples(), DEFAULT_CHUNK_SAMPLES);
     assert_eq!(options.hop_samples(), DEFAULT_CHUNK_SAMPLES);
+    assert_eq!(options.batch_size(), 1);
     assert_eq!(options.aggregation(), ChunkAggregation::Mean);
+  }
+
+  #[test]
+  fn chunking_options_can_configure_batch_size() {
+    let options = ChunkingOptions::default().with_batch_size(8);
+    assert_eq!(options.batch_size(), 8);
+  }
+
+  #[test]
+  fn validate_batch_inputs_requires_equal_non_empty_clips() {
+    assert!(matches!(
+      validate_batch_inputs(&[]),
+      Err(ClassifierError::EmptyBatch)
+    ));
+    assert!(matches!(
+      validate_batch_inputs(&[&[]]),
+      Err(ClassifierError::EmptyInput)
+    ));
+    assert!(matches!(
+      validate_batch_inputs(&[&[0.0, 1.0], &[0.0]]),
+      Err(ClassifierError::MismatchedBatchLength {
+        expected: 2,
+        actual: 1,
+      })
+    ));
+  }
+
+  #[test]
+  fn checked_batch_len_reports_overflow() {
+    assert!(matches!(
+      checked_batch_len(usize::MAX, 2),
+      Err(ClassifierError::BatchTooLarge {
+        batch_size,
+        item_len: 2,
+      }) if batch_size == usize::MAX
+    ));
+  }
+
+  #[cfg(feature = "bundled-tiny")]
+  #[test]
+  fn batched_predict_raw_scores_matches_sequential_inference() {
+    let clip_a = pseudo_audio(SAMPLE_RATE_HZ * 2, 0x1234_5678);
+    let clip_b = pseudo_audio(SAMPLE_RATE_HZ * 2, 0x9abc_def0);
+
+    let mut sequential = Classifier::tiny(Options::default()).expect("load bundled classifier");
+    let seq_a = sequential
+      .predict_raw_scores(&clip_a)
+      .expect("sequential clip a");
+    let seq_b = sequential
+      .predict_raw_scores(&clip_b)
+      .expect("sequential clip b");
+
+    let mut batched = Classifier::tiny(Options::default()).expect("load bundled classifier");
+    let batch = batched
+      .predict_raw_scores_batch(&[&clip_a, &clip_b])
+      .expect("batched inference");
+
+    assert_eq!(batch.len(), 2);
+    assert_eq!(batch[0].len(), seq_a.len());
+    assert_eq!(batch[1].len(), seq_b.len());
+
+    for (expected, actual) in seq_a.iter().zip(batch[0].iter()) {
+      assert!((expected - actual).abs() < 1e-6);
+    }
+    for (expected, actual) in seq_b.iter().zip(batch[1].iter()) {
+      assert!((expected - actual).abs() < 1e-6);
+    }
+  }
+
+  #[cfg(feature = "bundled-tiny")]
+  #[test]
+  fn flat_and_into_batch_raw_scores_match_sequential_inference() {
+    let clip_a = pseudo_audio(SAMPLE_RATE_HZ * 2, 0x1357_9bdf);
+    let clip_b = pseudo_audio(SAMPLE_RATE_HZ * 2, 0x2468_ace0);
+
+    let mut sequential = Classifier::tiny(Options::default()).expect("load bundled classifier");
+    let seq_a = sequential
+      .predict_raw_scores(&clip_a)
+      .expect("sequential clip a");
+    let seq_b = sequential
+      .predict_raw_scores(&clip_b)
+      .expect("sequential clip b");
+
+    let mut batched = Classifier::tiny(Options::default()).expect("load bundled classifier");
+    let flat = batched
+      .predict_raw_scores_batch_flat(&[&clip_a, &clip_b])
+      .expect("flat batched inference");
+
+    assert_eq!(flat.len(), 2 * NUM_CLASSES);
+    for (expected, actual) in seq_a.iter().zip(flat[..NUM_CLASSES].iter()) {
+      assert!((expected - actual).abs() < 1e-6);
+    }
+    for (expected, actual) in seq_b.iter().zip(flat[NUM_CLASSES..].iter()) {
+      assert!((expected - actual).abs() < 1e-6);
+    }
+
+    let mut into = vec![1.0; 7];
+    batched
+      .predict_raw_scores_batch_into(&[&clip_a, &clip_b], &mut into)
+      .expect("into batched inference");
+    assert_eq!(into, flat);
+  }
+
+  #[cfg(feature = "bundled-tiny")]
+  #[test]
+  fn chunked_batching_matches_batch_size_one() {
+    let clip = pseudo_audio(DEFAULT_CHUNK_SAMPLES * 2 + 40_000, 0x0ddc_0ffe);
+    let single_opts = ChunkingOptions::default()
+      .with_hop_samples(DEFAULT_CHUNK_SAMPLES / 2)
+      .with_batch_size(1);
+    let batched_opts = single_opts.with_batch_size(4);
+
+    let mut single = Classifier::tiny(Options::default()).expect("load bundled classifier");
+    let single_predictions = single
+      .classify_all_chunked(&clip, single_opts)
+      .expect("chunked single-batch inference");
+
+    let mut batched = Classifier::tiny(Options::default()).expect("load bundled classifier");
+    let batched_predictions = batched
+      .classify_all_chunked(&clip, batched_opts)
+      .expect("chunked batched inference");
+
+    assert_eq!(single_predictions.len(), batched_predictions.len());
+    for (expected, actual) in single_predictions.iter().zip(batched_predictions.iter()) {
+      assert_eq!(expected.index(), actual.index());
+      assert!((expected.confidence() - actual.confidence()).abs() < 1e-6);
+    }
   }
 
   #[test]
