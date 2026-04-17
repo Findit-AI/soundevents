@@ -4,6 +4,8 @@ codecov:
 ignore:
   - soundevents-dataset/src/rated/
   - soundevents-dataset/src/ontology/
+  - soundevents-dataset/tests/
+  - xtask/
 
 coverage:
   status:
