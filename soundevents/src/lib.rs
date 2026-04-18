@@ -1124,4 +1124,445 @@ mod tests {
 
     assert_eq!(indices, vec![1, 3]);
   }
+
+  #[test]
+  fn top_k_from_scores_returns_empty_for_zero_k() {
+    let predictions =
+      top_k_from_scores(vec![0.0, 1.0].into_iter().enumerate(), 0, sigmoid).unwrap();
+    assert!(predictions.is_empty());
+  }
+
+  #[test]
+  fn options_builder_exposes_all_setters_and_getters() {
+    let defaults = Options::default();
+    assert!(defaults.model_path().is_none());
+    assert!(matches!(
+      defaults.optimization_level(),
+      GraphOptimizationLevel::Disable
+    ));
+
+    let with_path = Options::new("some/path.onnx");
+    assert_eq!(
+      with_path
+        .model_path()
+        .map(|p| p.to_string_lossy().into_owned()),
+      Some("some/path.onnx".to_string())
+    );
+
+    let mut mutable = Options::default();
+    mutable.set_model_path("another/path.onnx");
+    assert_eq!(
+      mutable
+        .model_path()
+        .map(|p| p.to_string_lossy().into_owned()),
+      Some("another/path.onnx".to_string())
+    );
+    mutable.clear_model_path();
+    assert!(mutable.model_path().is_none());
+
+    let tuned = Options::default()
+      .with_model_path("tuned/path.onnx")
+      .with_optimization_level(GraphOptimizationLevel::Level1);
+    assert_eq!(
+      tuned.model_path().map(|p| p.to_string_lossy().into_owned()),
+      Some("tuned/path.onnx".to_string())
+    );
+    assert!(matches!(
+      tuned.optimization_level(),
+      GraphOptimizationLevel::Level1
+    ));
+
+    let mut const_style = Options::default();
+    const_style.set_optimization_level(GraphOptimizationLevel::Level2);
+    assert!(matches!(
+      const_style.optimization_level(),
+      GraphOptimizationLevel::Level2
+    ));
+  }
+
+  #[test]
+  fn chunking_options_builder_covers_window_and_aggregation_setters() {
+    let tuned = ChunkingOptions::default()
+      .with_window_samples(32_000)
+      .with_hop_samples(16_000)
+      .with_aggregation(ChunkAggregation::Max);
+    assert_eq!(tuned.window_samples(), 32_000);
+    assert_eq!(tuned.hop_samples(), 16_000);
+    assert_eq!(tuned.aggregation(), ChunkAggregation::Max);
+  }
+
+  #[test]
+  fn event_prediction_exposes_name_and_id() {
+    let prediction = EventPrediction::from_confidence(0, 0.25).expect("rated event for class 0");
+    assert_eq!(prediction.confidence(), 0.25);
+    assert_eq!(prediction.index(), 0);
+    let event = RatedSoundEvent::from_index(0).unwrap();
+    assert_eq!(prediction.name(), event.name());
+    assert_eq!(prediction.id(), event.id());
+    assert_eq!(prediction.event().id(), event.id());
+  }
+
+  #[test]
+  fn event_prediction_rejects_unknown_class_index() {
+    let err = EventPrediction::from_confidence(NUM_CLASSES + 10, 0.5).unwrap_err();
+    assert!(matches!(
+      err,
+      ClassifierError::MissingRatedEventIndex { index } if index == NUM_CLASSES + 10
+    ));
+  }
+
+  #[test]
+  fn ranked_score_equality_checks_both_index_and_score() {
+    let a = RankedScore {
+      class_index: 3,
+      score: 0.5,
+    };
+    let b = RankedScore {
+      class_index: 3,
+      score: 0.5,
+    };
+    let c = RankedScore {
+      class_index: 3,
+      score: 0.6,
+    };
+    let d = RankedScore {
+      class_index: 4,
+      score: 0.5,
+    };
+    assert_eq!(a, b);
+    assert_ne!(a, c);
+    assert_ne!(a, d);
+    assert_eq!(a.partial_cmp(&b), Some(Ordering::Equal));
+  }
+
+  #[test]
+  fn classifier_new_without_path_returns_missing_model_path() {
+    match Classifier::new(Options::default()) {
+      Err(ClassifierError::MissingModelPath) => {}
+      _ => panic!("expected MissingModelPath"),
+    }
+  }
+
+  #[test]
+  fn classifier_from_file_rejects_missing_file() {
+    match Classifier::from_file("definitely/does/not/exist.onnx") {
+      Err(ClassifierError::Ort(_)) => {}
+      _ => panic!("expected Ort error"),
+    }
+  }
+
+  #[test]
+  fn classifier_new_with_custom_optimization_surfaces_ort_error() {
+    match Classifier::new(
+      Options::new("definitely/does/not/exist.onnx")
+        .with_optimization_level(GraphOptimizationLevel::Level3),
+    ) {
+      Err(ClassifierError::Ort(_)) => {}
+      _ => panic!("expected Ort error"),
+    }
+  }
+
+  #[test]
+  fn validate_chunking_rejects_zero_window_hop_or_batch() {
+    let zero_window = ChunkingOptions::default().with_window_samples(0);
+    assert!(matches!(
+      validate_chunking(zero_window),
+      Err(ClassifierError::InvalidChunkingOptions {
+        window_samples: 0,
+        ..
+      })
+    ));
+
+    let zero_hop = ChunkingOptions::default().with_hop_samples(0);
+    assert!(matches!(
+      validate_chunking(zero_hop),
+      Err(ClassifierError::InvalidChunkingOptions { hop_samples: 0, .. })
+    ));
+
+    let zero_batch = ChunkingOptions::default().with_batch_size(0);
+    assert!(matches!(
+      validate_chunking(zero_batch),
+      Err(ClassifierError::InvalidChunkingOptions { batch_size: 0, .. })
+    ));
+  }
+
+  #[test]
+  fn validate_output_flags_empty_scores() {
+    let shape = ort::value::Shape::new([1i64, NUM_CLASSES as i64]);
+    assert!(matches!(
+      validate_output(&shape, &[], 1),
+      Err(ClassifierError::EmptyOutput)
+    ));
+  }
+
+  #[test]
+  fn validate_output_flags_class_count_mismatch_when_divisible() {
+    // batch=2, 200 scores evenly splits into 100 per batch, but we expect NUM_CLASSES.
+    let scores = vec![0.0_f32; 200];
+    let shape = ort::value::Shape::new([2i64, 100]);
+    let err = validate_output(&shape, &scores, 2).unwrap_err();
+    assert!(matches!(
+      err,
+      ClassifierError::UnexpectedClassCount {
+        expected,
+        actual: 100,
+      } if expected == NUM_CLASSES
+    ));
+  }
+
+  #[test]
+  fn validate_output_flags_unexpected_shape_when_not_divisible() {
+    // 1053 scores with batch_size=2 → not divisible, triggers shape error path.
+    let scores = vec![0.0_f32; 1053];
+    let shape = ort::value::Shape::new([1i64, 1053]);
+    let err = validate_output(&shape, &scores, 2).unwrap_err();
+    assert!(matches!(err, ClassifierError::UnexpectedOutputShape { .. }));
+  }
+
+  #[test]
+  fn validate_output_accepts_single_dim_shape_for_batch_one() {
+    let scores = vec![0.0_f32; NUM_CLASSES];
+    let shape = ort::value::Shape::new([NUM_CLASSES as i64]);
+    assert!(validate_output(&shape, &scores, 1).is_ok());
+  }
+
+  #[test]
+  fn validate_output_rejects_rank_three_shape() {
+    let scores = vec![0.0_f32; NUM_CLASSES];
+    let shape = ort::value::Shape::new([1i64, 1, NUM_CLASSES as i64]);
+    let err = validate_output(&shape, &scores, 1).unwrap_err();
+    assert!(matches!(err, ClassifierError::UnexpectedOutputShape { .. }));
+  }
+
+  #[cfg(feature = "bundled-tiny")]
+  fn tiny_classifier() -> Classifier {
+    Classifier::tiny(Options::default()).expect("load bundled classifier")
+  }
+
+  #[cfg(feature = "bundled-tiny")]
+  #[test]
+  fn classify_all_matches_classify_all_batch() {
+    let clip = pseudo_audio(SAMPLE_RATE_HZ, 0x1111_2222);
+    let mut classifier = tiny_classifier();
+
+    let single = classifier.classify_all(&clip).expect("classify_all");
+    assert_eq!(single.len(), NUM_CLASSES);
+
+    let batched = classifier
+      .classify_all_batch(&[&clip, &clip])
+      .expect("classify_all_batch");
+    assert_eq!(batched.len(), 2);
+    for row in &batched {
+      assert_eq!(row.len(), NUM_CLASSES);
+    }
+    for (expected, actual) in single.iter().zip(batched[0].iter()) {
+      assert_eq!(expected.index(), actual.index());
+      assert!((expected.confidence() - actual.confidence()).abs() < 1e-6);
+    }
+  }
+
+  #[cfg(feature = "bundled-tiny")]
+  #[test]
+  fn classify_and_classify_batch_agree_on_top_k() {
+    let clip = pseudo_audio(SAMPLE_RATE_HZ, 0x3333_4444);
+    let mut classifier = tiny_classifier();
+
+    let single = classifier.classify(&clip, 3).expect("classify");
+    assert_eq!(single.len(), 3);
+
+    let batched = classifier
+      .classify_batch(&[&clip, &clip], 3)
+      .expect("classify_batch");
+    assert_eq!(batched.len(), 2);
+    for row in &batched {
+      assert_eq!(row.len(), 3);
+    }
+    for (expected, actual) in single.iter().zip(batched[0].iter()) {
+      assert_eq!(expected.index(), actual.index());
+      assert!((expected.confidence() - actual.confidence()).abs() < 1e-6);
+    }
+  }
+
+  #[cfg(feature = "bundled-tiny")]
+  #[test]
+  fn classify_rejects_empty_input() {
+    let mut classifier = tiny_classifier();
+    assert!(matches!(
+      classifier.classify(&[], 3),
+      Err(ClassifierError::EmptyInput)
+    ));
+  }
+
+  #[cfg(feature = "bundled-tiny")]
+  #[test]
+  fn classify_with_zero_top_k_returns_empty() {
+    let clip = pseudo_audio(SAMPLE_RATE_HZ, 0x5555_6666);
+    let mut classifier = tiny_classifier();
+    assert!(classifier.classify(&clip, 0).unwrap().is_empty());
+  }
+
+  #[cfg(feature = "bundled-tiny")]
+  #[test]
+  fn classify_batch_with_zero_top_k_returns_one_empty_vec_per_clip() {
+    let clip = pseudo_audio(SAMPLE_RATE_HZ, 0x7777_8888);
+    let mut classifier = tiny_classifier();
+    let result = classifier
+      .classify_batch(&[&clip, &clip, &clip], 0)
+      .expect("classify_batch with k=0");
+    assert_eq!(result.len(), 3);
+    assert!(result.iter().all(|row| row.is_empty()));
+  }
+
+  #[cfg(feature = "bundled-tiny")]
+  #[test]
+  fn classify_chunked_with_zero_top_k_returns_empty() {
+    let clip = pseudo_audio(DEFAULT_CHUNK_SAMPLES + 8_000, 0x9999_aaaa);
+    let mut classifier = tiny_classifier();
+    let result = classifier
+      .classify_chunked(&clip, 0, ChunkingOptions::default())
+      .expect("classify_chunked with k=0");
+    assert!(result.is_empty());
+  }
+
+  #[cfg(feature = "bundled-tiny")]
+  #[test]
+  fn classify_chunked_rejects_empty_input() {
+    let mut classifier = tiny_classifier();
+    assert!(matches!(
+      classifier.classify_chunked(&[], 3, ChunkingOptions::default()),
+      Err(ClassifierError::EmptyInput)
+    ));
+  }
+
+  #[cfg(feature = "bundled-tiny")]
+  #[test]
+  fn classify_chunked_top_k_matches_all_chunked_top_indices() {
+    let clip = pseudo_audio(DEFAULT_CHUNK_SAMPLES * 2, 0xbbbb_cccc);
+    let opts = ChunkingOptions::default();
+    let mut classifier = tiny_classifier();
+
+    let all = classifier
+      .classify_all_chunked(&clip, opts)
+      .expect("classify_all_chunked");
+    let top = classifier
+      .classify_chunked(&clip, 4, opts)
+      .expect("classify_chunked top 4");
+
+    assert_eq!(top.len(), 4);
+
+    let mut ranked = all.clone();
+    ranked.sort_by(|a, b| {
+      b.confidence()
+        .partial_cmp(&a.confidence())
+        .unwrap_or(Ordering::Equal)
+    });
+    let expected_indices: Vec<_> = ranked.iter().take(4).map(|p| p.index()).collect();
+    let actual_indices: Vec<_> = top.iter().map(|p| p.index()).collect();
+    assert_eq!(actual_indices, expected_indices);
+  }
+
+  #[cfg(feature = "bundled-tiny")]
+  #[test]
+  fn chunked_max_aggregation_matches_per_class_max_of_chunks() {
+    let clip = pseudo_audio(DEFAULT_CHUNK_SAMPLES * 3, 0xdead_beef);
+    let mean_opts = ChunkingOptions::default();
+    let max_opts = mean_opts.with_aggregation(ChunkAggregation::Max);
+
+    let mut classifier = tiny_classifier();
+    let mean = classifier
+      .classify_all_chunked(&clip, mean_opts)
+      .expect("mean chunked");
+    let max = classifier
+      .classify_all_chunked(&clip, max_opts)
+      .expect("max chunked");
+
+    assert_eq!(mean.len(), NUM_CLASSES);
+    assert_eq!(max.len(), NUM_CLASSES);
+
+    // Per-class max of the chunks must be >= per-class mean.
+    for (m, x) in mean.iter().zip(max.iter()) {
+      assert!(x.confidence() >= m.confidence() - 1e-6);
+    }
+  }
+
+  #[cfg(feature = "bundled-tiny")]
+  #[test]
+  fn classify_chunked_rejects_invalid_chunking_options() {
+    let clip = pseudo_audio(SAMPLE_RATE_HZ, 0x1122_3344);
+    let mut classifier = tiny_classifier();
+    let bad_opts = ChunkingOptions::default().with_window_samples(0);
+    assert!(matches!(
+      classifier.classify_chunked(&clip, 3, bad_opts),
+      Err(ClassifierError::InvalidChunkingOptions { .. })
+    ));
+  }
+
+  #[cfg(feature = "bundled-tiny")]
+  #[test]
+  fn classifier_new_with_path_loads_model_from_disk() {
+    let path = concat!(env!("CARGO_MANIFEST_DIR"), "/models/tiny.onnx");
+    let mut classifier = Classifier::new(Options::new(path)).expect("load via new()");
+    let clip = pseudo_audio(SAMPLE_RATE_HZ, 0x0abc_def0);
+    let scores = classifier
+      .predict_raw_scores(&clip)
+      .expect("predict via disk-loaded classifier");
+    assert_eq!(scores.len(), NUM_CLASSES);
+  }
+
+  #[cfg(feature = "bundled-tiny")]
+  #[test]
+  fn classifier_from_file_loads_model_from_disk() {
+    let path = concat!(env!("CARGO_MANIFEST_DIR"), "/models/tiny.onnx");
+    let mut classifier = Classifier::from_file(path).expect("load via from_file");
+    let clip = pseudo_audio(SAMPLE_RATE_HZ, 0x0fed_cba9);
+    let scores = classifier
+      .predict_raw_scores(&clip)
+      .expect("predict via from_file classifier");
+    assert_eq!(scores.len(), NUM_CLASSES);
+  }
+
+  #[test]
+  fn rated_sound_event_exposes_all_accessors() {
+    let event = RatedSoundEvent::from_index(0).expect("class 0 exists");
+
+    // Exercise the macro-generated accessors so tarpaulin records them.
+    let _ = event.encode();
+    let _ = event.description();
+    let _ = event.aliases();
+    let _ = event.citation_uri();
+    let _ = event.children();
+    let _ = event.restrictions();
+
+    // Display forwards to the event's name.
+    assert_eq!(format!("{event}"), event.name());
+  }
+
+  #[test]
+  fn rated_sound_event_try_from_code_round_trips() {
+    let event = RatedSoundEvent::from_index(0).expect("class 0 exists");
+    let resolved: &'static RatedSoundEvent =
+      <&'static RatedSoundEvent>::try_from(event.encode()).expect("valid code resolves");
+    assert_eq!(resolved.id(), event.id());
+
+    let err = <&'static RatedSoundEvent>::try_from(0u64).expect_err("0u64 is not a real code");
+    assert_eq!(err.code(), 0);
+  }
+
+  #[test]
+  fn restriction_try_from_accepts_known_tokens_and_reports_unknown() {
+    use soundevents_dataset::{Restriction, UnknownRestriction};
+
+    assert_eq!(
+      Restriction::try_from("abstract").expect("valid"),
+      Restriction::Abstract
+    );
+    assert_eq!(
+      Restriction::try_from("BLACKLIST").expect("valid"),
+      Restriction::Blacklist
+    );
+
+    let err: UnknownRestriction<'_> =
+      Restriction::try_from("bogus").expect_err("unknown token surfaced");
+    assert_eq!(err.name(), "bogus");
+  }
 }
