@@ -4,6 +4,16 @@ All notable changes to this workspace will be documented in this file.
 
 ## Unreleased
 
+## 0.3.0 - 2026-04-21
+
+### `soundevents`
+
+- Add serde support for `Options` and `ChunkingOptions`.
+- Breaking changes:
+  - `Options::new` no longer takes a model path; construct options separately from model loading.
+  - Chunked classification APIs now take `&ChunkingOptions` instead of `ChunkingOptions`.
+  - `ChunkingOptions` is no longer `Copy`; pass it by reference or clone it explicitly where needed.
+
 ## 0.2.0 - 2026-04-08
 
 ### `soundevents`
