@@ -1,6 +1,6 @@
 [package]
 name = "soundevents"
-version = "0.2.0"
+version = "0.2.1"
 edition = "2024"
 description = "Production-oriented Rust inference wrapper for CED AudioSet classifiers."
 license.workspace = true
@@ -28,12 +28,19 @@ include = [
 default = []
 bundled-tiny = []
 
+serde = ["dep:serde"]
+
 [dependencies]
 ort = "2.0.0-rc.12"
 smol_str = "0.3"
 thiserror = { workspace = true, features = ["default"] }
 
 soundevents-dataset = { workspace = true, features = ["rated"] }
+
+serde = { workspace = true, optional = true, features = ["derive"] }
+
+[dev-dependencies]
+serde_json = "1"
 
 [lints.rust]
 rust_2018_idioms = "warn"
