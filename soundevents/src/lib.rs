@@ -115,19 +115,20 @@ pub struct Options {
 }
 
 impl Default for Options {
+  #[cfg_attr(not(tarpaulin), inline(always))]
   fn default() -> Self {
-    Self {
-      model_path: None,
-      optimization_level: GraphOptimizationLevel::Disable,
-    }
+    Self::new()
   }
 }
 
 impl Options {
-  /// Creates options pointing to the given ONNX model file.
+  /// Returns a new `Options` with default settings: no model path and disabled graph optimization.
   #[cfg_attr(not(tarpaulin), inline(always))]
-  pub fn new(model_path: impl Into<PathBuf>) -> Self {
-    Self::default().with_model_path(model_path)
+  pub const fn new() -> Self {
+    Self {
+      model_path: None,
+      optimization_level: GraphOptimizationLevel::Disable,
+    }
   }
 
   /// Returns the model path, if one has been configured.
@@ -179,35 +180,65 @@ impl Options {
 }
 
 /// Controls how chunked inference aggregates chunk confidences.
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[derive(Debug, Default, Clone, Copy, PartialEq, Eq, Hash)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
+#[cfg_attr(feature = "serde", serde(rename_all = "snake_case"))]
 pub enum ChunkAggregation {
   /// Average confidence across all chunks.
+  #[default]
   Mean,
   /// Keep the peak confidence seen in any chunk.
   Max,
 }
 
+#[cfg_attr(not(tarpaulin), inline(always))]
+const fn default_window_samples() -> usize {
+  DEFAULT_CHUNK_SAMPLES
+}
+
+#[cfg_attr(not(tarpaulin), inline(always))]
+const fn default_hop_samples() -> usize {
+  DEFAULT_CHUNK_SAMPLES
+}
+
+#[cfg_attr(not(tarpaulin), inline(always))]
+const fn default_batch_size() -> usize {
+  1
+}
+
 /// Options for chunked inference over long clips.
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct ChunkingOptions {
+  #[cfg_attr(feature = "serde", serde(default = "default_window_samples"))]
   window_samples: usize,
+  #[cfg_attr(feature = "serde", serde(default = "default_hop_samples"))]
   hop_samples: usize,
+  #[cfg_attr(feature = "serde", serde(default = "default_batch_size"))]
   batch_size: usize,
+  #[cfg_attr(feature = "serde", serde(default))]
   aggregation: ChunkAggregation,
 }
 
 impl Default for ChunkingOptions {
+  #[cfg_attr(not(tarpaulin), inline(always))]
   fn default() -> Self {
-    Self {
-      window_samples: DEFAULT_CHUNK_SAMPLES,
-      hop_samples: DEFAULT_CHUNK_SAMPLES,
-      batch_size: 1,
-      aggregation: ChunkAggregation::Mean,
-    }
+    Self::new()
   }
 }
 
 impl ChunkingOptions {
+  /// Returns a new `ChunkingOptions` with default settings: 10-second windows, 10-second hops, batch size of 1, and mean aggregation.
+  #[cfg_attr(not(tarpaulin), inline(always))]
+  pub const fn new() -> Self {
+    Self {
+      window_samples: default_window_samples(),
+      hop_samples: default_hop_samples(),
+      batch_size: default_batch_size(),
+      aggregation: ChunkAggregation::Mean,
+    }
+  }
+
   /// Returns the chunk window size in samples.
   #[cfg_attr(not(tarpaulin), inline(always))]
   pub const fn window_samples(&self) -> usize {
@@ -235,6 +266,13 @@ impl ChunkingOptions {
   /// Sets the chunk window size in samples.
   #[cfg_attr(not(tarpaulin), inline(always))]
   pub const fn with_window_samples(mut self, window_samples: usize) -> Self {
+    self.set_window_samples(window_samples);
+    self
+  }
+
+  /// Sets the chunk window size in samples.
+  #[cfg_attr(not(tarpaulin), inline(always))]
+  pub const fn set_window_samples(&mut self, window_samples: usize) -> &mut Self {
     self.window_samples = window_samples;
     self
   }
@@ -242,6 +280,13 @@ impl ChunkingOptions {
   /// Sets the chunk hop size in samples.
   #[cfg_attr(not(tarpaulin), inline(always))]
   pub const fn with_hop_samples(mut self, hop_samples: usize) -> Self {
+    self.set_hop_samples(hop_samples);
+    self
+  }
+
+  /// Sets the chunk hop size in samples.
+  #[cfg_attr(not(tarpaulin), inline(always))]
+  pub const fn set_hop_samples(&mut self, hop_samples: usize) -> &mut Self {
     self.hop_samples = hop_samples;
     self
   }
@@ -249,6 +294,13 @@ impl ChunkingOptions {
   /// Sets the chunk batch size used by batched chunked inference.
   #[cfg_attr(not(tarpaulin), inline(always))]
   pub const fn with_batch_size(mut self, batch_size: usize) -> Self {
+    self.set_batch_size(batch_size);
+    self
+  }
+
+  /// Sets the chunk batch size used by batched chunked inference.
+  #[cfg_attr(not(tarpaulin), inline(always))]
+  pub const fn set_batch_size(&mut self, batch_size: usize) -> &mut Self {
     self.batch_size = batch_size;
     self
   }
@@ -256,6 +308,13 @@ impl ChunkingOptions {
   /// Sets the aggregation strategy.
   #[cfg_attr(not(tarpaulin), inline(always))]
   pub const fn with_aggregation(mut self, aggregation: ChunkAggregation) -> Self {
+    self.set_aggregation(aggregation);
+    self
+  }
+
+  /// Sets the aggregation strategy.
+  #[cfg_attr(not(tarpaulin), inline(always))]
+  pub const fn set_aggregation(&mut self, aggregation: ChunkAggregation) -> &mut Self {
     self.aggregation = aggregation;
     self
   }
@@ -672,7 +731,7 @@ impl Classifier {
   pub fn classify_all_chunked(
     &mut self,
     samples_16k: &[f32],
-    options: ChunkingOptions,
+    options: &ChunkingOptions,
   ) -> Result<Vec<EventPrediction>, ClassifierError> {
     self.with_aggregated_confidences(samples_16k, options, |confidences| {
       confidences
@@ -689,7 +748,7 @@ impl Classifier {
     &mut self,
     samples_16k: &[f32],
     top_k: usize,
-    options: ChunkingOptions,
+    options: &ChunkingOptions,
   ) -> Result<Vec<EventPrediction>, ClassifierError> {
     ensure_non_empty(samples_16k)?;
 
@@ -746,7 +805,7 @@ impl Classifier {
   fn with_aggregated_confidences<T>(
     &mut self,
     samples_16k: &[f32],
-    options: ChunkingOptions,
+    options: &ChunkingOptions,
     f: impl FnOnce(&[f32]) -> Result<T, ClassifierError>,
   ) -> Result<T, ClassifierError> {
     let mut confidences = std::mem::take(&mut self.confidence_scratch);
@@ -762,7 +821,7 @@ fn fill_aggregated_confidences(
   classifier: &mut Classifier,
   aggregated: &mut Vec<f32>,
   samples_16k: &[f32],
-  options: ChunkingOptions,
+  options: &ChunkingOptions,
 ) -> Result<(), ClassifierError> {
   ensure_non_empty(samples_16k)?;
   validate_chunking(options)?;
@@ -877,7 +936,7 @@ fn ensure_non_empty(samples_16k: &[f32]) -> Result<(), ClassifierError> {
   Ok(())
 }
 
-fn validate_chunking(options: ChunkingOptions) -> Result<(), ClassifierError> {
+fn validate_chunking(options: &ChunkingOptions) -> Result<(), ClassifierError> {
   if options.window_samples() == 0 || options.hop_samples() == 0 || options.batch_size() == 0 {
     return Err(ClassifierError::InvalidChunkingOptions {
       window_samples: options.window_samples(),
@@ -967,7 +1026,10 @@ fn validate_batch_inputs(batch_16k: &[&[f32]]) -> Result<usize, ClassifierError>
 
 /// Groups consecutive equal-length chunks into batches so one tensor never
 /// mixes the usual short tail chunk with full-size windows.
-fn chunk_batches(samples: &[f32], options: ChunkingOptions) -> impl Iterator<Item = Vec<&[f32]>> {
+fn chunk_batches<'a>(
+  samples: &'a [f32],
+  options: &ChunkingOptions,
+) -> impl Iterator<Item = Vec<&'a [f32]>> {
   let mut chunks =
     chunk_slices(samples, options.window_samples(), options.hop_samples()).peekable();
 
@@ -1168,16 +1230,16 @@ mod tests {
     let single_opts = ChunkingOptions::default()
       .with_hop_samples(DEFAULT_CHUNK_SAMPLES / 2)
       .with_batch_size(1);
-    let batched_opts = single_opts.with_batch_size(4);
+    let batched_opts = single_opts.clone().with_batch_size(4);
 
     let mut single = Classifier::tiny(Options::default()).expect("load bundled classifier");
     let single_predictions = single
-      .classify_all_chunked(&clip, single_opts)
+      .classify_all_chunked(&clip, &single_opts)
       .expect("chunked single-batch inference");
 
     let mut batched = Classifier::tiny(Options::default()).expect("load bundled classifier");
     let batched_predictions = batched
-      .classify_all_chunked(&clip, batched_opts)
+      .classify_all_chunked(&clip, &batched_opts)
       .expect("chunked batched inference");
 
     assert_eq!(single_predictions.len(), batched_predictions.len());
@@ -1219,7 +1281,7 @@ mod tests {
       GraphOptimizationLevel::Disable
     ));
 
-    let with_path = Options::new("some/path.onnx");
+    let with_path = Options::new().with_model_path("some/path.onnx");
     assert_eq!(
       with_path
         .model_path()
@@ -1332,7 +1394,8 @@ mod tests {
   #[test]
   fn classifier_new_with_custom_optimization_surfaces_ort_error() {
     match Classifier::new(
-      Options::new("definitely/does/not/exist.onnx")
+      Options::new()
+        .with_model_path("definitely/does/not/exist.onnx")
         .with_optimization_level(GraphOptimizationLevel::Level3),
     ) {
       Err(ClassifierError::Ort(_)) => {}
@@ -1344,7 +1407,7 @@ mod tests {
   fn validate_chunking_rejects_zero_window_hop_or_batch() {
     let zero_window = ChunkingOptions::default().with_window_samples(0);
     assert!(matches!(
-      validate_chunking(zero_window),
+      validate_chunking(&zero_window),
       Err(ClassifierError::InvalidChunkingOptions {
         window_samples: 0,
         ..
@@ -1353,13 +1416,13 @@ mod tests {
 
     let zero_hop = ChunkingOptions::default().with_hop_samples(0);
     assert!(matches!(
-      validate_chunking(zero_hop),
+      validate_chunking(&zero_hop),
       Err(ClassifierError::InvalidChunkingOptions { hop_samples: 0, .. })
     ));
 
     let zero_batch = ChunkingOptions::default().with_batch_size(0);
     assert!(matches!(
-      validate_chunking(zero_batch),
+      validate_chunking(&zero_batch),
       Err(ClassifierError::InvalidChunkingOptions { batch_size: 0, .. })
     ));
   }
@@ -1497,7 +1560,7 @@ mod tests {
     let clip = pseudo_audio(DEFAULT_CHUNK_SAMPLES + 8_000, 0x9999_aaaa);
     let mut classifier = tiny_classifier();
     let result = classifier
-      .classify_chunked(&clip, 0, ChunkingOptions::default())
+      .classify_chunked(&clip, 0, &ChunkingOptions::default())
       .expect("classify_chunked with k=0");
     assert!(result.is_empty());
   }
@@ -1507,7 +1570,7 @@ mod tests {
   fn classify_chunked_rejects_empty_input() {
     let mut classifier = tiny_classifier();
     assert!(matches!(
-      classifier.classify_chunked(&[], 3, ChunkingOptions::default()),
+      classifier.classify_chunked(&[], 3, &ChunkingOptions::default()),
       Err(ClassifierError::EmptyInput)
     ));
   }
@@ -1520,10 +1583,10 @@ mod tests {
     let mut classifier = tiny_classifier();
 
     let all = classifier
-      .classify_all_chunked(&clip, opts)
+      .classify_all_chunked(&clip, &opts)
       .expect("classify_all_chunked");
     let top = classifier
-      .classify_chunked(&clip, 4, opts)
+      .classify_chunked(&clip, 4, &opts)
       .expect("classify_chunked top 4");
 
     assert_eq!(top.len(), 4);
@@ -1544,14 +1607,14 @@ mod tests {
   fn chunked_max_aggregation_matches_per_class_max_of_chunks() {
     let clip = pseudo_audio(DEFAULT_CHUNK_SAMPLES * 3, 0xdead_beef);
     let mean_opts = ChunkingOptions::default();
-    let max_opts = mean_opts.with_aggregation(ChunkAggregation::Max);
+    let max_opts = mean_opts.clone().with_aggregation(ChunkAggregation::Max);
 
     let mut classifier = tiny_classifier();
     let mean = classifier
-      .classify_all_chunked(&clip, mean_opts)
+      .classify_all_chunked(&clip, &mean_opts)
       .expect("mean chunked");
     let max = classifier
-      .classify_all_chunked(&clip, max_opts)
+      .classify_all_chunked(&clip, &max_opts)
       .expect("max chunked");
 
     assert_eq!(mean.len(), NUM_CLASSES);
@@ -1570,7 +1633,7 @@ mod tests {
     let mut classifier = tiny_classifier();
     let bad_opts = ChunkingOptions::default().with_window_samples(0);
     assert!(matches!(
-      classifier.classify_chunked(&clip, 3, bad_opts),
+      classifier.classify_chunked(&clip, 3, &bad_opts),
       Err(ClassifierError::InvalidChunkingOptions { .. })
     ));
   }
@@ -1579,7 +1642,8 @@ mod tests {
   #[test]
   fn classifier_new_with_path_loads_model_from_disk() {
     let path = concat!(env!("CARGO_MANIFEST_DIR"), "/models/tiny.onnx");
-    let mut classifier = Classifier::new(Options::new(path)).expect("load via new()");
+    let mut classifier =
+      Classifier::new(Options::new().with_model_path(path)).expect("load via new()");
     let clip = pseudo_audio(SAMPLE_RATE_HZ, 0x0abc_def0);
     let scores = classifier
       .predict_raw_scores(&clip)

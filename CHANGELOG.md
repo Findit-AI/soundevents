@@ -4,6 +4,12 @@ All notable changes to this workspace will be documented in this file.
 
 ## Unreleased
 
+## 0.3.0 - 2026-04-21
+
+### `soundevents`
+
+- Add serde support for `Options` and `ChunkingOptions`
+
 ## 0.2.0 - 2026-04-08
 
 ### `soundevents`

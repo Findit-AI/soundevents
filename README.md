@@ -31,7 +31,7 @@ Production-oriented Rust inference for [CED](https://arxiv.org/abs/2308.11957) A
 
 ```toml
 [dependencies]
-soundevents = "0.2"
+soundevents = "0.3"
 ```
 
 ```rust,no_run

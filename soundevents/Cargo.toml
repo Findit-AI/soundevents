@@ -1,6 +1,6 @@
 [package]
 name = "soundevents"
-version = "0.2.1"
+version = "0.3.0"
 edition = "2024"
 description = "Production-oriented Rust inference wrapper for CED AudioSet classifiers."
 license.workspace = true
