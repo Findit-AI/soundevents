@@ -34,65 +34,6 @@ Production-oriented Rust inference for [CED](https://arxiv.org/abs/2308.11957) A
 soundevents = "0.3"
 ```
 
-```rust,no_run
-use soundevents::{Classifier, Options};
-
-fn load_mono_16k_audio(_: &str) -> Result<Vec<f32>, Box<dyn std::error::Error>> {
-    Ok(vec![0.0; 16_000])
-}
-
-fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let mut classifier = Classifier::from_file("soundevents/models/tiny.onnx")?;
-
-    // Bring your own decoder/resampler — soundevents expects mono f32
-    // samples at 16 kHz, in [-1.0, 1.0].
-    let samples: Vec<f32> = load_mono_16k_audio("clip.wav")?;
-
-    // Top-5 predictions for a clip up to ~10 s long.
-    for prediction in classifier.classify(&samples, 5)? {
-        println!(
-            "{:>5.1}%  {:>3}  {}  ({})",
-            prediction.confidence() * 100.0,
-            prediction.index(),
-            prediction.name(),
-            prediction.id(),
-        );
-    }
-    Ok(())
-}
-```
-
-### Long clips: chunked inference
-
-`Classifier::classify_chunked` slides a window over the input and aggregates each chunk's per-class confidences. The defaults (10 s window, 10 s hop, mean aggregation) match CED's training setup; tune them for overlap or peak-pooling.
-
-```rust,no_run
-use soundevents::{ChunkAggregation, ChunkingOptions, Classifier};
-
-fn load_long_clip() -> Result<Vec<f32>, Box<dyn std::error::Error>> {
-    Ok(vec![0.0; 320_000])
-}
-
-fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let mut classifier = Classifier::from_file("soundevents/models/tiny.onnx")?;
-    let samples: Vec<f32> = load_long_clip()?;
-
-    let opts = ChunkingOptions::default()
-        // 5 s overlap (50%) between adjacent windows
-        .with_hop_samples(80_000)
-        // Batch up to 4 equal-length windows per session.run()
-        .with_batch_size(4)
-        // Keep the loudest detection in any window instead of averaging
-        .with_aggregation(ChunkAggregation::Max);
-
-    let top3 = classifier.classify_chunked(&samples, 3, opts)?;
-    for prediction in top3 {
-        println!("{}: {:.2}", prediction.name(), prediction.confidence());
-    }
-    Ok(())
-}
-```
-
 ## Models
 
 The four CED variants are sourced from the [`mispeech`](https://huggingface.co/mispeech) Hugging Face organisation, exported to ONNX, and **checked into this repo** under [`soundevents/models/`](./soundevents/models). You should not normally need to download anything — `git clone` gives you a working classifier out of the box.
@@ -130,21 +71,7 @@ sources and attribution details.
 Enable the `bundled-tiny` feature to embed `models/tiny.onnx` into your binary — useful for CLI tools and self-contained services where you don't want to ship a separate model file.
 
 ```toml
-soundevents = { version = "0.2", features = ["bundled-tiny"] }
-```
-
-```rust
-# #[cfg(feature = "bundled-tiny")]
-use soundevents::{Classifier, Options};
-
-# fn main() -> Result<(), Box<dyn std::error::Error>> {
-# #[cfg(feature = "bundled-tiny")]
-# {
-let mut classifier = Classifier::tiny(Options::default())?;
-# let _ = &mut classifier;
-# }
-# Ok(())
-# }
+soundevents = { version = "0.3", features = ["bundled-tiny"] }
 ```
 
 ## Features
