@@ -1,6 +1,6 @@
 [package]
 name = "soundevents"
-version = "0.3.0"
+version = "0.3.1"
 edition = "2024"
 description = "Production-oriented Rust inference wrapper for CED AudioSet classifiers."
 license.workspace = true
@@ -29,6 +29,20 @@ default = []
 bundled-tiny = []
 
 serde = ["dep:serde"]
+
+# ORT execution-provider passthroughs. Off by default; enabling a feature only
+# links the EP into ort-sys — downstream callers must still register the EP at
+# runtime via `Session::builder().with_execution_providers([...])`. CoreML on
+# the bundled CED graphs has been observed to silently emit zeroed logits on
+# macOS (ORT 2.0.0-rc.12, weight-only-quantized export); verify outputs before
+# shipping any GPU-enabled build. CUDA/DirectML have not been audited for this
+# graph and may be useful on Linux/Windows.
+coreml   = ["ort/coreml"]
+directml = ["ort/directml"]
+cuda     = ["ort/cuda"]
+rocm     = ["ort/rocm"]
+tensorrt = ["ort/tensorrt"]
+openvino = ["ort/openvino"]
 
 [dependencies]
 ort = "2.0.0-rc.12"
